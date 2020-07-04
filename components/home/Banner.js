@@ -26,7 +26,10 @@ const useStyles = makeStyles(theme => ({
   title: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 70
+    fontSize: 70,
+    [theme.breakpoints.only('xs')]: {
+      fontSize: 40
+    }
   },
   iconButton: {
     color: 'white',
@@ -40,7 +43,7 @@ const Banner = () => {
   return (
     <div className={classes.bannerRoot}>
       <Container maxWidth='md'>
-        <Grid container xs={6} className={classes.container}>
+        <Grid container xs={10} sm={6} className={classes.container}>
           <Grid item xs={12}>
             <Fade in={true} timeout={1200}>
               <Typography className={classes.title}>
@@ -55,7 +58,7 @@ const Banner = () => {
             </Typography>
             </Fade>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={7} md={6} lg={4}>
             <Fade in={true} timeout={3000}>
               <Grid container justify='space-between'>
                 <Grid item>

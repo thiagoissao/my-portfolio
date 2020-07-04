@@ -26,12 +26,19 @@ const useStyles = makeStyles(theme => ({
     backgroundPosition: 'center',
     borderRadius: '100%',
     boxShadow: theme.shadows[8],
-    border: `3px solid white`
+    border: `3px solid white`,
+    [theme.breakpoints.only('xs')]: {
+      width: 250,
+      height: 250
+    }
   },
   title: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 40
+    fontSize: 40,
+    [theme.breakpoints.only('xs')]: {
+      fontSize: 30
+    }
   },
   styleSub: {
     width: 120,
@@ -57,7 +64,7 @@ const Info = () => {
       <Grid item xs={12}>
         <div
           style={{
-            height: '100vh',
+            height: '100%',
             width: '100%',
             background: 'linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.9)) 90%',
             position: 'absolute',
@@ -68,14 +75,14 @@ const Info = () => {
         <Box my={5}>
           <Container maxWidth='md'>
             <Grid container justify='space-between'>
-              <Grid item xs={4}>
-                <Grid container spacing={10}>
+              <Grid item xs={12} sm={4} style={{ padding: 24 }}>
+                <Grid container spacing={6}>
                   <Grid item xs={12}>
                     <Grid container>
                       <Grid item>
                         <Typography className={classes.title}>
                           About me
-                    </Typography>
+                        </Typography>
                       </Grid>
                       <Grid xs={12}>
                         <div className={classes.styleSub} />
@@ -87,18 +94,19 @@ const Info = () => {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item xs={5}>
+              <Grid item xs={12} sm={5} style={{ padding: 8 }}>
                 <Grid container spacing={2}>
                   <Grid item xs={12}>
                     <Typography className={classes.experience}>
                       Hi. My name is Thiago Issao Yasunaka and i am 20 years old.
-                      Nowadays, my hobbies are soccer (since i was born haha), bike and programming.
+                      Nowadays, my hobbies are soccer (since i was born haha), bike, programming and
+                      economy.
                     </Typography>
                   </Grid>
                   <Grid item xs={12}>
                     <Grid container>
                       <Grid item xs={12}>
-                        <Typography className={classes.subtitle}>Experience</Typography>
+                        <Typography className={classes.subtitle}>Professional experience</Typography>
                       </Grid>
                       <Grid item>
                         <div className={classes.styleSub} />

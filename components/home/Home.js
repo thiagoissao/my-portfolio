@@ -5,7 +5,7 @@ import Info from './Info'
 
 const Home = () => {
   return (
-    <Grid container>
+    <Grid container >
       <Grid item xs={12}>
         <Banner />
       </Grid>
