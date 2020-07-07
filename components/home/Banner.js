@@ -8,20 +8,13 @@ import IconButton from '@material-ui/core/IconButton'
 import Container from '@material-ui/core/Container'
 
 const useStyles = makeStyles(theme => ({
-  img: {
+  root: {
     width: '100%',
-    height: '100vh',
-    backgroundImage: 'url(banner.jpg)',
+    minHeight: '100vh',
+    backgroundImage: `url(banner.jpg)`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
-    backgroundPosition: 'center'
-  },
-  bannerRoot: {
-    position: 'relative',
-  },
-  container: {
-    position: 'absolute',
-    top: '30%',
+    backgroundPosition: 'center',
   },
   title: {
     color: 'white',
@@ -41,48 +34,59 @@ const useStyles = makeStyles(theme => ({
 const Banner = () => {
   const classes = useStyles()
   return (
-    <div className={classes.bannerRoot}>
-      <Container maxWidth='md'>
-        <Grid container xs={10} sm={6} className={classes.container}>
-          <Grid item xs={12}>
-            <Fade in={true} timeout={1200}>
-              <Typography className={classes.title}>
-                Thiago
+    <Grid container alignItems='center' className={classes.root}>
+      <Grid item xs={12}>
+        <Grid container>
+          <Container maxWidth='md' >
+            <Grid item xs={12}>
+              <Fade in={true} timeout={1200}>
+                <Typography className={classes.title}>
+                  Thiago
             </Typography>
-            </Fade>
-          </Grid>
-          <Grid item xs={12}>
-            <Fade in={true} timeout={2500}>
-              <Typography className={classes.title}>
-                Yasunaka
+              </Fade>
+            </Grid>
+            <Grid item xs={12}>
+              <Fade in={true} timeout={2500}>
+                <Typography className={classes.title}>
+                  Yasunaka
             </Typography>
-            </Fade>
-          </Grid>
-          <Grid item xs={7} md={6} lg={4}>
-            <Fade in={true} timeout={3000}>
-              <Grid container justify='space-between'>
-                <Grid item>
-                  <IconButton className={classes.iconButton}>
-                    <FaLinkedin />
-                  </IconButton>
+              </Fade>
+            </Grid>
+            <Grid item xs={7} md={6} lg={4}>
+              <Fade in={true} timeout={3000}>
+                <Grid container justify='space-between'>
+                  <Grid item>
+                    <IconButton
+                      target='_blank'
+                      href='https://www.linkedin.com/in/thiago-yasunaka-389a69155/'
+                      className={classes.iconButton}
+                    >
+                      <FaLinkedin />
+                    </IconButton>
+                  </Grid>
+                  <Grid item>
+                    <IconButton
+                      target='_blank'
+                      href='https://www.instagram.com/thiago.yasunaka/'
+                      className={classes.iconButton}>
+                      <FaInstagram />
+                    </IconButton>
+                  </Grid>
+                  <Grid item>
+                    <IconButton
+                      target='_blank'
+                      href='https://www.facebook.com/thiago.yasunaka.3/'
+                      className={classes.iconButton}>
+                      <FaFacebookSquare />
+                    </IconButton>
+                  </Grid>
                 </Grid>
-                <Grid item>
-                  <IconButton className={classes.iconButton}>
-                    <FaInstagram />
-                  </IconButton>
-                </Grid>
-                <Grid item>
-                  <IconButton className={classes.iconButton}>
-                    <FaFacebookSquare />
-                  </IconButton>
-                </Grid>
-              </Grid>
-            </Fade>
-          </Grid>
+              </Fade>
+            </Grid>
+          </Container>
         </Grid>
-      </Container>
-      <div className={classes.img} />
-    </div >
+      </Grid>
+    </Grid>
   )
 }
 export default Banner

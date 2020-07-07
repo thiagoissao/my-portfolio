@@ -89,12 +89,16 @@ const Info = () => {
                       </Grid>
                     </Grid>
                   </Grid>
-                  <Grid item>
-                    <div className={classes.profile} />
+                  <Grid item xs={12}>
+                    <Grid container justify='center'>
+                      <Grid item>
+                        <div className={classes.profile} />
+                      </Grid>
+                    </Grid>
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item xs={12} sm={5} style={{ padding: 8 }}>
+              <Grid item xs={12} sm={5}>
                 <Grid container spacing={2}>
                   <Grid item xs={12}>
                     <Typography className={classes.experience}>
