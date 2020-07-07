@@ -2,6 +2,7 @@ import React from 'react'
 import Grid from '@material-ui/core/Grid'
 import Banner from './Banner'
 import Info from './Info'
+import Contacts from './Contacts'
 
 const Home = () => {
   return (
@@ -11,6 +12,9 @@ const Home = () => {
       </Grid>
       <Grid item xs={12}>
         <Info />
+      </Grid>
+      <Grid item xs={12}>
+        <Contacts />
       </Grid>
     </Grid>
   )

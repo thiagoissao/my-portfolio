@@ -66,7 +66,7 @@ const Info = () => {
           style={{
             height: '100%',
             width: '100%',
-            background: 'linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.9)) 90%',
+            background: 'linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.7)) 90%',
             position: 'absolute',
           }}
         />
