@@ -2,10 +2,9 @@ import React from 'react'
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
-import Paper from '@material-ui/core/Paper'
 import Container from '@material-ui/core/Container'
 import { Box } from '@material-ui/core'
-import Divider from '@material-ui/core/Divider'
+import Title from '../Title'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -32,25 +31,6 @@ const useStyles = makeStyles(theme => ({
       height: 250
     }
   },
-  title: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 40,
-    [theme.breakpoints.only('xs')]: {
-      fontSize: 30
-    }
-  },
-  styleSub: {
-    width: 120,
-    height: theme.spacing(1 / 2),
-    borderRadius: theme.spacing(2),
-    backgroundColor: 'white'
-  },
-  subtitle: {
-    fontSize: 30,
-    color: 'white',
-    fontWeight: 'bold'
-  },
   experience: {
     fontSize: 20,
     color: 'white'
@@ -75,21 +55,12 @@ const Info = () => {
         <Box my={5}>
           <Container maxWidth='md'>
             <Grid container justify='space-between'>
-              <Grid item xs={12} sm={4} style={{ padding: 24 }}>
-                <Grid container spacing={6}>
+              <Grid item xs={12} sm={4}>
+                <Grid container style={{ height: '100%' }}>
                   <Grid item xs={12}>
-                    <Grid container>
-                      <Grid item>
-                        <Typography className={classes.title}>
-                          About me
-                        </Typography>
-                      </Grid>
-                      <Grid xs={12}>
-                        <div className={classes.styleSub} />
-                      </Grid>
-                    </Grid>
+                    <Title title='About me' />
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid item xs={12} style={{ margin: '32px 0px' }}>
                     <Grid container justify='center'>
                       <Grid item>
                         <div className={classes.profile} />
@@ -108,14 +79,7 @@ const Info = () => {
                     </Typography>
                   </Grid>
                   <Grid item xs={12}>
-                    <Grid container>
-                      <Grid item xs={12}>
-                        <Typography className={classes.subtitle}>Professional experience</Typography>
-                      </Grid>
-                      <Grid item>
-                        <div className={classes.styleSub} />
-                      </Grid>
-                    </Grid>
+                    <Title isSubtitle title='Professional experience' />
                   </Grid>
                   <Grid item xs={12}>
                     <Typography className={classes.experience}>
@@ -125,16 +89,15 @@ const Info = () => {
                       <li>
                         Front-end developer for about one year at EurekaLabs.
                         Using react and material-ui framework.
-                      </li>
+                          </li>
                       <li>
                         Basics knowledge in docker, feathersJS, nextJS and sequelize.
-                      </li>
+                          </li>
                     </Typography>
                   </Grid>
                 </Grid>
               </Grid>
             </Grid>
-
           </Container>
         </Box>
       </Grid>

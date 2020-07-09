@@ -42,14 +42,14 @@ const Banner = () => {
               <Fade in={true} timeout={1200}>
                 <Typography className={classes.title}>
                   Thiago
-            </Typography>
+                </Typography>
               </Fade>
             </Grid>
             <Grid item xs={12}>
               <Fade in={true} timeout={2500}>
                 <Typography className={classes.title}>
                   Yasunaka
-            </Typography>
+                </Typography>
               </Fade>
             </Grid>
             <Grid item xs={7} md={6} lg={4}>
