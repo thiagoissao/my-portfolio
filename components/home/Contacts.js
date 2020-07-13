@@ -9,6 +9,7 @@ import TextField from '../pure/TextField'
 import Button from '../pure/Button'
 import Paper from '@material-ui/core/Paper'
 import * as yup from 'yup'
+import * as api from '../../services/api'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,11 +28,18 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
+const initialValues = {
+  name: 'Thiago Yasunaka',
+  email: 'thiagoyasunaka@hotmail.com',
+  message: 'testando email'
+}
+
 const Contacts = () => {
   const classes = useStyles()
 
-  const handleSubmit = values => {
-    console.log(values)
+  const handleSubmit = async values => {
+    const response = await api.sendEmail(values)
+    console.log(response)
   }
 
   const schema = yup.object().shape({
@@ -64,7 +72,7 @@ const Contacts = () => {
       <Grid item xs={12} style={{ zIndex: 2 }}>
         <Box my={5}>
           <Container maxWidth='md'>
-            <Form onSubmit={handleSubmit} validate={validate}>
+            <Form onSubmit={handleSubmit} validate={validate} initialValues={initialValues}>
               {({ handleSubmit }) => {
                 return (
                   <form onSubmit={handleSubmit}>
