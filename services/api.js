@@ -8,8 +8,8 @@ export const sendEmail = async body => {
       'Content-Type': 'application/json'
     }
   })
-  const data = await response.json()
   if (response.ok) {
+    const data = await response.json()
     return { ok: true, data }
   }
   return response
