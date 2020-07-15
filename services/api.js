@@ -9,10 +9,8 @@ export const sendEmail = async body => {
     }
   })
   if (response.ok) {
-    const data = await response.json()
-    return { ok: true, data }
+    return await response.json()
   }
-  return response
 }
 
 export default { sendEmail }
