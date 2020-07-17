@@ -38,21 +38,21 @@ const Banner = ({ bannerUrl }) => {
         <Grid container>
           <Container maxWidth='md' >
             <Grid item xs={12}>
-              <Fade in={true} timeout={1500}>
+              <Fade in={true} timeout={1200}>
                 <Typography className={classes.title}>
                   Thiago
                 </Typography>
               </Fade>
             </Grid>
             <Grid item xs={12}>
-              <Fade in={true} timeout={2700}>
+              <Fade in={true} timeout={2500}>
                 <Typography className={classes.title}>
                   Yasunaka
                 </Typography>
               </Fade>
             </Grid>
             <Grid item xs={7} md={6} lg={4}>
-              <Fade in={true} timeout={3200}>
+              <Fade in={true} timeout={3000}>
                 <Grid container justify='space-between'>
                   <Grid item>
                     <IconButton
