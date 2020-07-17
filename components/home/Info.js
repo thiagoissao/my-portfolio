@@ -10,7 +10,6 @@ const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
     minHeight: '100vh',
-    backgroundImage: `url(banner2.jpg)`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
@@ -37,10 +36,10 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const Info = () => {
+const Info = ({ bannerUrl }) => {
   const classes = useStyles()
   return (
-    <Grid container className={classes.root}>
+    <Grid container className={classes.root} style={{ backgroundImage: `url(${bannerUrl})` }}>
       <Grid item xs={12}>
         <div
           style={{

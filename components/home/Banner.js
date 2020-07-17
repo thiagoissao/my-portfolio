@@ -11,7 +11,6 @@ const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
     minHeight: '100vh',
-    backgroundImage: `url(banner.jpg)`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
@@ -31,29 +30,29 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-const Banner = () => {
+const Banner = ({ bannerUrl }) => {
   const classes = useStyles()
   return (
-    <Grid container alignItems='center' className={classes.root}>
+    <Grid container alignItems='center' className={classes.root} style={{ backgroundImage: `url(${bannerUrl})` }}>
       <Grid item xs={12}>
         <Grid container>
           <Container maxWidth='md' >
             <Grid item xs={12}>
-              <Fade in={true} timeout={1200}>
+              <Fade in={true} timeout={1500}>
                 <Typography className={classes.title}>
                   Thiago
                 </Typography>
               </Fade>
             </Grid>
             <Grid item xs={12}>
-              <Fade in={true} timeout={2500}>
+              <Fade in={true} timeout={2700}>
                 <Typography className={classes.title}>
                   Yasunaka
                 </Typography>
               </Fade>
             </Grid>
             <Grid item xs={7} md={6} lg={4}>
-              <Fade in={true} timeout={3000}>
+              <Fade in={true} timeout={3200}>
                 <Grid container justify='space-between'>
                   <Grid item>
                     <IconButton

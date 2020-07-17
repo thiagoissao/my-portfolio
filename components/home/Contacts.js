@@ -17,7 +17,6 @@ const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
     minHeight: '100vh',
-    backgroundImage: `url(banner3.jpg)`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
@@ -54,7 +53,7 @@ const ERROR_CONFIG = {
   message: 'Oh no! something went wrong, try again please!'
 }
 
-const Contacts = () => {
+const Contacts = ({ bannerUrl }) => {
   const classes = useStyles()
   const [sendingEmail, setSendingEmail] = useState(false)
   const [disabled, setDisabled] = useState(false)
@@ -100,7 +99,7 @@ const Contacts = () => {
         message={snackbarConfig.message}
         severity={snackbarConfig.severity}
       />
-      <Grid container className={classes.root}>
+      <Grid container className={classes.root} style={{ backgroundImage: `url(${bannerUrl})` }}>
         <Grid item xs={12}>
           <div
             style={{
