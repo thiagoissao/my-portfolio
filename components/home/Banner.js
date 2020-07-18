@@ -25,7 +25,10 @@ const useStyles = makeStyles(theme => ({
   },
   iconButton: {
     color: 'white',
-    fontSize: 25
+    fontSize: 35,
+    [theme.breakpoints.only('xs')]: {
+      fontSize: 30
+    }
   }
 }))
 
@@ -36,7 +39,7 @@ const Banner = ({ bannerUrl }) => {
     <Grid container alignItems='center' className={classes.root} style={{ backgroundImage: `url(${bannerUrl})` }}>
       <Grid item xs={12}>
         <Grid container>
-          <Container maxWidth='md' >
+          <Container maxWidth='lg' >
             <Grid item xs={12}>
               <Fade in={true} timeout={1200}>
                 <Typography className={classes.title}>
