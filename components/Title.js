@@ -12,8 +12,8 @@ const useStyles = makeStyles(theme => ({
     }
   },
   styleSub: {
-    width: 140,
-    height: theme.spacing(1 / 2),
+    width: '100%',
+    height: theme.spacing(1 / 4),
     borderRadius: theme.spacing(2),
   },
   subtitle: {

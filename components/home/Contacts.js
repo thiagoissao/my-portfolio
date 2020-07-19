@@ -12,6 +12,7 @@ import * as yup from 'yup'
 import * as api from '../../services/api'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Snackbar from '../pure/Snackbar'
+import Footer from './Footer'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,6 +21,10 @@ const useStyles = makeStyles(theme => ({
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
+    position: 'relative',
+    [theme.breakpoints.only('xs')]: {
+      paddingBottom: theme.spacing(20)
+    }
   },
   paper: {
     padding: theme.spacing(3),
@@ -31,6 +36,13 @@ const useStyles = makeStyles(theme => ({
     '&.MuiLinearProgress-root': {
       borderRadius: theme.spacing(2)
     }
+  },
+  footer: {
+    position: 'absolute',
+    margin: theme.spacing(1),
+    left: 0,
+    bottom: 0,
+    zIndex: 3,
   }
 
 }))
@@ -100,6 +112,9 @@ const Contacts = ({ bannerUrl }) => {
         severity={snackbarConfig.severity}
       />
       <Grid container className={classes.root} style={{ backgroundImage: `url(${bannerUrl})` }}>
+        <Grid item className={classes.footer}>
+          <Footer />
+        </Grid>
         <Grid item xs={12}>
           <div
             style={{

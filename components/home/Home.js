@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid'
 import Banner from './Banner'
 import Info from './Info'
 import Contacts from './Contacts'
+import Footer from './Footer'
 
 const Home = ({ mainBannerUrl, contactBannerUrl, aboutUrl }) => {
   return (
