@@ -146,7 +146,6 @@ const Contacts = ({ bannerUrl }) => {
                                       error={meta.touched && !!meta.error}
                                       helperText={meta.touched && meta.error}
                                       fullWidth
-                                      disabled
                                       label='Your first and last name'
                                       variant='outlined'
                                     />
@@ -162,7 +161,6 @@ const Contacts = ({ bannerUrl }) => {
                                       error={meta.touched && !!meta.error}
                                       helperText={meta.touched && meta.error}
                                       fullWidth
-                                      disabled
                                       label='Your email'
                                       variant='outlined'
                                     />
@@ -179,7 +177,6 @@ const Contacts = ({ bannerUrl }) => {
                                       helperText={meta.touched && meta.error}
                                       fullWidth
                                       multiline
-                                      disabled
                                       rows={6}
                                       label='Type here your message'
                                       variant='outlined'

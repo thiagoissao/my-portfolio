@@ -69,8 +69,8 @@ const Info = ({ bannerUrl }) => {
                   <Grid item xs={12}>
                     <Typography className={classes.experience} align='justify'>
                       Hi. My name is Thiago Issao Yasunaka and i am 20 years old.
-                      Nowadays, my hobbies are soccer (since i was born haha), bike, programming and
-                      economy. Currently i'm working at EurekaLabs as a front-end developer.
+                      Nowadays, my hobbies are soccer (since i was born), bike, programming and
+                      finance. Currently i'm working at EurekaLabs as a front-end developer.
                     </Typography>
                   </Grid>
                 </Grid>

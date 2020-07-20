@@ -32,7 +32,7 @@ export async function getStaticProps() {
     return {
       props: {
         mainBannerUrl: response1.data.urls.full,
-        contactBannerUrl: response3.data.urls.full,
+        contactBannerUrl: response3.data.urls.regular,
         aboutUrl: response2.data.urls.regular
       }
     }
