@@ -114,6 +114,19 @@ const Footer = () => {
             Mui
           </Typography>
         </Grid>
+        <Grid item>
+          <Typography className={classes.title}>|</Typography>
+        </Grid>
+        <Grid item>
+          <Typography
+            component='a'
+            className={classes.link}
+            target='_blank'
+            rel='noopener'
+            href='https://icons8.com/icon/XhDBVc7IBFl9/retomar-o-site'>
+            Favicon
+          </Typography>
+        </Grid>
       </Grid>
     </div >
   )

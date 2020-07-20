@@ -13,6 +13,7 @@ import * as api from '../../services/api'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Snackbar from '../pure/Snackbar'
 import Footer from './Footer'
+import Tooltip from '@material-ui/core/Tooltip'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -145,6 +146,7 @@ const Contacts = ({ bannerUrl }) => {
                                       error={meta.touched && !!meta.error}
                                       helperText={meta.touched && meta.error}
                                       fullWidth
+                                      disabled
                                       label='Your first and last name'
                                       variant='outlined'
                                     />
@@ -160,6 +162,7 @@ const Contacts = ({ bannerUrl }) => {
                                       error={meta.touched && !!meta.error}
                                       helperText={meta.touched && meta.error}
                                       fullWidth
+                                      disabled
                                       label='Your email'
                                       variant='outlined'
                                     />
@@ -176,6 +179,7 @@ const Contacts = ({ bannerUrl }) => {
                                       helperText={meta.touched && meta.error}
                                       fullWidth
                                       multiline
+                                      disabled
                                       rows={6}
                                       label='Type here your message'
                                       variant='outlined'
@@ -186,14 +190,19 @@ const Contacts = ({ bannerUrl }) => {
                               <Grid item xs={12}>
                                 <Grid container justify='center' spacing={1}>
                                   <Grid item xs={12} sm={7}>
-                                    <Button
-                                      type='submit'
-                                      color='primary'
-                                      fullWidth
-                                      disabled={disabled}
-                                      variant='contained'>
-                                      Send message
-                                  </Button>
+                                    <Tooltip arrow title='Funcionalidade em desenvolvimento'>
+                                      <span>
+                                        <Button
+                                          type='submit'
+                                          color='primary'
+                                          fullWidth
+                                          // disabled={disabled}
+                                          disabled
+                                          variant='contained'>
+                                          Send message
+                                      </Button>
+                                      </span>
+                                    </Tooltip>
                                   </Grid>
                                   <Grid item xs={12} sm={7} style={{ height: 10 }}>
                                     {

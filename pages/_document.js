@@ -7,6 +7,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang="pt-br">
         <Head>
+          <link rel='shortcut icon' href='https://img.icons8.com/fluent/48/000000/resume-website.png' />
           <title>Thiago Portfolio</title>
         </Head>
         <body style={{ margin: 0 }}>
