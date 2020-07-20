@@ -41,14 +41,14 @@ const Banner = ({ bannerUrl }) => {
         <Grid container>
           <Container maxWidth='lg' >
             <Grid item xs={12}>
-              <Fade in={true} timeout={1200}>
+              <Fade in={true} timeout={1000}>
                 <Typography className={classes.title}>
                   Thiago
                 </Typography>
               </Fade>
             </Grid>
             <Grid item xs={12}>
-              <Fade in={true} timeout={2500}>
+              <Fade in={true} timeout={2000}>
                 <Typography className={classes.title}>
                   Yasunaka
                 </Typography>

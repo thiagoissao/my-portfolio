@@ -6,7 +6,9 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="pt-br">
-        <Head />
+        <Head>
+          <title>Thiago Portfolio</title>
+        </Head>
         <body style={{ margin: 0 }}>
           <Main />
           <NextScript />

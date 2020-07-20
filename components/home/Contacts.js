@@ -47,12 +47,6 @@ const useStyles = makeStyles(theme => ({
 
 }))
 
-const initialValues = {
-  name: 'Thiago Yasunaka',
-  email: 'thiagoyasunaka@hotmail.com',
-  message: 'testando email'
-}
-
 const SUCCESS_CONFIG = {
   open: false,
   severity: 'success',
@@ -128,7 +122,7 @@ const Contacts = ({ bannerUrl }) => {
         <Grid item xs={12} style={{ zIndex: 2 }}>
           <Box my={5}>
             <Container maxWidth='md'>
-              <Form onSubmit={handleSubmit} validate={validate} initialValues={initialValues}>
+              <Form onSubmit={handleSubmit} validate={validate}>
                 {({ handleSubmit }) => {
                   return (
                     <form onSubmit={handleSubmit}>
