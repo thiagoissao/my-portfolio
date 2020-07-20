@@ -14,6 +14,8 @@ import LinearProgress from '@material-ui/core/LinearProgress'
 import Snackbar from '../pure/Snackbar'
 import Footer from './Footer'
 import Tooltip from '@material-ui/core/Tooltip'
+import MadeByText from '../pure/MadeByText'
+import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -44,6 +46,13 @@ const useStyles = makeStyles(theme => ({
     left: 0,
     bottom: 0,
     zIndex: 3,
+  },
+  photoBy: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    margin: theme.spacing(1 / 2),
+    zIndex: 2
   }
 
 }))
@@ -107,6 +116,12 @@ const Contacts = ({ bannerUrl }) => {
         severity={snackbarConfig.severity}
       />
       <Grid container className={classes.root} style={{ backgroundImage: `url(${bannerUrl})` }}>
+        <Grid item className={classes.photoBy}>
+          <MadeByText
+            photoUrl='https://unsplash.com/photos/snNHKZ-mGfE'
+            personName='Wesley Tingey'
+          />
+        </Grid>
         <Grid item className={classes.footer}>
           <Footer />
         </Grid>
@@ -121,7 +136,7 @@ const Contacts = ({ bannerUrl }) => {
           />
         </Grid>
         <Grid item xs={12} style={{ zIndex: 2 }}>
-          <Box my={5}>
+          <Box my={5} mt={7}>
             <Container maxWidth='md'>
               <Form onSubmit={handleSubmit} validate={validate}>
                 {({ handleSubmit }) => {
@@ -200,6 +215,15 @@ const Contacts = ({ bannerUrl }) => {
                                       </Button>
                                       </span>
                                     </Tooltip>
+                                  </Grid>
+                                  <Grid item xs={12}>
+                                    <Grid container justify='center'>
+                                      <Grid item>
+                                        <Typography color='error'>
+                                          working on it...
+                                        </Typography>
+                                      </Grid>
+                                    </Grid>
                                   </Grid>
                                   <Grid item xs={12} sm={7} style={{ height: 10 }}>
                                     {

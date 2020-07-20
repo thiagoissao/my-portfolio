@@ -6,6 +6,8 @@ import Container from '@material-ui/core/Container'
 import { Box } from '@material-ui/core'
 import Title from '../Title'
 import ExperienceCard from './ExperienceCard'
+import MadeByText from '../pure/MadeByText'
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -33,6 +35,13 @@ const useStyles = makeStyles(theme => ({
   experience: {
     fontSize: 20,
     color: 'white'
+  },
+  photoBy: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    margin: theme.spacing(1 / 2),
+    zIndex: 2
   }
 }))
 
@@ -40,6 +49,12 @@ const Info = ({ bannerUrl }) => {
   const classes = useStyles()
   return (
     <Grid container className={classes.root} style={{ backgroundImage: `url(${bannerUrl})` }}>
+      <Grid item className={classes.photoBy}>
+        <MadeByText
+          photoUrl='https://unsplash.com/photos/OQMZwNd3ThU'
+          personName='Scott Graham'
+        />
+      </Grid>
       <Grid item xs={12}>
         <div
           style={{
@@ -50,8 +65,8 @@ const Info = ({ bannerUrl }) => {
           }}
         />
       </Grid>
-      <Grid item xs={12} style={{ zIndex: 2 }}>
-        <Box m={3}>
+      <Grid item xs={12} style={{ zIndex: 2, position: 'relative' }}>
+        <Box m={3} mt={6}>
           <Container maxWidth='lg'>
             <Grid container spacing={4} justify='space-between'>
               <Grid item xs={12} sm={12} md={4}>

@@ -6,6 +6,7 @@ import Fade from '@material-ui/core/Fade'
 import { FaLinkedin, FaFacebookSquare, FaInstagram } from 'react-icons/fa'
 import IconButton from '@material-ui/core/IconButton'
 import Container from '@material-ui/core/Container'
+import MadeByText from '../pure/MadeByText'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -14,6 +15,7 @@ const useStyles = makeStyles(theme => ({
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
+    position: 'relative'
   },
   title: {
     color: 'white',
@@ -29,6 +31,12 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.only('xs')]: {
       fontSize: 30
     }
+  },
+  photoBy: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    margin: theme.spacing(1 / 2)
   }
 }))
 
@@ -37,6 +45,12 @@ const Banner = ({ bannerUrl }) => {
   const classes = useStyles()
   return (
     <Grid container alignItems='center' className={classes.root} style={{ backgroundImage: `url(${bannerUrl})` }}>
+      <Grid item className={classes.photoBy}>
+        <MadeByText
+          photoUrl='https://unsplash.com/photos/OVbeSXRk_9E'
+          personName='Nikita Kachanovsky'
+        />
+      </Grid>
       <Grid item xs={12}>
         <Grid container>
           <Container maxWidth='lg' >
