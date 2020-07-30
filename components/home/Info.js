@@ -8,7 +8,6 @@ import Title from '../Title'
 import ExperienceCard from './ExperienceCard'
 import MadeByText from '../pure/MadeByText'
 
-
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
@@ -16,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    position: 'relative'
+    position: 'relative',
   },
   profile: {
     width: 300,
@@ -33,8 +32,8 @@ const useStyles = makeStyles(theme => ({
     }
   },
   experience: {
-    fontSize: 20,
-    color: 'white'
+    fontSize: 22,
+    color: theme.palette.primary.main
   },
   photoBy: {
     position: 'absolute',
@@ -60,7 +59,7 @@ const Info = ({ bannerUrl }) => {
           style={{
             height: '100%',
             width: '100%',
-            background: 'linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)) 90%',
+            background: 'linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.3)) 50%',
             position: 'absolute',
           }}
         />
@@ -72,7 +71,7 @@ const Info = ({ bannerUrl }) => {
               <Grid item xs={12} sm={12} md={4}>
                 <Grid container spacing={6}>
                   <Grid item xs={12}>
-                    <Title title='About me' />
+                    <Title color='primary' title='About me' />
                   </Grid>
                   <Grid item xs={12}>
                     <Grid container justify='center'>
@@ -93,7 +92,7 @@ const Info = ({ bannerUrl }) => {
               <Grid item xs={12} sm={12} md={5}>
                 <Grid container spacing={6}>
                   <Grid item xs={12}>
-                    <Title title='Professional experience' />
+                    <Title color='primary' title='Professional experience' />
                   </Grid>
                   <Grid item xs={12}>
                     <Grid container spacing={5}>

@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react'
 import Grid from '@material-ui/core/Grid'
 import Banner from './Banner'
 import Info from './Info'
-import Contacts from './Contacts'
-import Footer from './Footer'
 
 const Home = ({ mainBannerUrl, contactBannerUrl, aboutUrl }) => {
   return (
@@ -15,7 +13,7 @@ const Home = ({ mainBannerUrl, contactBannerUrl, aboutUrl }) => {
         <Info bannerUrl={aboutUrl} />
       </Grid>
       <Grid item xs={12}>
-        <Contacts bannerUrl={contactBannerUrl} />
+        {/* <Contacts bannerUrl={contactBannerUrl} /> */}
       </Grid>
     </Grid>
   )

@@ -8,7 +8,7 @@ export default class MyDocument extends Document {
       <Html lang="pt-br">
         <Head>
           <head>
-            <link rel='shortcut icon' href='https://img.icons8.com/fluent/48/000000/resume-website.png' />
+            <link rel='shortcut icon' href='https://img.icons8.com/officel/16/000000/login-as-user.png' />
             <title>Thiago Portfolio</title>
           </head>
         </Head>
