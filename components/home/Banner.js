@@ -3,22 +3,24 @@ import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
 import { Typography } from '@material-ui/core'
 import Fade from '@material-ui/core/Fade'
-import { FaLinkedin, FaFacebookSquare, FaInstagram } from 'react-icons/fa'
 import IconButton from '@material-ui/core/IconButton'
 import Container from '@material-ui/core/Container'
 import MadeByText from '../pure/MadeByText'
+import classNames from 'classnames'
+import {
+  FaLinkedin,
+  FaFacebookSquare,
+  FaInstagram,
+  FaWhatsapp
+} from 'react-icons/fa'
 
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
     minHeight: '100vh',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    position: 'relative'
   },
   title: {
-    color: 'white',
+    color: theme.palette.primary.main,
     fontWeight: 'bold',
     fontSize: 70,
     [theme.breakpoints.only('xs')]: {
@@ -26,11 +28,18 @@ const useStyles = makeStyles(theme => ({
     }
   },
   iconButton: {
-    color: 'white',
+    color: theme.palette.primary.main,
     fontSize: 35,
+    backgroundColor: 'rgba(255,255,255,0.5)',
     [theme.breakpoints.only('xs')]: {
       fontSize: 30
+    },
+    '&:hover': {
+      backgroundColor: 'rgba(255,255,255,0.8)',
     }
+  },
+  wpIcon: {
+    color: '#42BFA6'
   },
   photoBy: {
     position: 'absolute',
@@ -41,19 +50,26 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-const Banner = ({ bannerUrl }) => {
+const Banner = () => {
   const classes = useStyles()
+
+  const MY_PHONE_NUMBER = '5544999606841'
+  const MESSAGE = 'Olá, entrei em contato com você por meio do seu site pessoal. Gostaria de ...'
+
   return (
-    <Grid container alignItems='center' className={classes.root} style={{ backgroundImage: `url(${bannerUrl})` }}>
+    <Grid
+      container
+      alignItems='center'
+      className={classes.root}>
       <Grid item className={classes.photoBy}>
         <MadeByText
-          photoUrl='https://unsplash.com/photos/OVbeSXRk_9E'
-          personName='Nikita Kachanovsky'
+          photoUrl='https://unsplash.com/photos/7GnLxvbRq8s'
+          personName='Taylor Heery'
         />
       </Grid>
-      <Grid item xs={12}>
-        <Grid container>
-          <Container maxWidth='lg' >
+      <Grid item xs>
+        <Container maxWidth='lg' >
+          <Grid container>
             <Grid item xs={12}>
               <Fade in={true} timeout={1000}>
                 <Typography className={classes.title}>
@@ -68,7 +84,7 @@ const Banner = ({ bannerUrl }) => {
                 </Typography>
               </Fade>
             </Grid>
-            <Grid item xs={7} md={6} lg={4}>
+            <Grid item xs={9} md={6} lg={4}>
               <Fade in={true} timeout={3000}>
                 <Grid container justify='space-between'>
                   <Grid item>
@@ -96,11 +112,19 @@ const Banner = ({ bannerUrl }) => {
                       <FaFacebookSquare />
                     </IconButton>
                   </Grid>
+                  <Grid item>
+                    <IconButton
+                      target='_blank'
+                      href={`https://wa.me/${MY_PHONE_NUMBER}?text=${MESSAGE}`}
+                      className={classNames(classes.wpIcon, classes.iconButton)}>
+                      <FaWhatsapp />
+                    </IconButton>
+                  </Grid>
                 </Grid>
               </Fade>
             </Grid>
-          </Container>
-        </Grid>
+          </Grid>
+        </Container>
       </Grid>
     </Grid>
   )

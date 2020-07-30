@@ -7,14 +7,12 @@ import classNames from 'classnames'
 
 const useStyles = makeStyles(theme => ({
   typography: {
-    color: '#fff'
+    color: theme.palette.primary.main
   },
   icon: {
     width: 90,
     height: 90,
-    // backgroundColor: theme.palette.grey[900],
     padding: theme.spacing(2),
-    // borderRadius: theme.spacing(2),
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center'
@@ -50,7 +48,7 @@ const ExperienceCard = ({ title, description, urlIcon }) => {
           <Grid item>
             <Typography
               align='center'
-              className={classNames(classes.typography, classes.title)}>
+              className={classNames(classes.title, classes.typography)}>
               {title}
             </Typography>
           </Grid>
