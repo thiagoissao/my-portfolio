@@ -31,25 +31,12 @@ const useStyles = makeStyles(theme => ({
     fontSize: 22,
     color: theme.palette.primary.main
   },
-  photoBy: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    margin: theme.spacing(1 / 2),
-    zIndex: 2
-  }
 }))
 
 const Info = () => {
   const classes = useStyles()
   return (
     <Grid container className={classes.root}>
-      <Grid item className={classes.photoBy}>
-        <MadeByText
-          photoUrl='https://unsplash.com/photos/OQMZwNd3ThU'
-          personName='Scott Graham'
-        />
-      </Grid>
       <Grid item xs={12}>
         <Box m={3}>
           <Container maxWidth='lg'>
