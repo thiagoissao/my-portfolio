@@ -12,10 +12,6 @@ const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
     minHeight: '100vh',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    position: 'relative',
   },
   profile: {
     width: 300,
@@ -44,10 +40,10 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const Info = ({ bannerUrl }) => {
+const Info = () => {
   const classes = useStyles()
   return (
-    <Grid container className={classes.root} style={{ backgroundImage: `url(${bannerUrl})` }}>
+    <Grid container className={classes.root}>
       <Grid item className={classes.photoBy}>
         <MadeByText
           photoUrl='https://unsplash.com/photos/OQMZwNd3ThU'
@@ -55,20 +51,10 @@ const Info = ({ bannerUrl }) => {
         />
       </Grid>
       <Grid item xs={12}>
-        <div
-          style={{
-            height: '100%',
-            width: '100%',
-            background: 'linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.3)) 50%',
-            position: 'absolute',
-          }}
-        />
-      </Grid>
-      <Grid item xs={12} style={{ zIndex: 2, position: 'relative' }}>
-        <Box m={3} mt={6}>
+        <Box m={3}>
           <Container maxWidth='lg'>
-            <Grid container spacing={4} justify='space-between'>
-              <Grid item xs={12} sm={12} md={4}>
+            <Grid container justify='space-between'>
+              <Grid item xs={12} sm={12} md={4} style={{ marginBottom: 24 }}>
                 <Grid container spacing={6}>
                   <Grid item xs={12}>
                     <Title color='primary' title='About me' />

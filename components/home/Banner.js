@@ -18,13 +18,9 @@ const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
     minHeight: '100vh',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    position: 'relative'
   },
   title: {
-    color: 'white',
+    color: theme.palette.primary.main,
     fontWeight: 'bold',
     fontSize: 70,
     [theme.breakpoints.only('xs')]: {
@@ -32,10 +28,14 @@ const useStyles = makeStyles(theme => ({
     }
   },
   iconButton: {
-    color: 'white',
+    color: theme.palette.primary.main,
     fontSize: 35,
+    backgroundColor: 'rgba(255,255,255,0.5)',
     [theme.breakpoints.only('xs')]: {
       fontSize: 30
+    },
+    '&:hover': {
+      backgroundColor: 'rgba(255,255,255,0.8)',
     }
   },
   wpIcon: {
@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-const Banner = ({ bannerUrl }) => {
+const Banner = () => {
   const classes = useStyles()
 
   const MY_PHONE_NUMBER = '5544999606841'
@@ -60,12 +60,11 @@ const Banner = ({ bannerUrl }) => {
     <Grid
       container
       alignItems='center'
-      className={classes.root}
-      style={{ backgroundImage: `url(${bannerUrl})` }}>
+      className={classes.root}>
       <Grid item className={classes.photoBy}>
         <MadeByText
-          photoUrl='https://unsplash.com/photos/OVbeSXRk_9E'
-          personName='Nikita Kachanovsky'
+          photoUrl='https://unsplash.com/photos/7GnLxvbRq8s'
+          personName='Taylor Heery'
         />
       </Grid>
       <Grid item xs>
@@ -85,7 +84,7 @@ const Banner = ({ bannerUrl }) => {
                 </Typography>
               </Fade>
             </Grid>
-            <Grid item xs={7} md={6} lg={4}>
+            <Grid item xs={9} md={6} lg={4}>
               <Fade in={true} timeout={3000}>
                 <Grid container justify='space-between'>
                   <Grid item>
