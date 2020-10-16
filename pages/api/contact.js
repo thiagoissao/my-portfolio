@@ -2,10 +2,9 @@ const nodemailer = require('nodemailer')
 
 const clientId = '587242485114-i9nmmosit19tlngmbk6qfbtbsa26bcso.apps.googleusercontent.com'
 const clientSecret = 'v_TlLrpq1ax68H-_4rtNxkJO'
-const refreshToken = '1//049I8d4JlBzuyCgYIARAAGAQSNgF-L9IrVO6XzH3jEDejAA7iESBOzRkKx3CEkUX3ZaQSMB1LulYvcPY0goI3HvrTWzKz2E7dbA'
-const accessToken = 'ya29.a0AfH6SMDDA2XiSxuGG0_gfZlKnmx5Z4C5m0uGQibhqWttNPro-cn1Ch0LusYMOMsdzSWQgFcsYqwGA1bllCjeJHjQzKzJW2VQzjM39E37SU1-TRvWrlaRhzVpY6t2Qwp907w1becS1a8lvSWtKFyqsqQrlwW6oTq4Kd4'
+const refreshToken = '1//041xuqejkXDi-CgYIARAAGAQSNgF-L9IrNpfu8UnVQVLnB-5yTbTGbbN0YRqPNW7oMnWaNzui1zmqwkZimCMt_BmSZbZJRaWYeQ'
+const accessToken = 'ya29.a0AfH6SMBQCKGjyB_yiQWOByRSGWDrdJ8ejZgMDtcdZ4Z5CbNhVEPTIBCWxH67QeddngPQDb9ZTTmnbA3RR7ml_disjVt1_c78wSg0N9JsIuvQF4dMl-6Ta7RaDPt1kPp00-WW_L2JGpUyhPynaAONAcXqTfgYH7PKBtU'
 const user = 'yasunakathiago@gmail.com'
-
 
 const transporter = nodemailer.createTransport({
   service: 'Gmail',

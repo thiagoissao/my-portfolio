@@ -8,15 +8,10 @@ import Title from '../Title'
 import ExperienceCard from './ExperienceCard'
 import MadeByText from '../pure/MadeByText'
 
-
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
     minHeight: '100vh',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    position: 'relative'
   },
   profile: {
     width: 300,
@@ -33,46 +28,23 @@ const useStyles = makeStyles(theme => ({
     }
   },
   experience: {
-    fontSize: 20,
-    color: 'white'
+    fontSize: 22,
+    color: theme.palette.primary.main
   },
-  photoBy: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    margin: theme.spacing(1 / 2),
-    zIndex: 2
-  }
 }))
 
-const Info = ({ bannerUrl }) => {
+const Info = () => {
   const classes = useStyles()
   return (
-    <Grid container className={classes.root} style={{ backgroundImage: `url(${bannerUrl})` }}>
-      <Grid item className={classes.photoBy}>
-        <MadeByText
-          photoUrl='https://unsplash.com/photos/OQMZwNd3ThU'
-          personName='Scott Graham'
-        />
-      </Grid>
+    <Grid container className={classes.root}>
       <Grid item xs={12}>
-        <div
-          style={{
-            height: '100%',
-            width: '100%',
-            background: 'linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)) 90%',
-            position: 'absolute',
-          }}
-        />
-      </Grid>
-      <Grid item xs={12} style={{ zIndex: 2, position: 'relative' }}>
-        <Box m={3} mt={6}>
+        <Box m={3}>
           <Container maxWidth='lg'>
-            <Grid container spacing={4} justify='space-between'>
-              <Grid item xs={12} sm={12} md={4}>
+            <Grid container justify='space-between'>
+              <Grid item xs={12} sm={12} md={4} style={{ marginBottom: 24 }}>
                 <Grid container spacing={6}>
                   <Grid item xs={12}>
-                    <Title title='About me' />
+                    <Title color='primary' title='About me' />
                   </Grid>
                   <Grid item xs={12}>
                     <Grid container justify='center'>
@@ -93,7 +65,7 @@ const Info = ({ bannerUrl }) => {
               <Grid item xs={12} sm={12} md={5}>
                 <Grid container spacing={6}>
                   <Grid item xs={12}>
-                    <Title title='Professional experience' />
+                    <Title color='primary' title='Professional experience' />
                   </Grid>
                   <Grid item xs={12}>
                     <Grid container spacing={5}>

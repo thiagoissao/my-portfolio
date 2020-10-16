@@ -209,7 +209,7 @@ const Contacts = ({ bannerUrl }) => {
                                           color='primary'
                                           fullWidth
                                           // disabled={disabled}
-                                          disabled
+                                          // disabled
                                           variant='contained'>
                                           Send message
                                       </Button>
