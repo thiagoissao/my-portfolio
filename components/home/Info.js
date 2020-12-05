@@ -6,31 +6,16 @@ import Container from '@material-ui/core/Container'
 import { Box } from '@material-ui/core'
 import Title from '../Title'
 import ExperienceCard from './ExperienceCard'
-import MadeByText from '../pure/MadeByText'
+import Image from 'next/image'
 
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
     minHeight: '100vh',
   },
-  profile: {
-    width: 300,
-    height: 400,
-    backgroundImage: 'url(profile.jpg)',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
+  image: {
     borderRadius: theme.spacing(2),
-    boxShadow: theme.shadows[8],
-    [theme.breakpoints.only('xs')]: {
-      width: 250,
-      height: 350
-    }
-  },
-  experience: {
-    fontSize: 22,
-    color: theme.palette.primary.main
-  },
+  }
 }))
 
 const Info = () => {
@@ -48,13 +33,18 @@ const Info = () => {
                   </Grid>
                   <Grid item xs={12}>
                     <Grid container justify='center'>
-                      <Grid item>
-                        <div className={classes.profile} />
+                      <Grid item >
+                        <Image
+                          className={classes.image}
+                          alt='Thiago Yasunaka'
+                          width='300'
+                          height='400'
+                          src='/profile.jpg' />
                       </Grid>
                     </Grid>
                   </Grid>
                   <Grid item xs={12}>
-                    <Typography className={classes.experience} align='justify'>
+                    <Typography variant='h6' color='primary' align='justify'>
                       Hi. My name is Thiago Issao Yasunaka and i am 20 years old.
                       Nowadays, my hobbies are soccer (since i was born), bike, programming and
                       finance. Currently i'm working at EurekaLabs as a front-end developer.
