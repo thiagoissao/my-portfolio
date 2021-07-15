@@ -4,127 +4,80 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Typography } from '@material-ui/core'
 import Fade from '@material-ui/core/Fade'
 import IconButton from '@material-ui/core/IconButton'
-import Container from '@material-ui/core/Container'
-import MadeByText from '../pure/MadeByText'
-import classNames from 'classnames'
 import {
   FaLinkedin,
   FaFacebookSquare,
   FaInstagram,
-  FaWhatsapp
+  FaWhatsapp,
 } from 'react-icons/fa'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   root: {
-    width: '100%',
-    minHeight: '100vh',
+    minHeight: '92vh',
   },
-  title: {
-    color: theme.palette.primary.main,
-    fontWeight: 'bold',
-    fontSize: 70,
-    [theme.breakpoints.only('xs')]: {
-      fontSize: 40
-    }
-  },
-  iconButton: {
-    color: theme.palette.primary.main,
-    fontSize: 35,
-    backgroundColor: 'rgba(255,255,255,0.5)',
-    [theme.breakpoints.only('xs')]: {
-      fontSize: 30
-    },
-    '&:hover': {
-      backgroundColor: 'rgba(255,255,255,0.8)',
-    }
-  },
-  wpIcon: {
-    color: '#42BFA6'
-  },
-  photoBy: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    margin: theme.spacing(1 / 2)
-  }
 }))
 
+const MY_PHONE_NUMBER = '5544999606841'
+const MESSAGE =
+  'Olá, entrei em contato com você por meio do seu site pessoal. Gostaria de ...'
 
 const Banner = () => {
   const classes = useStyles()
 
-  const MY_PHONE_NUMBER = '5544999606841'
-  const MESSAGE = 'Olá, entrei em contato com você por meio do seu site pessoal. Gostaria de ...'
-
   return (
-    <Grid
-      container
-      alignItems='center'
-      className={classes.root}>
-      <Grid item className={classes.photoBy}>
-        <MadeByText
-          photoUrl='https://unsplash.com/photos/7GnLxvbRq8s'
-          personName='Taylor Heery'
-        />
-      </Grid>
+    <Grid container alignItems='center' className={classes.root}>
       <Grid item xs>
-        <Container maxWidth='lg' >
-          <Grid container>
-            <Grid item xs={12}>
-              <Fade in={true} timeout={1000}>
-                <Typography className={classes.title}>
-                  Thiago
-                </Typography>
-              </Fade>
-            </Grid>
-            <Grid item xs={12}>
-              <Fade in={true} timeout={2000}>
-                <Typography className={classes.title}>
-                  Yasunaka
-                </Typography>
-              </Fade>
-            </Grid>
-            <Grid item xs={9} md={6} lg={4}>
-              <Fade in={true} timeout={3000}>
-                <Grid container justify='space-between'>
-                  <Grid item>
-                    <IconButton
-                      target='_blank'
-                      href='https://www.linkedin.com/in/thiago-yasunaka-389a69155/'
-                      className={classes.iconButton}
-                    >
-                      <FaLinkedin />
-                    </IconButton>
-                  </Grid>
-                  <Grid item>
-                    <IconButton
-                      target='_blank'
-                      href='https://www.instagram.com/thiago.yasunaka/'
-                      className={classes.iconButton}>
-                      <FaInstagram />
-                    </IconButton>
-                  </Grid>
-                  <Grid item>
-                    <IconButton
-                      target='_blank'
-                      href='https://www.facebook.com/thiago.yasunaka.3/'
-                      className={classes.iconButton}>
-                      <FaFacebookSquare />
-                    </IconButton>
-                  </Grid>
-                  <Grid item>
-                    <IconButton
-                      target='_blank'
-                      href={`https://wa.me/${MY_PHONE_NUMBER}?text=${MESSAGE}`}
-                      className={classNames(classes.wpIcon, classes.iconButton)}>
-                      <FaWhatsapp />
-                    </IconButton>
-                  </Grid>
-                </Grid>
-              </Fade>
-            </Grid>
+        <Grid container spacing={1}>
+          <Grid item xs={12}>
+            <Fade in>
+              <Typography variant='h2' color='primary'>
+                <b>Thiago Yasunaka</b>
+              </Typography>
+            </Fade>
           </Grid>
-        </Container>
+          <Grid item xs={12}>
+            <Fade in>
+              <Grid container spacing={3} wrap='nowrap'>
+                <Grid item>
+                  <IconButton
+                    color='primary'
+                    target='_blank'
+                    href='https://www.linkedin.com/in/thiago-yasunaka-389a69155/'
+                  >
+                    <FaLinkedin size={32} />
+                  </IconButton>
+                </Grid>
+                <Grid item>
+                  <IconButton
+                    color='primary'
+                    target='_blank'
+                    href='https://www.instagram.com/thiago.yasunaka/'
+                  >
+                    <FaInstagram size={32} />
+                  </IconButton>
+                </Grid>
+                <Grid item>
+                  <IconButton
+                    color='primary'
+                    target='_blank'
+                    href='https://www.facebook.com/thiago.yasunaka.3/'
+                  >
+                    <FaFacebookSquare size={32} />
+                  </IconButton>
+                </Grid>
+                <Grid item>
+                  <IconButton
+                    color='primary'
+                    target='_blank'
+                    href={`https://wa.me/${MY_PHONE_NUMBER}?text=${MESSAGE}`}
+                  >
+                    <FaWhatsapp size={32} />
+                  </IconButton>
+                </Grid>
+              </Grid>
+            </Fade>
+          </Grid>
+        </Grid>
       </Grid>
     </Grid>
   )
