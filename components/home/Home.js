@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import Grid from '@material-ui/core/Grid'
+import { Box, Container, Divider } from '@material-ui/core'
 import Banner from './Banner'
 import Info from './Info'
-import { Container } from '@material-ui/core'
+import Articles from './Articles'
 
 const Home = () => {
   return (
@@ -12,7 +13,20 @@ const Home = () => {
           <Banner />
         </Grid>
         <Grid item xs={12}>
+          <Box marginY={4}>
+            <Divider light variant='middle' />
+          </Box>
+        </Grid>
+        <Grid item xs={12}>
           <Info />
+        </Grid>
+        <Grid item xs={12}>
+          <Box marginY={4}>
+            <Divider light variant='middle' />
+          </Box>
+        </Grid>
+        <Grid item xs={12}>
+          <Articles />
         </Grid>
       </Grid>
     </Container>

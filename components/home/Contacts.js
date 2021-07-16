@@ -14,7 +14,6 @@ import LinearProgress from '@material-ui/core/LinearProgress'
 import Snackbar from '../pure/Snackbar'
 import Footer from './Footer'
 import Tooltip from '@material-ui/core/Tooltip'
-import MadeByText from '../pure/MadeByText'
 import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles((theme) => ({
@@ -206,8 +205,6 @@ const Contacts = ({ bannerUrl }) => {
                                           type='submit'
                                           color='primary'
                                           fullWidth
-                                          // disabled={disabled}
-                                          // disabled
                                           variant='contained'
                                         >
                                           Send message
