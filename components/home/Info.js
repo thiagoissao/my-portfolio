@@ -55,42 +55,42 @@ const Info = () => {
             <Grid container spacing={5}>
               <Grid item sm={4} xs={6}>
                 <ExperienceCard
-                  urlIcon='https://img.icons8.com/ultraviolet/80/000000/university.png'
+                  urlIcon='/degree.png'
                   title='University'
                   description='3° year computer science student at UEM in Brazil.'
                 />
               </Grid>
               <Grid item sm={4} xs={6}>
                 <ExperienceCard
-                  urlIcon='https://img.icons8.com/officel/80/000000/web-design.png'
+                  urlIcon='/web-design.png'
                   title='Web Design'
                   description='Websites developer using the react framework NextJS. '
                 />
               </Grid>
               <Grid item sm={4} xs={6}>
                 <ExperienceCard
-                  urlIcon='https://img.icons8.com/color/96/000000/iphone.png'
+                  urlIcon='/phone.png'
                   title='Responsible Design'
                   description='Websites development with mobile support.'
                 />
               </Grid>
               <Grid item sm={4} xs={6}>
                 <ExperienceCard
-                  urlIcon='https://img.icons8.com/ultraviolet/80/000000/react.png'
+                  urlIcon='/react.png'
                   title='React JS'
                   description='Create visual components using material-ui framework.'
                 />
               </Grid>
               <Grid item sm={4} xs={6}>
                 <ExperienceCard
-                  urlIcon='https://img.icons8.com/dusk/128/000000/javascript.png'
+                  urlIcon='js.png'
                   title='Javascript'
                   description='Working with JS for almost two years and learning more every day.'
                 />
               </Grid>
               <Grid item sm={4} xs={6}>
                 <ExperienceCard
-                  urlIcon='https://img.icons8.com/color/144/000000/material-ui.png'
+                  urlIcon='material-ui.png'
                   title='Material-ui'
                   description='Building components following material design principles.'
                 />
