@@ -14,10 +14,9 @@ import LinearProgress from '@material-ui/core/LinearProgress'
 import Snackbar from '../pure/Snackbar'
 import Footer from './Footer'
 import Tooltip from '@material-ui/core/Tooltip'
-import MadeByText from '../pure/MadeByText'
 import Typography from '@material-ui/core/Typography'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     minHeight: '100vh',
@@ -26,19 +25,19 @@ const useStyles = makeStyles(theme => ({
     backgroundPosition: 'center',
     position: 'relative',
     [theme.breakpoints.only('xs')]: {
-      paddingBottom: theme.spacing(20)
-    }
+      paddingBottom: theme.spacing(20),
+    },
   },
   paper: {
     padding: theme.spacing(3),
     '&.MuiPaper-root': {
-      borderRadius: theme.spacing(2)
-    }
+      borderRadius: theme.spacing(2),
+    },
   },
   linearProgress: {
     '&.MuiLinearProgress-root': {
-      borderRadius: theme.spacing(2)
-    }
+      borderRadius: theme.spacing(2),
+    },
   },
   footer: {
     position: 'absolute',
@@ -47,26 +46,18 @@ const useStyles = makeStyles(theme => ({
     bottom: 0,
     zIndex: 3,
   },
-  photoBy: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    margin: theme.spacing(1 / 2),
-    zIndex: 2
-  }
-
 }))
 
 const SUCCESS_CONFIG = {
   open: false,
   severity: 'success',
-  message: 'Yess message sended! Now you just need to wait for the contact!'
+  message: 'Yess message sended! Now you just need to wait for the contact!',
 }
 
 const ERROR_CONFIG = {
   open: false,
   severity: 'error',
-  message: 'Oh no! something went wrong, try again please!'
+  message: 'Oh no! something went wrong, try again please!',
 }
 
 const Contacts = ({ bannerUrl }) => {
@@ -79,7 +70,7 @@ const Contacts = ({ bannerUrl }) => {
     setSnackbarConfig({ ...snackbarConfig, open: false })
   }
 
-  const handleSubmit = async values => {
+  const handleSubmit = async (values) => {
     setSendingEmail(true)
     setDisabled(true)
     const response = await api.sendEmail(values)
@@ -95,14 +86,21 @@ const Contacts = ({ bannerUrl }) => {
   const schema = yup.object().shape({
     name: yup.string().min(3).required(),
     email: yup.string().email().required(),
-    message: yup.string().min(10).required()
+    message: yup.string().min(10).required(),
   })
 
-  const validate = async values => {
-    const validation = await schema.validate(values, { abortEarly: false }).catch(err => err)
+  const validate = async (values) => {
+    const validation = await schema
+      .validate(values, { abortEarly: false })
+      .catch((err) => err)
     if (validation.errors) {
-      const errorsFormatted = validation.inner.reduce((accumulator, error) =>
-        ({ ...accumulator, [error.path]: error.message }), {})
+      const errorsFormatted = validation.inner.reduce(
+        (accumulator, error) => ({
+          ...accumulator,
+          [error.path]: error.message,
+        }),
+        {}
+      )
       return errorsFormatted
     }
   }
@@ -115,13 +113,11 @@ const Contacts = ({ bannerUrl }) => {
         message={snackbarConfig.message}
         severity={snackbarConfig.severity}
       />
-      <Grid container className={classes.root} style={{ backgroundImage: `url(${bannerUrl})` }}>
-        <Grid item className={classes.photoBy}>
-          <MadeByText
-            photoUrl='https://unsplash.com/photos/snNHKZ-mGfE'
-            personName='Wesley Tingey'
-          />
-        </Grid>
+      <Grid
+        container
+        className={classes.root}
+        style={{ backgroundImage: `url(${bannerUrl})` }}
+      >
         <Grid item className={classes.footer}>
           <Footer />
         </Grid>
@@ -130,7 +126,8 @@ const Contacts = ({ bannerUrl }) => {
             style={{
               height: '100%',
               width: '100%',
-              background: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.1)) 90%',
+              background:
+                'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.1)) 90%',
               position: 'absolute',
             }}
           />
@@ -142,19 +139,16 @@ const Contacts = ({ bannerUrl }) => {
                 {({ handleSubmit }) => {
                   return (
                     <form onSubmit={handleSubmit}>
-                      <Paper
-                        elevation={6}
-                        className={classes.paper}
-                      >
+                      <Paper elevation={6} className={classes.paper}>
                         <Grid container spacing={3}>
                           <Grid item xs={12}>
-                            <Title color='primary' title='Contact me' />
+                            <Title title='Contact me' />
                           </Grid>
                           <Grid item xs={12}>
                             <Grid container spacing={2}>
                               <Grid item xs={12} sm={6}>
                                 <Field name='name'>
-                                  {({ input, meta, ...props }) =>
+                                  {({ input, meta, ...props }) => (
                                     <TextField
                                       {...props}
                                       {...input}
@@ -164,12 +158,12 @@ const Contacts = ({ bannerUrl }) => {
                                       label='Your first and last name'
                                       variant='outlined'
                                     />
-                                  }
+                                  )}
                                 </Field>
                               </Grid>
                               <Grid item xs={12} sm={6}>
                                 <Field name='email'>
-                                  {({ input, meta, ...props }) =>
+                                  {({ input, meta, ...props }) => (
                                     <TextField
                                       {...props}
                                       {...input}
@@ -179,12 +173,12 @@ const Contacts = ({ bannerUrl }) => {
                                       label='Your email'
                                       variant='outlined'
                                     />
-                                  }
+                                  )}
                                 </Field>
                               </Grid>
                               <Grid item xs={12}>
                                 <Field name='message'>
-                                  {({ input, meta, ...props }) =>
+                                  {({ input, meta, ...props }) => (
                                     <TextField
                                       {...props}
                                       {...input}
@@ -196,23 +190,25 @@ const Contacts = ({ bannerUrl }) => {
                                       label='Type here your message'
                                       variant='outlined'
                                     />
-                                  }
+                                  )}
                                 </Field>
                               </Grid>
                               <Grid item xs={12}>
                                 <Grid container justify='center' spacing={1}>
                                   <Grid item xs={12} sm={7}>
-                                    <Tooltip arrow title='Funcionalidade em desenvolvimento'>
+                                    <Tooltip
+                                      arrow
+                                      title='Funcionalidade em desenvolvimento'
+                                    >
                                       <span>
                                         <Button
                                           type='submit'
                                           color='primary'
                                           fullWidth
-                                          // disabled={disabled}
-                                          // disabled
-                                          variant='contained'>
+                                          variant='contained'
+                                        >
                                           Send message
-                                      </Button>
+                                        </Button>
                                       </span>
                                     </Tooltip>
                                   </Grid>
@@ -225,17 +221,21 @@ const Contacts = ({ bannerUrl }) => {
                                       </Grid>
                                     </Grid>
                                   </Grid>
-                                  <Grid item xs={12} sm={7} style={{ height: 10 }}>
-                                    {
-                                      sendingEmail ?
-                                        <Grid container justify='center'>
-                                          <Grid item xs sm={11}>
-                                            <LinearProgress className={classes.linearProgress} />
-                                          </Grid>
+                                  <Grid
+                                    item
+                                    xs={12}
+                                    sm={7}
+                                    style={{ height: 10 }}
+                                  >
+                                    {sendingEmail ? (
+                                      <Grid container justify='center'>
+                                        <Grid item xs sm={11}>
+                                          <LinearProgress
+                                            className={classes.linearProgress}
+                                          />
                                         </Grid>
-                                        :
-                                        null
-                                    }
+                                      </Grid>
+                                    ) : null}
                                   </Grid>
                                 </Grid>
                               </Grid>
