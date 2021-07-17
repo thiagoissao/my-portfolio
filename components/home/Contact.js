@@ -13,6 +13,7 @@ import * as api from '../../services/api'
 import Snackbar from '../pure/Snackbar'
 import { makeStyles } from '@material-ui/core'
 import useWidth from '../../hooks/useWidth'
+import Image from 'next/image'
 
 const SUCCESS_CONFIG = {
   open: false,
@@ -83,15 +84,35 @@ const Contact = ({ bannerUrl }) => {
         message={snackbarConfig.message}
         severity={snackbarConfig.severity}
       />
-      <Box padding={3}>
-        <Grid container spacing={6} alignItems='center'>
+      <Box padding={2}>
+        <Grid container spacing={3} alignItems='center'>
           <Grid item xs={12}>
             <Title title='Contact me' />
           </Grid>
           <Grid item xs={12}>
-            <Typography color='primary'>
-              You can contact me by filling out the form below.
-            </Typography>
+            <Grid
+              spacing={1}
+              container
+              wrap='nowrap'
+              justify='space-between'
+              alignItems='center'
+            >
+              <Grid item>
+                <Typography color='primary'>
+                  You can contact me by filling out the form below.
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Grid item>
+                  <Image
+                    alt='Send Email to Thiago'
+                    height={77}
+                    width={210}
+                    src='/send-email.png'
+                  />
+                </Grid>
+              </Grid>
+            </Grid>
           </Grid>
           <Grid item xs={12}>
             <Form onSubmit={handleSubmit} validate={validate}>

@@ -115,6 +115,11 @@ const Home = () => {
           <Grid item xs={12} ref={articlesRef}>
             <Articles />
           </Grid>
+          <Grid item xs={12}>
+            <Box marginY={4}>
+              <Divider light variant='middle' />
+            </Box>
+          </Grid>
           <Grid item xs={12} ref={contactRef}>
             <Contact />
           </Grid>
