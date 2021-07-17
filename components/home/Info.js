@@ -10,7 +10,7 @@ import differenceInYears from 'date-fns/differenceInYears'
 
 const useStyles = makeStyles((theme) => ({
   image: {
-    borderRadius: theme.spacing(2),
+    borderRadius: theme.spacing(3),
   },
   root: {
     minHeight: '100vh',
@@ -50,7 +50,7 @@ const Info = () => {
                 Hi. My name is Thiago Issao Yasunaka and i am{' '}
                 {differenceInYears(new Date(), new Date(1999, 12, 22))} years
                 old. My hobbies are soccer (since i was born), bike, programming
-                and finance. Currently i'm working at EurekaLabs as a front-end
+                and finance. Currently i am working at EurekaLabs as a front-end
                 developer.
               </Typography>
             </Grid>

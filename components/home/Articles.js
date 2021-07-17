@@ -56,7 +56,7 @@ const Articles = () => {
         <Grid item xs={12}>
           <Grid container spacing={2}>
             {articles.map((article) => (
-              <Grid item sm={6} md={4}>
+              <Grid item sm={6} md={4} key={article.url}>
                 <Article article={article} />
               </Grid>
             ))}
