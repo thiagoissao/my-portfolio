@@ -1,7 +1,7 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
-import { Typography } from '@material-ui/core'
+import { Hidden, Typography } from '@material-ui/core'
 import Fade from '@material-ui/core/Fade'
 import IconButton from '@material-ui/core/IconButton'
 import {
@@ -13,6 +13,7 @@ import {
   FaMedium,
 } from 'react-icons/fa'
 import Image from 'next/image'
+import useWidth from '../../hooks/useWidth'
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -29,6 +30,7 @@ const MESSAGE =
 
 const Banner = () => {
   const classes = useStyles()
+  const width = useWidth()
 
   return (
     <Grid container alignItems='center' className={classes.root}>
@@ -36,79 +38,117 @@ const Banner = () => {
         <Grid container spacing={1}>
           <Grid item xs={12}>
             <Fade in>
-              <Grid container alignItems='center' spacing={1}>
-                <Grid item>
-                  <Image
-                    width={100}
-                    height={100}
-                    src='/me.jpg'
-                    className={classes.me}
-                  />
-                </Grid>
-                <Grid item>
-                  <Typography variant='h2' color='primary'>
-                    <b>Thiago Yasunaka</b>
-                  </Typography>
-                </Grid>
-              </Grid>
-            </Fade>
-          </Grid>
-          <Grid item xs={12}>
-            <Fade in>
-              <Grid container spacing={3} wrap='nowrap' justify='center'>
-                <Grid item>
-                  <IconButton
-                    color='primary'
-                    target='_blank'
-                    href='https://www.linkedin.com/in/thiago-yasunaka-389a69155/'
-                  >
-                    <FaLinkedin size={32} />
-                  </IconButton>
-                </Grid>
-                <Grid item>
-                  <IconButton
-                    color='primary'
-                    target='_blank'
-                    href='https://www.instagram.com/thiago.yasunaka/'
-                  >
-                    <FaInstagram size={32} />
-                  </IconButton>
-                </Grid>
-                <Grid item>
-                  <IconButton
-                    color='primary'
-                    target='_blank'
-                    href='https://www.facebook.com/thiago.yasunaka.3/'
-                  >
-                    <FaFacebookSquare size={32} />
-                  </IconButton>
-                </Grid>
-                <Grid item>
-                  <IconButton
-                    color='primary'
-                    target='_blank'
-                    href={`https://wa.me/${MY_PHONE_NUMBER}?text=${MESSAGE}`}
-                  >
-                    <FaWhatsapp size={32} />
-                  </IconButton>
-                </Grid>
-                <Grid item>
-                  <IconButton
-                    color='primary'
-                    target='_blank'
-                    href='https://github.com/thiagoissao'
-                  >
-                    <FaGithub size={32} />
-                  </IconButton>
-                </Grid>
-                <Grid item>
-                  <IconButton
-                    color='primary'
-                    target='_blank'
-                    href='https://medium.com/@thiagoyasunaka'
-                  >
-                    <FaMedium size={32} />
-                  </IconButton>
+              <Grid container alignItems='center' spacing={2}>
+                <Hidden only='xs'>
+                  <Grid item>
+                    <Image
+                      width={100}
+                      height={100}
+                      src='/me.jpg'
+                      className={classes.me}
+                    />
+                  </Grid>
+                </Hidden>
+                <Hidden smUp>
+                  <Grid item xs={12}>
+                    <Grid container justify='center'>
+                      <Grid item>
+                        <Image
+                          width={100}
+                          height={100}
+                          src='/me.jpg'
+                          className={classes.me}
+                        />
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                </Hidden>
+                <Grid item xs>
+                  <Grid container spacing={1}>
+                    <Grid item xs={12}>
+                      <Typography
+                        variant={width === 'xs' ? 'h4' : 'h2'}
+                        color='primary'
+                        align={width === 'xs' ? 'center' : 'left'}
+                      >
+                        <b>Thiago Yasunaka</b>
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Typography
+                        color='primary'
+                        align={width === 'xs' ? 'center' : 'left'}
+                      >
+                        Computer Scientist & Software Developer
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Fade in>
+                        <Grid
+                          container
+                          wrap='nowrap'
+                          justify={width === 'xs' ? 'center' : 'flex-start'}
+                        >
+                          <Grid item>
+                            <IconButton
+                              color='primary'
+                              target='_blank'
+                              href='https://www.linkedin.com/in/thiago-yasunaka-389a69155/'
+                            >
+                              <FaLinkedin size={width === 'xs' ? 24 : 32} />
+                            </IconButton>
+                          </Grid>
+                          <Grid item>
+                            <IconButton
+                              color='primary'
+                              target='_blank'
+                              href='https://www.instagram.com/thiago.yasunaka/'
+                            >
+                              <FaInstagram size={width === 'xs' ? 24 : 32} />
+                            </IconButton>
+                          </Grid>
+                          <Grid item>
+                            <IconButton
+                              color='primary'
+                              target='_blank'
+                              href='https://www.facebook.com/thiago.yasunaka.3/'
+                            >
+                              <FaFacebookSquare
+                                size={width === 'xs' ? 24 : 32}
+                              />
+                            </IconButton>
+                          </Grid>
+                          <Grid item>
+                            <IconButton
+                              color='primary'
+                              target='_blank'
+                              href={`https://wa.me/${MY_PHONE_NUMBER}?text=${MESSAGE}`}
+                            >
+                              <FaWhatsapp size={width === 'xs' ? 24 : 32} />
+                            </IconButton>
+                          </Grid>
+                          <Grid item>
+                            <IconButton
+                              color='primary'
+                              target='_blank'
+                              href='https://github.com/thiagoissao'
+                            >
+                              <FaGithub size={width === 'xs' ? 24 : 32} />
+                            </IconButton>
+                          </Grid>
+                          <Grid item>
+                            <IconButton
+                              color='primary'
+                              target='_blank'
+                              href='https://medium.com/@thiagoyasunaka'
+                            >
+                              <FaMedium size={width === 'xs' ? 24 : 32} />
+                            </IconButton>
+                          </Grid>
+                        </Grid>
+                      </Fade>
+                    </Grid>
+                  </Grid>
                 </Grid>
               </Grid>
             </Fade>
@@ -120,9 +160,11 @@ const Banner = () => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item xs>
-        <Image width={700} height={700} src='/banner.png' />
-      </Grid>
+      <Hidden smDown>
+        <Grid item xs>
+          <Image width={700} height={700} src='/banner.png' />
+        </Grid>
+      </Hidden>
     </Grid>
   )
 }
