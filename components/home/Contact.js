@@ -3,6 +3,7 @@ import { Field, Form } from 'react-final-form'
 import * as yup from 'yup'
 import Grid from '@material-ui/core/Grid'
 import Grow from '@material-ui/core/Grow'
+import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import TextField from '../pure/TextField'
@@ -11,6 +12,7 @@ import Title from '../Title'
 import * as api from '../../services/api'
 import Snackbar from '../pure/Snackbar'
 import { makeStyles } from '@material-ui/core'
+import useWidth from '../../hooks/useWidth'
 
 const SUCCESS_CONFIG = {
   open: false,
@@ -32,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Contact = ({ bannerUrl }) => {
   const classes = useStyles()
+  const width = useWidth()
   const [sendingEmail, setSendingEmail] = useState(false)
   const [snackbarConfig, setSnackbarConfig] = useState(SUCCESS_CONFIG)
 
@@ -80,100 +83,104 @@ const Contact = ({ bannerUrl }) => {
         message={snackbarConfig.message}
         severity={snackbarConfig.severity}
       />
-      <Grid container spacing={6} alignItems='center'>
-        <Grid item xs={12}>
-          <Title title='Contact me' />
-        </Grid>
-        <Grid item xs={12}>
-          <Typography color='primary'>
-            You can contact me by filling out the form below.
-          </Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <Form onSubmit={handleSubmit} validate={validate}>
-            {({ handleSubmit }) => {
-              return (
-                <form onSubmit={handleSubmit}>
-                  <Grid container spacing={2}>
-                    <Grid item xs={12} sm={6}>
-                      <Field name='name'>
-                        {({ input, meta, ...props }) => (
-                          <TextField
-                            {...props}
-                            {...input}
-                            error={meta.touched && !!meta.error}
-                            helperText={meta.touched && meta.error}
-                            fullWidth
-                            label='Your first and last name'
-                            variant='outlined'
-                          />
-                        )}
-                      </Field>
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <Field name='email'>
-                        {({ input, meta, ...props }) => (
-                          <TextField
-                            {...props}
-                            {...input}
-                            error={meta.touched && !!meta.error}
-                            helperText={meta.touched && meta.error}
-                            fullWidth
-                            label='Your email'
-                            variant='outlined'
-                          />
-                        )}
-                      </Field>
-                    </Grid>
-                    <Grid item xs={12}>
-                      <Field name='message'>
-                        {({ input, meta, ...props }) => (
-                          <TextField
-                            {...props}
-                            {...input}
-                            error={meta.touched && !!meta.error}
-                            helperText={meta.touched && meta.error}
-                            fullWidth
-                            multiline
-                            rows={6}
-                            label='Type message'
-                            variant='outlined'
-                          />
-                        )}
-                      </Field>
-                    </Grid>
-                    <Grid item xs={12}>
-                      <Grid container justify='center' spacing={1}>
-                        <Grid item xs={12} sm={7}>
-                          <Button
-                            type='submit'
-                            color='primary'
-                            fullWidth
-                            disabled={sendingEmail}
-                            variant='contained'
-                            className={classes.button}
-                          >
-                            Send message
-                          </Button>
+      <Box padding={3}>
+        <Grid container spacing={6} alignItems='center'>
+          <Grid item xs={12}>
+            <Title title='Contact me' />
+          </Grid>
+          <Grid item xs={12}>
+            <Typography color='primary'>
+              You can contact me by filling out the form below.
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Form onSubmit={handleSubmit} validate={validate}>
+              {({ handleSubmit }) => {
+                return (
+                  <form onSubmit={handleSubmit}>
+                    <Box spacing={1}>
+                      <Grid container spacing={2}>
+                        <Grid item xs={12} sm={6}>
+                          <Field name='name'>
+                            {({ input, meta, ...props }) => (
+                              <TextField
+                                {...props}
+                                {...input}
+                                error={meta.touched && !!meta.error}
+                                helperText={meta.touched && meta.error}
+                                fullWidth
+                                label='Your first and last name'
+                                variant='outlined'
+                              />
+                            )}
+                          </Field>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                          <Field name='email'>
+                            {({ input, meta, ...props }) => (
+                              <TextField
+                                {...props}
+                                {...input}
+                                error={meta.touched && !!meta.error}
+                                helperText={meta.touched && meta.error}
+                                fullWidth
+                                label='Your email'
+                                variant='outlined'
+                              />
+                            )}
+                          </Field>
                         </Grid>
                         <Grid item xs={12}>
-                          <Grow in={sendingEmail}>
-                            <Grid container justify='center'>
-                              <Grid item>
-                                <CircularProgress />
-                              </Grid>
+                          <Field name='message'>
+                            {({ input, meta, ...props }) => (
+                              <TextField
+                                {...props}
+                                {...input}
+                                error={meta.touched && !!meta.error}
+                                helperText={meta.touched && meta.error}
+                                fullWidth
+                                multiline
+                                rows={6}
+                                label='Type message'
+                                variant='outlined'
+                              />
+                            )}
+                          </Field>
+                        </Grid>
+                        <Grid item xs={12}>
+                          <Grid container justify='center' spacing={1}>
+                            <Grid item xs={12} sm={7}>
+                              <Button
+                                type='submit'
+                                color='primary'
+                                fullWidth
+                                disabled={sendingEmail}
+                                variant='contained'
+                                className={classes.button}
+                              >
+                                Send message
+                              </Button>
                             </Grid>
-                          </Grow>
+                            <Grid item xs={12}>
+                              <Grow in={sendingEmail}>
+                                <Grid container justify='center'>
+                                  <Grid item>
+                                    <CircularProgress />
+                                  </Grid>
+                                </Grid>
+                              </Grow>
+                            </Grid>
+                          </Grid>
                         </Grid>
                       </Grid>
-                    </Grid>
-                  </Grid>
-                </form>
-              )
-            }}
-          </Form>
+                    </Box>
+                  </form>
+                )
+              }}
+            </Form>
+          </Grid>
         </Grid>
-      </Grid>
+      </Box>
     </>
   )
 }

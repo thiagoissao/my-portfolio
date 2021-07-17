@@ -6,6 +6,7 @@ import Article from './Article'
 const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: '100vh',
+    padding: theme.spacing(3),
   },
 }))
 
