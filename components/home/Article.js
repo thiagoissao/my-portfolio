@@ -17,12 +17,17 @@ const useStyles = makeStyles((theme) => ({
       height: 200,
     },
   },
+  img: {
+    borderRadius: theme.spacing(3),
+  },
   paper: {
-    borderRadius: theme.spacing(2),
-    minHeight: 500,
-    [theme.breakpoints.only('xs')]: {
-      height: 'auto',
-      minHeight: 'auto',
+    '&.MuiPaper-outlined': {
+      borderRadius: theme.spacing(3),
+      minHeight: 500,
+      [theme.breakpoints.only('xs')]: {
+        height: 'auto',
+        minHeight: 'auto',
+      },
     },
   },
 }))
@@ -46,13 +51,18 @@ export const formatPostTime = (date) => {
 const Article = ({ article }) => {
   const classes = useStyles()
   return (
-    <a href={article.url} target='_blank' className={classes.a}>
+    <a
+      href={article.url}
+      target='_blank'
+      className={classes.a}
+      rel='noreferrer'
+    >
       <Paper variant='outlined' className={classes.paper}>
         <Grid container spacing={1}>
           <Grid item xs={12}>
             <div className={classes.imageContainer}>
               <Image
-                className={classes.paper}
+                className={classes.img}
                 src={article.imageUrl}
                 alt='Thiago Yasunaka Blog'
                 layout='fill'

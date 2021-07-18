@@ -9,7 +9,12 @@ const ExperienceCard = ({ title, description, urlIcon }) => {
       <Grid item xs={12}>
         <Grid container justify='center'>
           <Grid item>
-            <Image width={80} height={80} src={urlIcon} />
+            <Image
+              width={80}
+              height={80}
+              src={urlIcon}
+              alt='Thiago Experience'
+            />
           </Grid>
         </Grid>
       </Grid>

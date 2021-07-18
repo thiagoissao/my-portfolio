@@ -14,6 +14,7 @@ import {
 } from 'react-icons/fa'
 import Image from 'next/image'
 import useWidth from '../../hooks/useWidth'
+import Tooltip from '../pure/Tooltip'
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -42,6 +43,7 @@ const Banner = () => {
                 <Hidden only='xs'>
                   <Grid item>
                     <Image
+                      alt='Thiago Yasunaka Profile'
                       width={100}
                       height={100}
                       src='/me.jpg'
@@ -54,6 +56,7 @@ const Banner = () => {
                     <Grid container justify='center'>
                       <Grid item>
                         <Image
+                          alt='Thiago Yasunaka Mobile Profile'
                           width={100}
                           height={100}
                           src='/me.jpg'
@@ -90,60 +93,72 @@ const Banner = () => {
                           justify={width === 'xs' ? 'center' : 'flex-start'}
                         >
                           <Grid item>
-                            <IconButton
-                              color='primary'
-                              target='_blank'
-                              href='https://www.linkedin.com/in/thiago-yasunaka-389a69155/'
-                            >
-                              <FaLinkedin size={width === 'xs' ? 24 : 32} />
-                            </IconButton>
+                            <Tooltip arrow title='Linkedin'>
+                              <IconButton
+                                color='primary'
+                                target='_blank'
+                                href='https://www.linkedin.com/in/thiago-yasunaka-389a69155/'
+                              >
+                                <FaLinkedin size={width === 'xs' ? 24 : 32} />
+                              </IconButton>
+                            </Tooltip>
                           </Grid>
                           <Grid item>
-                            <IconButton
-                              color='primary'
-                              target='_blank'
-                              href='https://www.instagram.com/thiago.yasunaka/'
-                            >
-                              <FaInstagram size={width === 'xs' ? 24 : 32} />
-                            </IconButton>
+                            <Tooltip arrow title='Instagram'>
+                              <IconButton
+                                color='primary'
+                                target='_blank'
+                                href='https://www.instagram.com/thiago.yasunaka/'
+                              >
+                                <FaInstagram size={width === 'xs' ? 24 : 32} />
+                              </IconButton>
+                            </Tooltip>
                           </Grid>
                           <Grid item>
-                            <IconButton
-                              color='primary'
-                              target='_blank'
-                              href='https://www.facebook.com/thiago.yasunaka.3/'
-                            >
-                              <FaFacebookSquare
-                                size={width === 'xs' ? 24 : 32}
-                              />
-                            </IconButton>
+                            <Tooltip arrow title='Facebook'>
+                              <IconButton
+                                color='primary'
+                                target='_blank'
+                                href='https://www.facebook.com/thiago.yasunaka.3/'
+                              >
+                                <FaFacebookSquare
+                                  size={width === 'xs' ? 24 : 32}
+                                />
+                              </IconButton>
+                            </Tooltip>
                           </Grid>
                           <Grid item>
-                            <IconButton
-                              color='primary'
-                              target='_blank'
-                              href={`https://wa.me/${MY_PHONE_NUMBER}?text=${MESSAGE}`}
-                            >
-                              <FaWhatsapp size={width === 'xs' ? 24 : 32} />
-                            </IconButton>
+                            <Tooltip arrow title='Whatsapp'>
+                              <IconButton
+                                color='primary'
+                                target='_blank'
+                                href={`https://wa.me/${MY_PHONE_NUMBER}?text=${MESSAGE}`}
+                              >
+                                <FaWhatsapp size={width === 'xs' ? 24 : 32} />
+                              </IconButton>
+                            </Tooltip>
                           </Grid>
                           <Grid item>
-                            <IconButton
-                              color='primary'
-                              target='_blank'
-                              href='https://github.com/thiagoissao'
-                            >
-                              <FaGithub size={width === 'xs' ? 24 : 32} />
-                            </IconButton>
+                            <Tooltip arrow title='Github'>
+                              <IconButton
+                                color='primary'
+                                target='_blank'
+                                href='https://github.com/thiagoissao'
+                              >
+                                <FaGithub size={width === 'xs' ? 24 : 32} />
+                              </IconButton>
+                            </Tooltip>
                           </Grid>
                           <Grid item>
-                            <IconButton
-                              color='primary'
-                              target='_blank'
-                              href='https://medium.com/@thiagoyasunaka'
-                            >
-                              <FaMedium size={width === 'xs' ? 24 : 32} />
-                            </IconButton>
+                            <Tooltip arrow title='Medium'>
+                              <IconButton
+                                color='primary'
+                                target='_blank'
+                                href='https://medium.com/@thiagoyasunaka'
+                              >
+                                <FaMedium size={width === 'xs' ? 24 : 32} />
+                              </IconButton>
+                            </Tooltip>
                           </Grid>
                         </Grid>
                       </Fade>
@@ -155,14 +170,19 @@ const Banner = () => {
           </Grid>
           <Grid item xs={12}>
             <Grid container justify='center'>
-              <Image width={400} height={200} src='/my-social-medias.png' />
+              <Image
+                alt='Social Medias'
+                width={400}
+                height={200}
+                src='/my-social-medias.png'
+              />
             </Grid>
           </Grid>
         </Grid>
       </Grid>
       <Hidden smDown>
         <Grid item xs>
-          <Image width={700} height={700} src='/banner.png' />
+          <Image alt='Banner' width={700} height={700} src='/banner.png' />
         </Grid>
       </Hidden>
     </Grid>
