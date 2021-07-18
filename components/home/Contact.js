@@ -12,7 +12,6 @@ import Title from '../Title'
 import * as api from '../../services/api'
 import Snackbar from '../pure/Snackbar'
 import { makeStyles } from '@material-ui/core'
-import useWidth from '../../hooks/useWidth'
 import Image from 'next/image'
 
 const SUCCESS_CONFIG = {
@@ -33,9 +32,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const Contact = ({ bannerUrl }) => {
+const Contact = () => {
   const classes = useStyles()
-  const width = useWidth()
   const [sendingEmail, setSendingEmail] = useState(false)
   const [snackbarConfig, setSnackbarConfig] = useState(SUCCESS_CONFIG)
 
@@ -46,7 +44,6 @@ const Contact = ({ bannerUrl }) => {
   const handleSubmit = async (values) => {
     setSendingEmail(true)
     const response = await api.sendEmail(values)
-    console.log(response)
     setSendingEmail(false)
     if (response.ok) {
       return setSnackbarConfig({ ...SUCCESS_CONFIG, open: true })

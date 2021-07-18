@@ -1,40 +1,27 @@
 import fetch from 'isomorphic-unfetch'
 
-const UNSPLASH = {
-  accessKey: 'HPiMNUdlyge7cfnIp-5i-le1YTJscTmF5o61OqShR7A',
-  secretKey: '7crl6q_83wGofLW5rJnViIyfkB7hqfz3ystTXkZVixk',
-  baseUrl: 'https://api.unsplash.com',
-}
+const BASIN_URL = 'https://usebasin.com/f/aa917706d20d'
 
-export const getImage = async id => {
-  const options = {
-    method: 'GET',
-    headers: {
-      Authorization: `Client-ID ${UNSPLASH.accessKey}`
-    }
-  }
-  const response = await fetch(`${UNSPLASH.baseUrl}/photos/${id}`, options)
+export const sendEmail = async (body) => {
+  try {
+    const response = await fetch(BASIN_URL, {
+      body: JSON.stringify(body),
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
 
-  if (response.ok) {
     return {
       ok: true,
-      data: await response.json()
+      data: response.data,
     }
-  }
-  return response
-}
-
-export const sendEmail = async body => {
-  const response = await fetch('http://localhost:3000/api/contact', {
-    body: JSON.stringify(body),
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
+  } catch (error) {
+    return {
+      ok: false,
+      error,
     }
-  })
-  if (response.ok) {
-    return await response.json()
   }
 }
 
-export default { sendEmail, getImage }
+export default { sendEmail }
