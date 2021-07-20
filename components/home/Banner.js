@@ -18,7 +18,7 @@ import Tooltip from '../pure/Tooltip'
 
 const useStyles = makeStyles(() => ({
   root: {
-    minHeight: '100vh',
+    minHeight: '80vh',
   },
   me: {
     borderRadius: '100%',
@@ -46,6 +46,7 @@ const Banner = () => {
                       alt='Thiago Yasunaka Profile'
                       width={100}
                       height={100}
+                      objectFit='cover'
                       src='/me.jpg'
                       className={classes.me}
                     />
@@ -59,6 +60,7 @@ const Banner = () => {
                           alt='Thiago Yasunaka Mobile Profile'
                           width={100}
                           height={100}
+                          objectFit='cover'
                           src='/me.jpg'
                           className={classes.me}
                         />
