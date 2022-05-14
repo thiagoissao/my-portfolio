@@ -1,15 +1,15 @@
-import { createMuiTheme } from '@material-ui/core/styles'
+import { createMuiTheme } from '@material-ui/core/styles';
 
 export const theme = createMuiTheme({
   typography: {
-    fontFamily: 'Quicksand, Roboto'
+    fontFamily: 'Quicksand, Roboto',
   },
   palette: {
     primary: {
-      main: '#32384d'
+      main: '#32384d',
     },
     secondary: {
-      main: '#FFF'
+      main: '#FFF',
     },
   },
   overrides: {
@@ -23,13 +23,13 @@ export const theme = createMuiTheme({
           backgroundColor: '#32384d',
           borderRadius: 4,
           '&:hover': {
-            backgroundColor: '#32384d'
-          }
+            backgroundColor: '#32384d',
+          },
         },
         '*::-webkit-scrollbar:horizontal': {
-          height: 5
-        }
-      }
+          height: 5,
+        },
+      },
     },
-  }
-})
+  },
+});

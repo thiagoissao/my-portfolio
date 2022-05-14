@@ -1,10 +1,11 @@
-import { Grid, Paper, Typography, Box } from '@material-ui/core'
-import React from 'react'
-import { makeStyles } from '@material-ui/core'
-import Image from 'next/image'
-import { getBestTimeFormat } from '../../utils/dates'
+import { Grid, Paper, Typography, Box } from '@material-ui/core';
+import React from 'react';
+import { makeStyles } from '@material-ui/core';
+import Image from 'next/image';
+import { getBestTimeFormat } from '../../utils/dates';
+import { Article } from './home.types';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   a: {
     color: theme.palette.text.primary,
     textDecoration: 'none',
@@ -30,43 +31,47 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
-}))
+}));
 
-export const formatPostTime = (date) => {
-  const { type, time } = getBestTimeFormat(date)
+export const formatPostTime = (date: Date) => {
+  const { type, time } = getBestTimeFormat(date);
   switch (type) {
     case 'hours':
-      return `Postado ${time} hora(s) atrás`
+      return `Postado ${time} hora(s) atrás`;
     case 'days':
-      return `Postado ${time} dia(s) atrás`
+      return `Postado ${time} dia(s) atrás`;
     case 'months':
-      return `Postado ${time} mês(es) atrás`
+      return `Postado ${time} mês(es) atrás`;
     case 'years':
-      return `Postado ${time} ano(s) atrás`
+      return `Postado ${time} ano(s) atrás`;
     default:
-      return time === 0 ? `Postado agora` : `Postado ${time} minuto(s) atrás`
+      return time === 0 ? `Postado agora` : `Postado ${time} minuto(s) atrás`;
   }
-}
+};
 
-const Article = ({ article }) => {
-  const classes = useStyles()
+type ArticleProps = {
+  article: Article;
+};
+
+const Article = ({ article }: ArticleProps) => {
+  const classes = useStyles();
   return (
     <a
       href={article.url}
-      target='_blank'
+      target="_blank"
       className={classes.a}
-      rel='noreferrer'
+      rel="noreferrer"
     >
-      <Paper variant='outlined' className={classes.paper}>
+      <Paper variant="outlined" className={classes.paper}>
         <Grid container spacing={1}>
           <Grid item xs={12}>
             <div className={classes.imageContainer}>
               <Image
                 className={classes.img}
                 src={article.imageUrl}
-                alt='Thiago Yasunaka Blog'
-                layout='fill'
-                objectFit='cover'
+                alt="Thiago Yasunaka Blog"
+                layout="fill"
+                objectFit="cover"
               />
             </div>
           </Grid>
@@ -74,17 +79,17 @@ const Article = ({ article }) => {
             <Box padding={2}>
               <Grid container spacing={1}>
                 <Grid item xs={12}>
-                  <Typography variant='body2' color='textSecondary'>
+                  <Typography variant="body2" color="textSecondary">
                     {formatPostTime(new Date(article.createdAt))}
                   </Typography>
                 </Grid>
                 <Grid item xs={12}>
-                  <Typography variant='h6' color='textPrimary'>
+                  <Typography variant="h6" color="textPrimary">
                     <b>{article.name}</b>
                   </Typography>
                 </Grid>
                 <Grid item xs={12}>
-                  <Typography color='textSecondary'>
+                  <Typography color="textSecondary">
                     {article.description}
                   </Typography>
                 </Grid>
@@ -94,7 +99,7 @@ const Article = ({ article }) => {
         </Grid>
       </Paper>
     </a>
-  )
-}
+  );
+};
 
-export default Article
+export default Article;
