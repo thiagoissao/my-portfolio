@@ -1,9 +1,11 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import { Box, Container, Divider } from '@material-ui/core';
+import { Container, Divider } from '@material-ui/core';
 import Banner from './Banner';
-import Info from './Info';
+import Experiences from './Experiences';
 import Articles from './Articles';
+import Aboutme from './Aboutme';
+import Blog from './Blog';
 
 const Home = () => {
   return (
@@ -16,13 +18,25 @@ const Home = () => {
           <Divider light />
         </Grid>
         <Grid item xs={12}>
-          <Info />
+          <Articles />
         </Grid>
         <Grid item xs={12}>
           <Divider light />
         </Grid>
         <Grid item xs={12}>
-          <Articles />
+          <Blog />
+        </Grid>
+        <Grid item xs={12}>
+          <Divider light />
+        </Grid>
+        <Grid item xs={12}>
+          <Experiences />
+        </Grid>
+        <Grid item xs={12}>
+          <Divider light />
+        </Grid>
+        <Grid item xs={12}>
+          <Aboutme />
         </Grid>
       </Grid>
     </Container>

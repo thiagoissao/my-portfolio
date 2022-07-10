@@ -18,11 +18,11 @@ export default class MyDocument extends Document {
               href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
               rel="stylesheet"
             />
-            <link rel="shortcut icon" href="/TYasunaka.jpg" />
-            <title>Thiago Portfolio</title>
+            <link rel="shortcut icon" href="/me.jpeg" />
+            <title>Thiago Yasunaka</title>
           </head>
         </Head>
-        <body style={{ margin: 16 }}>
+        <body style={{ margin: 24 }}>
           <Main />
           <NextScript />
         </body>

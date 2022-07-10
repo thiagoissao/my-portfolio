@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Typography, makeStyles } from '@material-ui/core';
+import { Grid, Typography, makeStyles, Divider } from '@material-ui/core';
 import Title from '../Title';
 import Article from './Article';
 
@@ -41,10 +41,17 @@ const Articles = () => {
       </Grid>
       <Grid item xs={12}>
         <Grid container spacing={2}>
-          {articles.map(article => (
-            <Grid item xs={12} key={article.url}>
-              <Article article={article} />
-            </Grid>
+          {articles.map((article, index) => (
+            <>
+              <Grid item xs={12} key={article.url}>
+                <Article article={article} />
+              </Grid>
+              {index < articles.length - 1 && (
+                <Grid item xs={12}>
+                  <Divider light variant="middle" />
+                </Grid>
+              )}
+            </>
           ))}
         </Grid>
       </Grid>

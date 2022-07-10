@@ -62,8 +62,13 @@ const Banner = () => {
               >
                 Thiago Yasunaka
               </Typography>
-            </Grid>
-            <Grid item xs={12}>
+              <Typography
+                color="primary"
+                variant="h6"
+                align={width === 'xs' ? 'center' : 'left'}
+              >
+                Brazilian 🇧🇷
+              </Typography>
               <Typography
                 color="primary"
                 variant="h6"
@@ -72,6 +77,7 @@ const Banner = () => {
                 Computer Scientist & Software Engineer
               </Typography>
             </Grid>
+
             <Grid item xs={12}>
               <Grid
                 container
