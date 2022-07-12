@@ -1,7 +1,7 @@
 import React from 'react';
-import { Grid, Typography, makeStyles, Divider } from '@material-ui/core';
+import { Grid, Divider } from '@material-ui/core';
 import Title from '../Title';
-import Article from './Article';
+import MediumArticle from './MediumArticle';
 
 const articles = [
   {
@@ -33,7 +33,7 @@ const articles = [
   },
 ];
 
-const Articles = () => {
+const MediumArticles = () => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
@@ -42,16 +42,16 @@ const Articles = () => {
       <Grid item xs={12}>
         <Grid container spacing={2}>
           {articles.map((article, index) => (
-            <>
-              <Grid item xs={12} key={article.url}>
-                <Article article={article} />
+            <React.Fragment key={article.url}>
+              <Grid item xs={12}>
+                <MediumArticle article={article} />
               </Grid>
               {index < articles.length - 1 && (
                 <Grid item xs={12}>
                   <Divider light variant="middle" />
                 </Grid>
               )}
-            </>
+            </React.Fragment>
           ))}
         </Grid>
       </Grid>
@@ -59,4 +59,4 @@ const Articles = () => {
   );
 };
 
-export default Articles;
+export default MediumArticles;

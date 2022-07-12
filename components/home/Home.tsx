@@ -3,11 +3,16 @@ import Grid from '@material-ui/core/Grid';
 import { Container, Divider } from '@material-ui/core';
 import Banner from './Banner';
 import Experiences from './Experiences';
-import Articles from './Articles';
 import Aboutme from './Aboutme';
-import Blog from './Blog';
+import Articles from '../articles/Articles';
+import { ArticleType } from '../articles/article.types';
+import MediumArticles from '../medium-articles/MediumArticles';
 
-const Home = () => {
+type HomeProps = {
+  articles: ArticleType[];
+};
+
+const Home = ({ articles }: HomeProps) => {
   return (
     <Container maxWidth="md">
       <Grid container spacing={5}>
@@ -18,13 +23,13 @@ const Home = () => {
           <Divider light />
         </Grid>
         <Grid item xs={12}>
-          <Articles />
+          <MediumArticles />
         </Grid>
         <Grid item xs={12}>
           <Divider light />
         </Grid>
         <Grid item xs={12}>
-          <Blog />
+          <Articles articles={articles} />
         </Grid>
         <Grid item xs={12}>
           <Divider light />

@@ -30,7 +30,7 @@ export const formatPostTime = date => {
   }
 };
 
-const Article = ({ article }) => {
+const MediumArticle = ({ article }) => {
   const classes = useStyles();
   return (
     <a
@@ -75,4 +75,4 @@ const Article = ({ article }) => {
   );
 };
 
-export default Article;
+export default MediumArticle;
