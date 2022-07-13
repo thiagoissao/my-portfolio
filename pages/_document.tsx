@@ -1,6 +1,6 @@
 import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-import { ServerStyleSheets } from '@material-ui/core/styles';
+import { ServerStyleSheets } from '@mui/styles';
 
 export default class MyDocument extends Document {
   render() {
@@ -22,7 +22,7 @@ export default class MyDocument extends Document {
             <title>Thiago Yasunaka</title>
           </head>
         </Head>
-        <body style={{ margin: 24 }}>
+        <body>
           <Main />
           <NextScript />
         </body>

@@ -1,5 +1,5 @@
+import { Divider, Stack } from '@mui/material';
 import React from 'react';
-import { Grid, Divider } from '@material-ui/core';
 import Title from '../Title';
 import MediumArticle from './MediumArticle';
 
@@ -35,27 +35,17 @@ const articles = [
 
 const MediumArticles = () => {
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={12}>
-        <Title title="My medium articles" />
-      </Grid>
-      <Grid item xs={12}>
-        <Grid container spacing={2}>
-          {articles.map((article, index) => (
-            <React.Fragment key={article.url}>
-              <Grid item xs={12}>
-                <MediumArticle article={article} />
-              </Grid>
-              {index < articles.length - 1 && (
-                <Grid item xs={12}>
-                  <Divider light variant="middle" />
-                </Grid>
-              )}
-            </React.Fragment>
-          ))}
-        </Grid>
-      </Grid>
-    </Grid>
+    <Stack spacing={2}>
+      <Title title="My medium articles" />
+      <Stack spacing={2}>
+        {articles.map((article, index) => (
+          <React.Fragment key={article.url}>
+            <MediumArticle article={article} />
+            {index < articles.length - 1 && <Divider light variant="middle" />}
+          </React.Fragment>
+        ))}
+      </Stack>
+    </Stack>
   );
 };
 

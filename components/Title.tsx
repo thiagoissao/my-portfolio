@@ -1,5 +1,5 @@
+import { Typography } from '@mui/material';
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
 
 type TitleProps = {
   title: string;
@@ -8,7 +8,7 @@ type TitleProps = {
 
 const Title = ({ title, isSubtitle }: TitleProps) => {
   return (
-    <Typography color="primary" variant={isSubtitle ? 'h4' : 'h3'}>
+    <Typography color="textPrimary" variant={isSubtitle ? 'h4' : 'h3'}>
       {title}
     </Typography>
   );

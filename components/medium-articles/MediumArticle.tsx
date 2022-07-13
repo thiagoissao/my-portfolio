@@ -1,18 +1,13 @@
-import { Grid, Paper, Typography, Box } from '@material-ui/core';
 import React from 'react';
-import { makeStyles } from '@material-ui/core';
 import Image from 'next/image';
 import { getBestTimeFormat } from '../../utils/dates';
+import { theme } from '../../styles/theme';
+import { Box, Grid, Typography } from '@mui/material';
 
-const useStyles = makeStyles(theme => ({
-  a: {
-    color: theme.palette.text.primary,
-    textDecoration: 'none',
-  },
-  img: {
-    borderRadius: theme.spacing(3),
-  },
-}));
+const aStyle: React.CSSProperties = {
+  color: theme.palette.text.primary,
+  textDecoration: 'none',
+};
 
 export const formatPostTime = date => {
   const { type, time } = getBestTimeFormat(date);
@@ -31,18 +26,12 @@ export const formatPostTime = date => {
 };
 
 const MediumArticle = ({ article }) => {
-  const classes = useStyles();
   return (
-    <a
-      href={article.url}
-      target="_blank"
-      className={classes.a}
-      rel="noreferrer"
-    >
-      <Grid container spacing={1}>
-        <Grid item>
+    <a href={article.url} target="_blank" style={aStyle} rel="noreferrer">
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm="auto">
           <Image
-            className={classes.img}
+            style={{ borderRadius: 24 }}
             width={160}
             height={160}
             src={article.imageUrl}
@@ -50,25 +39,23 @@ const MediumArticle = ({ article }) => {
           />
         </Grid>
         <Grid item xs>
-          <Box padding={2}>
-            <Grid container spacing={1}>
-              <Grid item xs={12}>
-                <Typography variant="body2" color="textSecondary">
-                  {formatPostTime(new Date(article.createdAt))}
-                </Typography>
-              </Grid>
-              <Grid item xs={12}>
-                <Typography variant="h6" color="textPrimary">
-                  <b>{article.name}</b>
-                </Typography>
-              </Grid>
-              <Grid item xs={12}>
-                <Typography color="textSecondary">
-                  {article.description}
-                </Typography>
-              </Grid>
+          <Grid container spacing={1}>
+            <Grid item xs={12}>
+              <Typography variant="body2" color="textSecondary">
+                {formatPostTime(new Date(article.createdAt))}
+              </Typography>
             </Grid>
-          </Box>
+            <Grid item xs={12}>
+              <Typography variant="h6" color="textPrimary">
+                <b>{article.name}</b>
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography color="textSecondary">
+                {article.description}
+              </Typography>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </a>

@@ -1,9 +1,9 @@
 import React from 'react';
 import NextLink from 'next/link';
 import { ArticleType } from './article.types';
-import { Grid, Typography } from '@material-ui/core';
 import { format } from 'date-fns';
-import BookRoundedIcon from '@material-ui/icons/BookRounded';
+import BookRoundedIcon from '@mui/icons-material/BookRounded';
+import { Grid, Typography } from '@mui/material';
 
 interface ArticleProps {
   article: ArticleType;

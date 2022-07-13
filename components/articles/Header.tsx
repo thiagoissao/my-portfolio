@@ -1,4 +1,4 @@
-import { Grid, Typography } from '@material-ui/core';
+import { Stack, Typography } from '@mui/material';
 import React from 'react';
 
 interface HeaderProps {
@@ -11,24 +11,20 @@ interface HeaderProps {
 }
 
 const Header = ({ title, description, date, readingTime }: HeaderProps) => (
-  <Grid container spacing={1}>
-    <Grid item xs={12}>
+  <Stack spacing={1}>
+    <Stack>
       <Typography variant="body2" color="textSecondary">
         Published on {date}
       </Typography>
       <Typography variant="body2" color="textSecondary">
         {readingTime.text}
       </Typography>
-    </Grid>
-    <Grid item xs={12}>
-      <Typography variant="h3" color="textPrimary">
-        {title}
-      </Typography>
-    </Grid>
-    <Grid item xs={12}>
-      <Typography color="textSecondary">{description}</Typography>
-    </Grid>
-  </Grid>
+    </Stack>
+    <Typography variant="h3" color="textPrimary">
+      {title}
+    </Typography>
+    <Typography color="textSecondary">{description}</Typography>
+  </Stack>
 );
 
 export default Header;

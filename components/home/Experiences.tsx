@@ -1,15 +1,13 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
 import Title from '../Title';
 import ExperienceCard from './ExperienceCard';
+import { Stack, Grid, Box } from '@mui/material';
 
 const Experiences = () => {
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={12}>
-        <Title title="Experiences" />
-      </Grid>
-      <Grid item xs={12}>
+    <Stack spacing={2}>
+      <Title title="Experiences" />
+      <Box padding={1}>
         <Grid container spacing={2}>
           <Grid item sm={4} xs={6}>
             <ExperienceCard
@@ -54,8 +52,8 @@ const Experiences = () => {
             />
           </Grid>
         </Grid>
-      </Grid>
-    </Grid>
+      </Box>
+    </Stack>
   );
 };
 export default Experiences;

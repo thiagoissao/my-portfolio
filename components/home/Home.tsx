@@ -1,12 +1,11 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import { Container, Divider } from '@material-ui/core';
 import Banner from './Banner';
 import Experiences from './Experiences';
 import Aboutme from './Aboutme';
 import Articles from '../articles/Articles';
 import { ArticleType } from '../articles/article.types';
 import MediumArticles from '../medium-articles/MediumArticles';
+import { Box, Container, Divider, Stack } from '@mui/material';
 
 type HomeProps = {
   articles: ArticleType[];
@@ -15,35 +14,27 @@ type HomeProps = {
 const Home = ({ articles }: HomeProps) => {
   return (
     <Container maxWidth="md">
-      <Grid container spacing={5}>
-        <Grid item xs={12}>
+      <Box marginY={2}>
+        <Stack>
           <Banner />
-        </Grid>
-        <Grid item xs={12}>
-          <Divider light />
-        </Grid>
-        <Grid item xs={12}>
+          <Box marginY={3}>
+            <Divider light />
+          </Box>
           <MediumArticles />
-        </Grid>
-        <Grid item xs={12}>
-          <Divider light />
-        </Grid>
-        <Grid item xs={12}>
+          <Box marginY={3}>
+            <Divider light />
+          </Box>
           <Articles articles={articles} />
-        </Grid>
-        <Grid item xs={12}>
-          <Divider light />
-        </Grid>
-        <Grid item xs={12}>
+          <Box marginY={3}>
+            <Divider light />
+          </Box>
           <Experiences />
-        </Grid>
-        <Grid item xs={12}>
-          <Divider light />
-        </Grid>
-        <Grid item xs={12}>
+          <Box marginY={3}>
+            <Divider light />
+          </Box>
           <Aboutme />
-        </Grid>
-      </Grid>
+        </Stack>
+      </Box>
     </Container>
   );
 };
