@@ -1,25 +1,29 @@
 import React from 'react';
 import Image from 'next/image';
-import { Grid } from '@mui/material';
+import { Box, Grid } from '@mui/material';
+import useWidth from '../../hooks/useWidth';
 
 interface GalleryProps {
   images: string[];
 }
 
 const Gallery = ({ images }: GalleryProps) => {
+  const width = useWidth();
   return (
-    <Grid spacing={1} container>
+    <Grid container justifyContent="center">
       {images.map(image => {
         return (
-          <Grid item key={image}>
-            <Image
-              objectFit="cover"
-              style={{ borderRadius: 24 }}
-              alt={image}
-              src={image}
-              width={400}
-              height={400}
-            />
+          <Grid item key={image} sm={6}>
+            <Box margin={1}>
+              <Image
+                objectFit="cover"
+                style={{ borderRadius: 24 }}
+                alt={image}
+                src={image}
+                width={width === 'xs' ? 300 : 400}
+                height={width === 'xs' ? 300 : 400}
+              />
+            </Box>
           </Grid>
         );
       })}

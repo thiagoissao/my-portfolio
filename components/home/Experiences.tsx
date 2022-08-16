@@ -13,7 +13,7 @@ const Experiences = () => {
             <ExperienceCard
               urlIcon="/degree.png"
               title="University"
-              description="Last year computer science student at UEM in Brazil."
+              description="Computer Scientist at Universidade Estadual de Maringá in Brazil."
             />
           </Grid>
           <Grid item sm={4} xs={6}>

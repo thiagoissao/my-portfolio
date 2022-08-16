@@ -20,8 +20,6 @@ const Articles = ({ articles }: ArticlesProps) => {
           <ArticleItem key={article.slug} article={article} />
         ))}
       </Stack>
-
-      <Grid container></Grid>
     </Stack>
   );
 };

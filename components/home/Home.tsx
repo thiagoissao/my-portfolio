@@ -20,11 +20,12 @@ const Home = ({ articles }: HomeProps) => {
           <Box marginY={3}>
             <Divider light />
           </Box>
-          <MediumArticles />
+          <Articles articles={articles} />
+
           <Box marginY={3}>
             <Divider light />
           </Box>
-          <Articles articles={articles} />
+          <MediumArticles />
           <Box marginY={3}>
             <Divider light />
           </Box>

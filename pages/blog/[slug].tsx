@@ -14,6 +14,17 @@ import remarkCodeTitles from 'remark-code-titles';
 import remarkCapitalize from 'remark-capitalize';
 import remarkImages from 'remark-images';
 import ArticlePage from '../../components/articles/ArticlePage';
+import { Box, Paper, Stack, SxProps, Typography } from '@mui/material';
+import NavigationCard from '../../components/global/NavigationCard';
+import { theme } from '../../styles/theme';
+
+const sxNavigationProps: SxProps = {
+  position: 'absolute',
+  left: theme.spacing(4),
+  top: theme.spacing(4),
+  width: 300,
+  height: 400,
+};
 
 interface Props {
   readingTime: {
@@ -35,6 +46,9 @@ const Index = ({ readingTime, frontMatter, slug, source }: Props) => {
 
   return (
     <>
+      <Box sx={sxNavigationProps}>
+        <NavigationCard />
+      </Box>
       <NextSeo
         title={frontMatter.title}
         description={frontMatter.description}
