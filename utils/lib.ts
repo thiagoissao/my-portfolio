@@ -42,7 +42,19 @@ function getArticleBySlug(
   return items;
 }
 
-function getAllArticles(fields: string[] = []): Array<BlogArticleType> {
+function getAllArticles(
+  fields: string[] = [
+    'slug',
+    'title',
+    'description',
+    'date',
+    'coverImage',
+    'excerpt',
+    'timeReading',
+    'ogImage',
+    'content',
+  ]
+): Array<BlogArticleType> {
   return getAllSlugs()
     .map(slug => getArticleBySlug(slug, fields))
     .sort((article1, article2) => (article1.date > article2.date ? -1 : 1));

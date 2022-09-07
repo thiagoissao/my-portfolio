@@ -1,20 +1,19 @@
-import React from 'react';
 import {
   ArticleType,
   BlogArticleType,
 } from '../components/articles/article.types';
+import Articles from '../components/articles/Articles';
 import Template from '../components/global/Template';
-import Home from '../components/home/Home';
 import { api } from '../utils/lib';
 
-type IndexProps = {
+type BlogProps = {
   articles: ArticleType[];
 };
 
-const Index = ({ articles }: IndexProps) => {
+const Blog = ({ articles }: BlogProps) => {
   return (
     <Template>
-      <Home articles={articles} />
+      <Articles articles={articles} />
     </Template>
   );
 };
@@ -25,4 +24,5 @@ export const getStaticProps = async () => {
     props: { articles },
   };
 };
-export default Index;
+
+export default Blog;

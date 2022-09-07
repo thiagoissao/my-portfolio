@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { getBestTimeFormat } from '../../utils/dates';
 import { theme } from '../../styles/theme';
-import { Box, Grid, Typography } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import useWidth from '../../hooks/useWidth';
 
 const aStyle: React.CSSProperties = {

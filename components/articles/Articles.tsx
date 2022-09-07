@@ -2,7 +2,7 @@ import React from 'react';
 import Title from '../Title';
 import { ArticleType } from './article.types';
 import ArticleItem from './Article';
-import { Grid, Stack, Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 
 type ArticlesProps = {
   articles: ArticleType[];

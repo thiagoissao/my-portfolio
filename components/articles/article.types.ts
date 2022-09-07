@@ -29,7 +29,7 @@ export interface BlogArticleType {
 export interface API {
   getRawArticleBySlug: (slug: string) => matter.GrayMatterFile<string>;
   getAllSlugs: () => Array<string>;
-  getAllArticles: (fields: string[]) => Array<BlogArticleType>;
+  getAllArticles: (fields?: string[]) => Array<BlogArticleType>;
   getArticlesByTag: (tag: string, fields: string[]) => Array<BlogArticleType>;
   getArticleBySlug: (slug: string, fields: string[]) => BlogArticleType;
   getAllTags: () => Array<string>;
