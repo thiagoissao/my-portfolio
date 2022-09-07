@@ -30,7 +30,7 @@ const Template = ({ children }: Props) => {
 
   return (
     <>
-      <AppBar variant="outlined" color="inherit" component="nav">
+      <AppBar variant="outlined" elevation={0} color="inherit" component="nav">
         <Toolbar>
           <Stack
             spacing={2}
