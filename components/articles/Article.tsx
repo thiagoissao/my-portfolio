@@ -10,8 +10,8 @@ interface ArticleProps {
 }
 
 const Article = ({ article }: ArticleProps) => (
-  <NextLink as={`/blog/${article.slug}`} href="/blog/[slug]">
-    <a href="/blog" style={{ textDecoration: 'none' }}>
+  <NextLink href={`/blog/${article.slug}`}>
+    <a style={{ textDecoration: 'none' }}>
       <Grid container spacing={1} alignItems="center">
         <Grid item>
           <BookRoundedIcon color="primary" />
