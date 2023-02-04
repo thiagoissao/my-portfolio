@@ -1,20 +1,21 @@
-import React from 'react';
-import readingTime from 'reading-time';
 import mdxPrism from 'mdx-prism';
 import hydrate from 'next-mdx-remote/hydrate';
 import renderToString from 'next-mdx-remote/render-to-string';
 import { NextSeo } from 'next-seo';
-import { api } from '../../utils/lib';
-import { BlogArticleType } from '../../components/articles/article.types';
-import remarkAutolinkHeadings from 'remark-autolink-headings';
-import remarkExternalLinks from 'remark-external-links';
-import remarkAutoLinkHeadings from 'remark-autolink-headings';
-import remarkSlug from 'remark-slug';
-import remarkCodeTitles from 'remark-code-titles';
+import readingTime from 'reading-time';
+import {
+  default as remarkAutolinkHeadings,
+  default as remarkAutoLinkHeadings,
+} from 'remark-autolink-headings';
 import remarkCapitalize from 'remark-capitalize';
+import remarkCodeTitles from 'remark-code-titles';
+import remarkExternalLinks from 'remark-external-links';
 import remarkImages from 'remark-images';
-import ArticlePage from '../../components/articles/ArticlePage';
-import Template from '../../components/global/Template';
+import remarkSlug from 'remark-slug';
+import ArticlePage from '../../modules/article/ArticlePage';
+import { BlogArticleType } from '../../modules/article/interfaces/article-api.interface';
+import Template from '../../modules/global/Template';
+import { api } from '../../utils/lib';
 
 interface Props {
   readingTime: {

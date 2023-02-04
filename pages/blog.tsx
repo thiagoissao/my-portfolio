@@ -1,9 +1,7 @@
-import {
-  ArticleType,
-  BlogArticleType,
-} from '../components/articles/article.types';
-import Articles from '../components/articles/Articles';
-import Template from '../components/global/Template';
+import Articles from '../modules/article/Articles';
+import { ArticleType } from '../modules/article/interfaces/article-type.interface';
+import { BlogArticleType } from '../modules/article/interfaces/blog-article-type.interface';
+import Template from '../modules/global/Template';
 import { api } from '../utils/lib';
 
 type BlogProps = {

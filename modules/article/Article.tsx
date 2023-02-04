@@ -1,9 +1,8 @@
-import React from 'react';
-import NextLink from 'next/link';
-import { ArticleType } from './article.types';
-import { format } from 'date-fns';
 import BookRoundedIcon from '@mui/icons-material/BookRounded';
 import { Grid, Typography } from '@mui/material';
+import { format } from 'date-fns';
+import NextLink from 'next/link';
+import { ArticleType } from './interfaces/article-type.interface';
 
 interface ArticleProps {
   article: ArticleType;

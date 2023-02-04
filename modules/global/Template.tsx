@@ -1,12 +1,11 @@
-import * as React from 'react';
+import { Container, Stack, Typography } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import { Container, Stack, SxProps, Typography } from '@mui/material';
-import { theme } from '../../styles/theme';
-import useWidth from '../../hooks/useWidth';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import * as React from 'react';
+import useWidth from '../../hooks/useWidth';
 
 interface Props {
   children: React.ReactNode;

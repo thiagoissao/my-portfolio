@@ -1,10 +1,7 @@
-import React from 'react';
-import {
-  ArticleType,
-  BlogArticleType,
-} from '../components/articles/article.types';
-import Template from '../components/global/Template';
-import Home from '../components/home/Home';
+import { ArticleType } from '../modules/article/interfaces/article-type.interface';
+import { BlogArticleType } from '../modules/article/interfaces/blog-article-type.interface';
+import Template from '../modules/global/Template';
+import Home from '../modules/home/Home';
 import { api } from '../utils/lib';
 
 type IndexProps = {

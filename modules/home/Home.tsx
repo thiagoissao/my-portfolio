@@ -1,11 +1,10 @@
-import React from 'react';
+import { Box, Divider, Stack } from '@mui/material';
+import Articles from '../article/Articles';
+import { ArticleType } from '../article/interfaces/article-type.interface';
+import MediumArticles from '../medium-articles/MediumArticles';
+import Aboutme from './Aboutme';
 import Banner from './Banner';
 import Experiences from './Experiences';
-import Aboutme from './Aboutme';
-import Articles from '../articles/Articles';
-import { ArticleType } from '../articles/article.types';
-import MediumArticles from '../medium-articles/MediumArticles';
-import { Box, Divider, Stack } from '@mui/material';
 
 type HomeProps = {
   articles: ArticleType[];

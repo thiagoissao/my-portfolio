@@ -1,8 +1,9 @@
 import fs from 'fs';
-import { join } from 'path';
 import matter from 'gray-matter';
+import { join } from 'path';
 import readingTime from 'reading-time';
-import { API, BlogArticleType } from '../components/articles/article.types';
+import { ArticleApi } from '../modules/article/interfaces/article-api.interface';
+import { BlogArticleType } from '../modules/article/interfaces/blog-article-type.interface';
 
 const articlesDirectory = join(process.cwd(), 'src/articles');
 
@@ -80,7 +81,7 @@ function getAllTags(): Array<string> {
   return Array.from(allTags);
 }
 
-export const api: API = {
+export const api: ArticleApi = {
   getRawArticleBySlug,
   getAllSlugs,
   getAllArticles,

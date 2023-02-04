@@ -1,8 +1,7 @@
-import React from 'react';
-import Title from '../Title';
-import { ArticleType } from './article.types';
-import ArticleItem from './Article';
 import { Stack, Typography } from '@mui/material';
+import Title from '../Title';
+import ArticleItem from './Article';
+import { ArticleType } from './interfaces/article-type.interface';
 
 type ArticlesProps = {
   articles: ArticleType[];
