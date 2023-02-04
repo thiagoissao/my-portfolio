@@ -13,7 +13,7 @@ import remarkExternalLinks from 'remark-external-links';
 import remarkImages from 'remark-images';
 import remarkSlug from 'remark-slug';
 import ArticlePage from '../../modules/article/ArticlePage';
-import { BlogArticleType } from '../../modules/article/interfaces/article-api.interface';
+import { BlogArticleType } from '../../modules/article/interfaces/blog-article-type.interface';
 import Template from '../../modules/global/Template';
 import { api } from '../../utils/lib';
 
