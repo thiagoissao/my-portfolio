@@ -1,9 +1,10 @@
-import React from 'react';
-import Image from 'next/image';
-import { getBestTimeFormat } from '../../utils/dates';
-import { theme } from '../../styles/theme';
 import { Grid, Typography } from '@mui/material';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
 import useWidth from '../../hooks/useWidth';
+import { theme } from '../../styles/theme';
+import { getBestTimeFormat } from '../../utils/dates';
 
 const aStyle: React.CSSProperties = {
   color: theme.palette.text.primary,
@@ -31,7 +32,7 @@ const MediumArticle = ({ article }) => {
 
   if (width === 'xs') {
     return (
-      <a href={article.url} target="_blank" style={aStyle} rel="noreferrer">
+      <Link href={article.url} target="_blank" style={aStyle} rel="noreferrer">
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <Grid container spacing={1}>
@@ -58,12 +59,12 @@ const MediumArticle = ({ article }) => {
             <Typography color="textSecondary">{article.description}</Typography>
           </Grid>
         </Grid>
-      </a>
+      </Link>
     );
   }
 
   return (
-    <a href={article.url} target="_blank" style={aStyle} rel="noreferrer">
+    <Link href={article.url} target="_blank" style={aStyle} rel="noreferrer">
       <Grid container spacing={2}>
         <Grid item xs={12} sm="auto">
           <Image
@@ -94,7 +95,7 @@ const MediumArticle = ({ article }) => {
           </Grid>
         </Grid>
       </Grid>
-    </a>
+    </Link>
   );
 };
 

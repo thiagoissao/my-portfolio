@@ -1,8 +1,7 @@
-import React from 'react';
-import Title from '../Title';
-import differenceInYears from 'date-fns/differenceInYears';
-import Gallery from './Gallery';
 import { Stack, Typography } from '@mui/material';
+import differenceInYears from 'date-fns/differenceInYears';
+import Title from '../Title';
+import Gallery from './Gallery';
 
 const images = [
   '/gallery/1.jpg',
@@ -18,12 +17,12 @@ const Aboutme = () => {
       <Typography color="textSecondary" align="justify">
         Hi. My name is Thiago Issao Yasunaka and i am{' '}
         {differenceInYears(new Date(), new Date(1999, 12, 22))} years old. My
-        hobbies are programming, finance & all kind of sports, like soccer, bike
-        & running. Currently i am working at{' '}
+        hobbies are programming, finance & all kind of sports, for example:
+        Soccer, bike & running. Currently i am working at{' '}
         <a rel="noreferrer" href="https://www.teceo.co/" target="_blank">
           teceo
         </a>{' '}
-        as a front-end developer.
+        as a software engineer.
       </Typography>
       <Gallery images={images} />
     </Stack>

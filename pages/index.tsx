@@ -10,7 +10,7 @@ type IndexProps = {
 
 const Index = ({ articles }: IndexProps) => {
   return (
-    <Template>
+    <Template title="Thiago Yasunaka">
       <Home articles={articles} />
     </Template>
   );
