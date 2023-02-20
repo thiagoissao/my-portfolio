@@ -36,7 +36,7 @@ const Index = ({ readingTime, frontMatter, slug, source }: Props) => {
   const content = hydrate(source);
 
   return (
-    <Template>
+    <Template title={frontMatter.title}>
       <NextSeo
         title={frontMatter.title}
         description={frontMatter.description}

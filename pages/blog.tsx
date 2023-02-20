@@ -10,7 +10,7 @@ type BlogProps = {
 
 const Blog = ({ articles }: BlogProps) => {
   return (
-    <Template>
+    <Template title="Posts">
       <Articles articles={articles} />
     </Template>
   );

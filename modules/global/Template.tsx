@@ -2,6 +2,7 @@ import { Container, Stack, Typography } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
+import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import * as React from 'react';
@@ -9,6 +10,7 @@ import useWidth from '../../hooks/useWidth';
 
 interface Props {
   children: React.ReactNode;
+  title: string;
   window?: () => Window;
 }
 
@@ -23,12 +25,16 @@ const navItems = [
   },
 ];
 
-const Template = ({ children }: Props) => {
+const Template = ({ children, title }: Props) => {
   const width = useWidth();
   const route = useRouter();
 
   return (
     <>
+      <Head>
+        <title>{title}</title>
+        <meta property="og:title" content={title} key="title" />
+      </Head>
       <AppBar variant="outlined" elevation={0} color="inherit" component="nav">
         <Toolbar>
           <Stack
@@ -41,12 +47,10 @@ const Template = ({ children }: Props) => {
               const isActive = item.pathname === route.pathname;
               const style = { textDecoration: isActive ? 'underline' : 'none' };
               return (
-                <Link key={item.label} href={item.pathname}>
-                  <a style={style}>
-                    <Typography variant="h6" color="text.primary">
-                      {item.label}
-                    </Typography>
-                  </a>
+                <Link style={style} key={item.label} href={item.pathname}>
+                  <Typography variant="h6" color="text.primary">
+                    {item.label}
+                  </Typography>
                 </Link>
               );
             })}

@@ -1,6 +1,5 @@
-import React from 'react';
-import Image from 'next/image';
 import { Box, Grid } from '@mui/material';
+import Image from 'next/image';
 import useWidth from '../../hooks/useWidth';
 
 interface GalleryProps {
@@ -16,8 +15,7 @@ const Gallery = ({ images }: GalleryProps) => {
           <Grid item key={image} sm={6}>
             <Box margin={1}>
               <Image
-                objectFit="cover"
-                style={{ borderRadius: 24 }}
+                style={{ borderRadius: 24, objectFit: 'cover' }}
                 alt={image}
                 src={image}
                 width={width === 'xs' ? 300 : 400}

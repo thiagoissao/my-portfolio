@@ -1,19 +1,13 @@
-import React from 'react';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { Grid, Hidden, IconButton, Stack, Typography } from '@mui/material';
 import Image from 'next/image';
+import React from 'react';
 import useWidth from '../../hooks/useWidth';
-import {
-  Grid,
-  Hidden,
-  IconButton,
-  Stack,
-  Tooltip,
-  Typography,
-} from '@mui/material';
 
 const meSx: React.CSSProperties = {
   borderRadius: 16,
+  objectFit: 'cover',
 };
 
 const Banner = () => {
@@ -27,9 +21,9 @@ const Banner = () => {
             alt="Thiago Yasunaka Profile"
             width={172}
             height={172}
-            objectFit="cover"
             src="/me.jpeg"
             style={meSx}
+            priority
           />
         </Grid>
       </Hidden>
@@ -38,10 +32,10 @@ const Banner = () => {
           <Grid container justifyContent="center">
             <Grid item>
               <Image
+                priority
                 alt="Thiago Yasunaka Mobile Profile"
                 width={172}
                 height={172}
-                objectFit="cover"
                 src="/me.jpeg"
                 style={meSx}
               />
@@ -80,24 +74,20 @@ const Banner = () => {
               justifyContent={width === 'xs' ? 'center' : 'flex-start'}
               flexDirection="row"
             >
-              <Tooltip arrow title="Linkedin">
-                <IconButton
-                  color="primary"
-                  target="_blank"
-                  href="https://www.linkedin.com/in/thiago-yasunaka-389a69155/"
-                >
-                  <LinkedInIcon fontSize="large" />
-                </IconButton>
-              </Tooltip>
-              <Tooltip arrow title="Github">
-                <IconButton
-                  color="primary"
-                  target="_blank"
-                  href="https://github.com/thiagoissao"
-                >
-                  <GitHubIcon fontSize="large" />
-                </IconButton>
-              </Tooltip>
+              <IconButton
+                color="primary"
+                target="_blank"
+                href="https://www.linkedin.com/in/thiago-yasunaka-389a69155/"
+              >
+                <LinkedInIcon fontSize="large" />
+              </IconButton>
+              <IconButton
+                color="primary"
+                target="_blank"
+                href="https://github.com/thiagoissao"
+              >
+                <GitHubIcon fontSize="large" />
+              </IconButton>
             </Stack>
           </Grid>
         </Grid>

@@ -9,29 +9,27 @@ interface ArticleProps {
 }
 
 const Article = ({ article }: ArticleProps) => (
-  <NextLink href={`/blog/${article.slug}`}>
-    <a style={{ textDecoration: 'none' }}>
-      <Grid container spacing={1} alignItems="center">
-        <Grid item>
-          <BookRoundedIcon color="primary" />
-        </Grid>
-        <Grid item xs>
-          <Grid container>
-            <Grid item xs={12}>
-              <Typography variant="body2" color="textSecondary">{`${format(
-                new Date(article.date),
-                'MM/dd/yyyy'
-              )} - ${article.timeReading.text}`}</Typography>
-            </Grid>
-            <Grid item xs={12}>
-              <Typography color="textPrimary" variant="h6">
-                {article.title}
-              </Typography>
-            </Grid>
+  <NextLink style={{ textDecoration: 'none' }} href={`/blog/${article.slug}`}>
+    <Grid container spacing={1} alignItems="center">
+      <Grid item>
+        <BookRoundedIcon color="primary" />
+      </Grid>
+      <Grid item xs>
+        <Grid container>
+          <Grid item xs={12}>
+            <Typography variant="body2" color="textSecondary">{`${format(
+              new Date(article.date),
+              'MM/dd/yyyy'
+            )} - ${article.timeReading.text}`}</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography color="textPrimary" variant="h6">
+              {article.title}
+            </Typography>
           </Grid>
         </Grid>
       </Grid>
-    </a>
+    </Grid>
   </NextLink>
 );
 
