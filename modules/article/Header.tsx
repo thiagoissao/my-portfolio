@@ -1,5 +1,5 @@
 import { Stack, Typography } from '@mui/material';
-import React from 'react';
+import { format } from 'date-fns';
 
 interface HeaderProps {
   readingTime: {
@@ -14,7 +14,7 @@ const Header = ({ title, description, date, readingTime }: HeaderProps) => (
   <Stack spacing={1}>
     <Stack>
       <Typography variant="body2" color="textSecondary">
-        Published on {date}
+        Published on {format(new Date(date), 'dd/MM/yyyy HH:mm')}
       </Typography>
       <Typography variant="body2" color="textSecondary">
         {readingTime.text}

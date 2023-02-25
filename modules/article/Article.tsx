@@ -2,14 +2,14 @@ import BookRoundedIcon from '@mui/icons-material/BookRounded';
 import { Grid, Typography } from '@mui/material';
 import { format } from 'date-fns';
 import NextLink from 'next/link';
-import { ArticleType } from './interfaces/article-type.interface';
+import { IArticle } from './interfaces/article-type.interface';
 
 interface ArticleProps {
-  article: ArticleType;
+  article: IArticle;
 }
 
 const Article = ({ article }: ArticleProps) => (
-  <NextLink style={{ textDecoration: 'none' }} href={`/blog/${article.slug}`}>
+  <NextLink style={{ textDecoration: 'none' }} href={`/blog/${article.id}`}>
     <Grid container spacing={1} alignItems="center">
       <Grid item>
         <BookRoundedIcon color="primary" />
@@ -20,7 +20,7 @@ const Article = ({ article }: ArticleProps) => (
             <Typography variant="body2" color="textSecondary">{`${format(
               new Date(article.date),
               'MM/dd/yyyy'
-            )} - ${article.timeReading.text}`}</Typography>
+            )}`}</Typography>
           </Grid>
           <Grid item xs={12}>
             <Typography color="textPrimary" variant="h6">

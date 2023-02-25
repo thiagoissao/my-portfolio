@@ -1,14 +1,15 @@
 import Articles from '../modules/article/Articles';
-import { ArticleType } from '../modules/article/interfaces/article-type.interface';
-import { BlogArticleType } from '../modules/article/interfaces/blog-article-type.interface';
+import { GithubGist } from '../modules/article/dtos/github-gist.dto';
+import { IArticle } from '../modules/article/interfaces/article-type.interface';
 import Template from '../modules/global/Template';
 import { api } from '../utils/lib';
 
 type BlogProps = {
-  articles: ArticleType[];
+  articles: IArticle[];
+  gists: GithubGist[];
 };
 
-const Blog = ({ articles }: BlogProps) => {
+const Blog = ({ articles, gists }: BlogProps) => {
   return (
     <Template title="Posts">
       <Articles articles={articles} />
@@ -17,7 +18,8 @@ const Blog = ({ articles }: BlogProps) => {
 };
 
 export const getStaticProps = async () => {
-  const articles: Array<BlogArticleType> = api.getAllArticles();
+  const articles = await api.getAllGists();
+
   return {
     props: { articles },
   };

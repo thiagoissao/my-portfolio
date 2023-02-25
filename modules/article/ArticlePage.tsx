@@ -1,6 +1,27 @@
 import { Container } from '@mui/material';
-import React from 'react';
+import hljs from 'highlight.js';
+import md from 'markdown-it';
 import Header from './Header';
+
+var markdown = md({
+  linkify: true,
+  html: true,
+  highlight: function (str, lang) {
+    var slang = lang.split('--')[0]; // allows multiple language tabs for the same language
+    if (slang && hljs.getLanguage(slang)) {
+      try {
+        return (
+          '<pre class="highlight-tab-tab' +
+          '"><code>' +
+          hljs.highlight(slang, str, true).value +
+          '</code></pre>'
+        );
+      } catch (__) {}
+    }
+
+    return '';
+  },
+}).use(require('markdown-it-lazy-headers'));
 
 interface ArticlePageProps {
   readingTime: {
@@ -9,7 +30,7 @@ interface ArticlePageProps {
   title: string;
   description: string;
   date: string;
-  content: React.ReactNode;
+  content: string;
   slug: string;
 }
 
@@ -19,16 +40,18 @@ const ArticlePage = ({
   description,
   date,
   content,
-}: ArticlePageProps) => (
-  <Container maxWidth="sm">
-    <Header
-      readingTime={readingTime}
-      title={title}
-      description={description}
-      date={date}
-    />
-    {content}
-  </Container>
-);
+}: ArticlePageProps) => {
+  return (
+    <Container maxWidth="sm">
+      <Header
+        readingTime={readingTime}
+        title={title}
+        description={description}
+        date={date}
+      />
+      <div dangerouslySetInnerHTML={{ __html: markdown.render(content) }} />
+    </Container>
+  );
+};
 
 export default ArticlePage;

@@ -1,91 +1,82 @@
-import fs from 'fs';
+import axios from 'axios';
 import matter from 'gray-matter';
-import { join } from 'path';
+import { Octokit } from 'octokit';
 import readingTime from 'reading-time';
-import { ArticleApi } from '../modules/article/interfaces/article-api.interface';
-import { BlogArticleType } from '../modules/article/interfaces/blog-article-type.interface';
+import {
+  GithubGist,
+  GithubGistHeader,
+} from '../modules/article/dtos/github-gist.dto';
+import { IArticle } from '../modules/article/interfaces/article-type.interface';
 
-const articlesDirectory = join(process.cwd(), 'src/articles');
+const formatGistToArticle = (gist: GithubGist): IArticle => {
+  const content = gist.files[0].raw_url;
 
-function getRawArticleBySlug(slug: string): matter.GrayMatterFile<string> {
-  const fullPath = join(articlesDirectory, `${slug}.mdx`);
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
-  return matter(fileContents);
-}
+  return {
+    author: {
+      name: gist.owner.login,
+      picture: gist.owner.avatar_url,
+    },
+    content,
+    coverImage: null,
+    date: gist.updated_at,
+    id: gist.id,
+    ogImage: {
+      url: null,
+    },
+    timeReading: {
+      text: readingTime(content).text,
+    },
+    title: gist.description,
+    description: gist.description,
+  };
+};
 
-function getAllSlugs(): Array<string> {
-  return fs.readdirSync(articlesDirectory);
-}
+const formatWithMatter = async (article: IArticle): Promise<IArticle> => {
+  const response = await axios.get<string>(article.content);
+  const header = matter(response.data).data as GithubGistHeader;
+  return {
+    ...article,
+    title: header.title,
+    description: header.description,
+  };
+};
 
-function getArticleBySlug(
-  slug: string,
-  fields: string[] = []
-): BlogArticleType {
-  const realSlug = slug.replace(/\.mdx$/, '');
-  const { data, content } = getRawArticleBySlug(realSlug);
-  const timeReading: any = readingTime(content);
-  const items: BlogArticleType = {};
-
-  fields.forEach(field => {
-    if (field === 'slug') {
-      items[field] = realSlug;
-    }
-    if (field === 'content') {
-      items[field] = content;
-    }
-    if (field === 'timeReading') {
-      items[field] = timeReading;
-    }
-    if (data[field]) {
-      items[field] = data[field];
-    }
+async function getAllGists(): Promise<IArticle[]> {
+  const octokit = new Octokit({
+    auth: process.env.GITHUB_AUTH_TOKEN,
   });
-  return items;
+  const response = await octokit.request('GET /gists');
+
+  const gists: GithubGist[] = (response.data as unknown as GithubGist[]).map(
+    gist => {
+      const keys = Object.keys(gist.files);
+      return {
+        ...gist,
+        files: keys.map(key => gist.files[key]),
+      };
+    }
+  );
+
+  const articles = gists.map(formatGistToArticle);
+  return Promise.all(articles.map(formatWithMatter));
 }
 
-function getAllArticles(
-  fields: string[] = [
-    'slug',
-    'title',
-    'description',
-    'date',
-    'coverImage',
-    'excerpt',
-    'timeReading',
-    'ogImage',
-    'content',
-  ]
-): Array<BlogArticleType> {
-  return getAllSlugs()
-    .map(slug => getArticleBySlug(slug, fields))
-    .sort((article1, article2) => (article1.date > article2.date ? -1 : 1));
-}
-
-function getArticlesByTag(
-  tag: string,
-  fields: string[] = []
-): Array<BlogArticleType> {
-  return getAllArticles(fields).filter(article => {
-    const tags = article.tags ?? [];
-    return tags.includes(tag);
+async function getGistById(id: string): Promise<IArticle> {
+  const octokit = new Octokit({
+    auth: process.env.GITHUB_AUTH_TOKEN,
   });
+  const response = await octokit.request(`GET /gists/${id}`);
+
+  const keys = Object.keys(response.data.files);
+  const gist: GithubGist = {
+    ...response.data,
+    files: keys.map(key => response.data.files[key]),
+  };
+
+  return formatGistToArticle(gist);
 }
 
-function getAllTags(): Array<string> {
-  const articles = getAllArticles(['tags']);
-  const allTags = new Set<string>();
-  articles.forEach(article => {
-    const tags = article.tags as Array<string>;
-    tags.forEach(tag => allTags.add(tag));
-  });
-  return Array.from(allTags);
-}
-
-export const api: ArticleApi = {
-  getRawArticleBySlug,
-  getAllSlugs,
-  getAllArticles,
-  getArticlesByTag,
-  getArticleBySlug,
-  getAllTags,
+export const api = {
+  getAllGists,
+  getGistById,
 };

@@ -1,10 +1,10 @@
 import { Stack, Typography } from '@mui/material';
 import Title from '../Title';
 import ArticleItem from './Article';
-import { ArticleType } from './interfaces/article-type.interface';
+import { IArticle } from './interfaces/article-type.interface';
 
 type ArticlesProps = {
-  articles: ArticleType[];
+  articles: IArticle[];
 };
 
 const Articles = ({ articles }: ArticlesProps) => {
@@ -14,9 +14,9 @@ const Articles = ({ articles }: ArticlesProps) => {
       <Typography color="textPrimary" align="justify">
         Here are some of my latest writings
       </Typography>
-      <Stack>
-        {articles.map((article: ArticleType) => (
-          <ArticleItem key={article.slug} article={article} />
+      <Stack spacing={1}>
+        {articles.map((article: IArticle) => (
+          <ArticleItem key={article.id} article={article} />
         ))}
       </Stack>
     </Stack>
