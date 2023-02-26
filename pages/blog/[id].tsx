@@ -13,7 +13,8 @@ interface Props {
   frontMatter: {
     title: string;
     description: string;
-    date: string;
+    updatedAt: string;
+    createdAt: string;
     content: string;
   };
   slug: string;
@@ -30,7 +31,7 @@ const Index = ({ readingTime, frontMatter, slug }: Props) => {
         readingTime={readingTime}
         title={frontMatter.title}
         description={frontMatter.description}
-        date={frontMatter.date}
+        date={frontMatter.updatedAt}
         content={frontMatter.content}
         slug={slug}
       />
@@ -55,7 +56,8 @@ export async function getStaticProps({ params }: Params) {
     readingTime: readingTime(content),
     frontMatter: {
       content,
-      date: gist.date,
+      updatedAt: gist.updatedAt,
+      createdAt: gist.createdAt,
       description: data.description,
       title: data.title,
     },

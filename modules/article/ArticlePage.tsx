@@ -13,7 +13,7 @@ var markdown = md({
         return (
           '<pre class="highlight-tab-tab' +
           '"><code>' +
-          hljs.highlight(slang, str, true).value +
+          hljs.highlight(str, { language: lang }).value +
           '</code></pre>'
         );
       } catch (__) {}

@@ -31,7 +31,7 @@ export interface GithubGist {
   comments_url: string;
   comments: number;
   commits_url: string;
-  created_at: Date;
+  created_at: string;
   description: string;
   files: GithubFile[];
   forks_url: string;
@@ -51,4 +51,5 @@ export interface GithubGist {
 export interface GithubGistHeader {
   title: string;
   description: string;
+  bannerUrl: string;
 }

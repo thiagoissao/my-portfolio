@@ -15,7 +15,6 @@ const Gallery = ({ images }: GalleryProps) => {
           <Grid item key={image} sm={6}>
             <Box margin={1}>
               <Image
-                style={{ borderRadius: 24, objectFit: 'cover' }}
                 alt={image}
                 src={image}
                 width={width === 'xs' ? 300 : 400}

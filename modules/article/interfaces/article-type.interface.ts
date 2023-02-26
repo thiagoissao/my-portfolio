@@ -4,7 +4,8 @@ export interface IArticle {
   id: string;
   title: string;
   description: string;
-  date: string;
+  updatedAt: string;
+  createdAt: string;
   coverImage: string;
   author: AuthorType;
   timeReading: {

@@ -1,7 +1,7 @@
-import BookRoundedIcon from '@mui/icons-material/BookRounded';
-import { Grid, Typography } from '@mui/material';
-import { format } from 'date-fns';
+import { Stack, Typography } from '@mui/material';
+import Image from 'next/image';
 import NextLink from 'next/link';
+import { getBestTimeFormat } from '../../utils/dates';
 import { IArticle } from './interfaces/article-type.interface';
 
 interface ArticleProps {
@@ -10,26 +10,28 @@ interface ArticleProps {
 
 const Article = ({ article }: ArticleProps) => (
   <NextLink style={{ textDecoration: 'none' }} href={`/blog/${article.id}`}>
-    <Grid container spacing={1} alignItems="center">
-      <Grid item>
-        <BookRoundedIcon color="primary" />
-      </Grid>
-      <Grid item xs>
-        <Grid container>
-          <Grid item xs={12}>
-            <Typography variant="body2" color="textSecondary">{`${format(
-              new Date(article.date),
-              'MM/dd/yyyy'
-            )}`}</Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography color="textPrimary" variant="h6">
-              {article.title}
-            </Typography>
-          </Grid>
-        </Grid>
-      </Grid>
-    </Grid>
+    <Stack spacing={2} direction="row">
+      <Image
+        width={120}
+        height={120}
+        src={article.coverImage}
+        alt={article.description}
+      />
+      <Stack height="100%" alignItems="space-between">
+        <Typography color="textPrimary" variant="h6">
+          {article.title}
+        </Typography>
+        <Typography gutterBottom color="textSecondary">
+          {article.description}
+        </Typography>
+        <Typography
+          variant="body2"
+          color="textSecondary"
+        >{`atualizado ${getBestTimeFormat(
+          new Date(article.updatedAt)
+        )}`}</Typography>
+      </Stack>
+    </Stack>
   </NextLink>
 );
 

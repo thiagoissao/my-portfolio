@@ -18,7 +18,8 @@ const formatGistToArticle = (gist: GithubGist): IArticle => {
     },
     content,
     coverImage: null,
-    date: gist.updated_at,
+    updatedAt: gist.updated_at,
+    createdAt: gist.created_at,
     id: gist.id,
     ogImage: {
       url: null,
@@ -38,6 +39,7 @@ const formatWithMatter = async (article: IArticle): Promise<IArticle> => {
     ...article,
     title: header.title,
     description: header.description,
+    coverImage: header.bannerUrl,
   };
 };
 
