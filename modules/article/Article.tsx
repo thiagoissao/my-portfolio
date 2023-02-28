@@ -2,7 +2,7 @@ import { Stack, Typography } from '@mui/material';
 import Image from 'next/image';
 import NextLink from 'next/link';
 import { getBestTimeFormat } from '../../utils/dates';
-import { IArticle } from './interfaces/article-type.interface';
+import { IArticle } from './interfaces/article.interface';
 
 interface ArticleProps {
   article: IArticle;
@@ -12,8 +12,8 @@ const Article = ({ article }: ArticleProps) => (
   <NextLink style={{ textDecoration: 'none' }} href={`/blog/${article.id}`}>
     <Stack spacing={2} direction="row">
       <Image
-        width={120}
-        height={120}
+        width={164}
+        height={164}
         src={article.coverImage}
         alt={article.description}
       />

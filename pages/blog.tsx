@@ -1,6 +1,6 @@
 import Articles from '../modules/article/Articles';
 import { GithubGist } from '../modules/article/dtos/github-gist.dto';
-import { IArticle } from '../modules/article/interfaces/article-type.interface';
+import { IArticle } from '../modules/article/interfaces/article.interface';
 import Template from '../modules/global/Template';
 import { api } from '../utils/lib';
 

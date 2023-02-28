@@ -6,7 +6,7 @@ import {
   GithubGist,
   GithubGistHeader,
 } from '../modules/article/dtos/github-gist.dto';
-import { IArticle } from '../modules/article/interfaces/article-type.interface';
+import { IArticle } from '../modules/article/interfaces/article.interface';
 
 const formatGistToArticle = (gist: GithubGist): IArticle => {
   const content = gist.files[0].raw_url;

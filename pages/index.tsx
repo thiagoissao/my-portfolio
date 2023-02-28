@@ -1,4 +1,4 @@
-import { IArticle } from '../modules/article/interfaces/article-type.interface';
+import { IArticle } from '../modules/article/interfaces/article.interface';
 import Template from '../modules/global/Template';
 import Home from '../modules/home/Home';
 import { api } from '../utils/lib';

@@ -13,10 +13,11 @@ const Banner = () => {
         <Grid item>
           <Image
             alt="Thiago Yasunaka Profile"
-            width={172}
-            height={172}
+            width={156}
+            height={156}
             src="/me.jpeg"
             priority
+            style={{ borderRadius: '100%' }}
           />
         </Grid>
       </Hidden>

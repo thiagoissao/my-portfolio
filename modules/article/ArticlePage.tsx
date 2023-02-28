@@ -29,17 +29,21 @@ interface ArticlePageProps {
   };
   title: string;
   description: string;
-  date: string;
+  updatedAt: string;
+  createdAt: string;
   content: string;
   slug: string;
+  coverImage: string;
 }
 
 const ArticlePage = ({
   readingTime,
   title,
   description,
-  date,
+  updatedAt,
+  createdAt,
   content,
+  coverImage,
 }: ArticlePageProps) => {
   return (
     <Container maxWidth="sm">
@@ -47,7 +51,9 @@ const ArticlePage = ({
         readingTime={readingTime}
         title={title}
         description={description}
-        date={date}
+        createdAt={createdAt}
+        updatedAt={updatedAt}
+        coverImage={coverImage}
       />
       <div dangerouslySetInnerHTML={{ __html: markdown.render(content) }} />
     </Container>

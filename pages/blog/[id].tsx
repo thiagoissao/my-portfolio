@@ -16,6 +16,7 @@ interface Props {
     updatedAt: string;
     createdAt: string;
     content: string;
+    coverImage?: string;
   };
   slug: string;
 }
@@ -31,9 +32,11 @@ const Index = ({ readingTime, frontMatter, slug }: Props) => {
         readingTime={readingTime}
         title={frontMatter.title}
         description={frontMatter.description}
-        date={frontMatter.updatedAt}
+        updatedAt={frontMatter.updatedAt}
+        createdAt={frontMatter.createdAt}
         content={frontMatter.content}
         slug={slug}
+        coverImage={frontMatter.coverImage}
       />
     </Template>
   );
@@ -51,6 +54,7 @@ export async function getStaticProps({ params }: Params) {
 
   const { content, data } = matter(response.data);
 
+  console.log(data);
   const props: Props = {
     slug: params.id,
     readingTime: readingTime(content),
@@ -60,6 +64,7 @@ export async function getStaticProps({ params }: Params) {
       createdAt: gist.createdAt,
       description: data.description,
       title: data.title,
+      coverImage: data.bannerUrl || null,
     },
   };
 
