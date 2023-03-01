@@ -1,4 +1,4 @@
-import Articles from '../modules/article/Articles';
+import Articles from '../modules/article/ArticleList';
 import { GithubGist } from '../modules/article/dtos/github-gist.dto';
 import { IArticle } from '../modules/article/interfaces/article.interface';
 import Template from '../modules/global/Template';

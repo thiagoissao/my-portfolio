@@ -1,10 +1,13 @@
 import { Box, Stack, SxProps, Typography } from '@mui/material';
+import NextLink from 'next/link';
+import useWidth from '../../hooks/useWidth';
 import { theme } from '../../styles/theme';
 import Title from '../Title';
-import ArticleItem from './Article';
+import ArticleCard from './ArticleCard';
+import ArticleItem from './ArticleItem';
 import { IArticle } from './interfaces/article.interface';
 
-type ArticlesProps = {
+type ArticleListProps = {
   articles: IArticle[];
 };
 
@@ -14,7 +17,8 @@ const sxBeta: SxProps = {
   color: '#FAFAFA',
 };
 
-const Articles = ({ articles }: ArticlesProps) => {
+const ArticleList = ({ articles }: ArticleListProps) => {
+  const width = useWidth();
   return (
     <Stack spacing={2}>
       <Stack alignItems="flex-end" direction="row" spacing={1}>
@@ -28,11 +32,21 @@ const Articles = ({ articles }: ArticlesProps) => {
       </Typography>
       <Stack spacing={1}>
         {articles.map((article: IArticle) => (
-          <ArticleItem key={article.id} article={article} />
+          <NextLink
+            key={article.id}
+            style={{ textDecoration: 'none' }}
+            href={`/blog/${article.id}`}
+          >
+            {width === 'xs' ? (
+              <ArticleCard article={article} />
+            ) : (
+              <ArticleItem article={article} />
+            )}
+          </NextLink>
         ))}
       </Stack>
     </Stack>
   );
 };
 
-export default Articles;
+export default ArticleList;

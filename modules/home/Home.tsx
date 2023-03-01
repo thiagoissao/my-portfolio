@@ -1,5 +1,5 @@
 import { Box, Divider, Stack } from '@mui/material';
-import Articles from '../article/Articles';
+import Articles from '../article/ArticleList';
 import { IArticle } from '../article/interfaces/article.interface';
 import MediumArticles from '../medium-articles/MediumArticles';
 import Aboutme from './Aboutme';
