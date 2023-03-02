@@ -30,7 +30,7 @@ const ArticleList = ({ articles }: ArticleListProps) => {
       <Typography color="textPrimary" align="justify">
         Here are some of my latest writings
       </Typography>
-      <Stack spacing={1}>
+      <Stack spacing={2}>
         {articles.map((article: IArticle) => (
           <NextLink
             key={article.id}

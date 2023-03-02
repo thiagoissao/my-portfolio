@@ -10,7 +10,7 @@ interface ArticleProps {
 
 const ArticleCard = ({ article }: ArticleProps) => {
   return (
-    <Stack spacing={1}>
+    <Stack>
       <Stack spacing={2} direction={'row'}>
         <Image
           width={72}
@@ -27,14 +27,14 @@ const ArticleCard = ({ article }: ArticleProps) => {
               style={{ borderRadius: '100%' }}
               src={article.author.picture}
             />
-            <Typography variant="body2" color="textSecondary">
+            <Typography variant="body2" color="textPrimary">
               {article.author.name}
             </Typography>
           </Stack>
 
           <Typography
-            variant="body2"
             color="textSecondary"
+            fontSize={12}
           >{`atualizado ${getBestTimeFormat(
             new Date(article.updatedAt)
           )}`}</Typography>
@@ -42,12 +42,7 @@ const ArticleCard = ({ article }: ArticleProps) => {
       </Stack>
       <Stack>
         <Typography color="textPrimary">{article.title}</Typography>
-        <Typography
-          gutterBottom
-          variant="body2"
-          color="textSecondary"
-          sx={sxDescription}
-        >
+        <Typography variant="body2" color="textSecondary" sx={sxDescription}>
           {article.description}
         </Typography>
       </Stack>

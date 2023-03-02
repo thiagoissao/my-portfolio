@@ -23,7 +23,7 @@ const Header = ({
   <Stack spacing={1}>
     <Stack>
       <Typography variant="body2" color="textSecondary">
-        Created on {format(new Date(createdAt), 'dd/MM/yyyy HH:mm')}
+        Criado em {format(new Date(createdAt), 'dd/MM/yyyy HH:mm')}
       </Typography>
       <Typography variant="body2" color="textSecondary">
         {readingTime.text}

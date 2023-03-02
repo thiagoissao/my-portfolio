@@ -1,7 +1,15 @@
 import { Container } from '@mui/material';
+import { Montserrat } from '@next/font/google';
 import hljs from 'highlight.js';
 import md from 'markdown-it';
+import { theme } from '../../styles/theme';
 import Header from './Header';
+
+// change some default config of ubuntu fonts
+const ubuntu = Montserrat({
+  weight: '400',
+  subsets: ['latin'],
+});
 
 var markdown = md({
   linkify: true,
@@ -46,7 +54,7 @@ const ArticlePage = ({
   coverImage,
 }: ArticlePageProps) => {
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="sm" disableGutters>
       <Header
         readingTime={readingTime}
         title={title}
@@ -55,7 +63,11 @@ const ArticlePage = ({
         updatedAt={updatedAt}
         coverImage={coverImage}
       />
-      <div dangerouslySetInnerHTML={{ __html: markdown.render(content) }} />
+      <div
+        style={{ color: theme.palette.text.primary }}
+        className={ubuntu.className}
+        dangerouslySetInnerHTML={{ __html: markdown.render(content) }}
+      />
     </Container>
   );
 };
