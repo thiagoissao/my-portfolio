@@ -43,7 +43,13 @@ const Template = ({ children, title, ogProperty }: Props) => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content={ogProperty.url} />
         <meta property="og:image" content={ogProperty.image} />
-        <meta property="og:description" content={ogProperty.description} />
+        <meta property="description" content={ogProperty.description} />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@ThiagoYasunaka" />
+        <meta name="twitter:title" content={ogProperty.title} />
+        <meta name="twitter:description" content={ogProperty.description} />
+        <meta name="twitter:image" content={ogProperty.image} />
       </Head>
       <AppBar variant="outlined" elevation={0} color="inherit" component="nav">
         <Toolbar>
