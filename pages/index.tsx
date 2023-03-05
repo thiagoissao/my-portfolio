@@ -12,10 +12,8 @@ const Index = ({ articles }: IndexProps) => {
     <Template
       title="Thiago Yasunaka"
       ogProperty={{
-        description: '',
-        image: '',
+        description: 'homepage',
         title: 'Thiago Yasunaka',
-        url: '',
       }}
     >
       <Home articles={articles} />
