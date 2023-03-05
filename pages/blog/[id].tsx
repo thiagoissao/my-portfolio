@@ -29,7 +29,7 @@ const Index = ({ readingTime, frontMatter, slug }: Props) => {
         description: frontMatter.description,
         image: frontMatter.coverImage,
         title: frontMatter.title,
-        url: '',
+        url: 'https://my-portfolio-git-feat-github-gist-thiagoissao.vercel.app/blog/45b3ffbac6edd8231df84dddfb95e7c8',
       }}
     >
       <NextSeo
