@@ -23,7 +23,15 @@ interface Props {
 
 const Index = ({ readingTime, frontMatter, slug }: Props) => {
   return (
-    <Template title={frontMatter.title}>
+    <Template
+      title={frontMatter.title}
+      ogProperty={{
+        description: frontMatter.description,
+        image: frontMatter.coverImage,
+        title: frontMatter.title,
+        url: '',
+      }}
+    >
       <NextSeo
         title={frontMatter.title}
         description={frontMatter.description}

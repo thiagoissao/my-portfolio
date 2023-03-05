@@ -12,6 +12,12 @@ interface Props {
   children: React.ReactNode;
   title: string;
   window?: () => Window;
+  ogProperty?: {
+    url: string;
+    image: string;
+    title: string;
+    description: string;
+  };
 }
 
 const navItems = [
@@ -25,7 +31,7 @@ const navItems = [
   },
 ];
 
-const Template = ({ children, title }: Props) => {
+const Template = ({ children, title, ogProperty }: Props) => {
   const width = useWidth();
   const route = useRouter();
 
@@ -33,7 +39,11 @@ const Template = ({ children, title }: Props) => {
     <>
       <Head>
         <title>{title}</title>
-        <meta property="og:title" content={title} key="title" />
+        <meta property="og:title" content={ogProperty.title} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={ogProperty.url} />
+        <meta property="og:image" content={ogProperty.image} />
+        <meta property="og:description" content={ogProperty.description} />
       </Head>
       <AppBar variant="outlined" elevation={0} color="inherit" component="nav">
         <Toolbar>
