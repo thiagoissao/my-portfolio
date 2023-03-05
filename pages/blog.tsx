@@ -11,7 +11,15 @@ type BlogProps = {
 
 const Blog = ({ articles, gists }: BlogProps) => {
   return (
-    <Template title="Posts">
+    <Template
+      ogProperty={{
+        description: '',
+        image: '',
+        title: 'Thiago Yasunaka',
+        url: '',
+      }}
+      title="Posts"
+    >
       <Articles articles={articles} />
     </Template>
   );

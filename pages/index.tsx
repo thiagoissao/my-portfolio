@@ -9,7 +9,15 @@ type IndexProps = {
 
 const Index = ({ articles }: IndexProps) => {
   return (
-    <Template title="Thiago Yasunaka">
+    <Template
+      title="Thiago Yasunaka"
+      ogProperty={{
+        description: '',
+        image: '',
+        title: 'Thiago Yasunaka',
+        url: '',
+      }}
+    >
       <Home articles={articles} />
     </Template>
   );
