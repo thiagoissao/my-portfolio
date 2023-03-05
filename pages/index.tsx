@@ -1,23 +1,28 @@
-import { ArticleType } from '../modules/article/interfaces/article-type.interface';
-import { BlogArticleType } from '../modules/article/interfaces/blog-article-type.interface';
+import { IArticle } from '../modules/article/interfaces/article.interface';
 import Template from '../modules/global/Template';
 import Home from '../modules/home/Home';
 import { api } from '../utils/lib';
 
 type IndexProps = {
-  articles: ArticleType[];
+  articles: IArticle[];
 };
 
 const Index = ({ articles }: IndexProps) => {
   return (
-    <Template title="Thiago Yasunaka">
+    <Template
+      title="Thiago Yasunaka"
+      ogProperty={{
+        description: 'homepage',
+        title: 'Thiago Yasunaka',
+      }}
+    >
       <Home articles={articles} />
     </Template>
   );
 };
 
 export const getStaticProps = async () => {
-  const articles: Array<BlogArticleType> = api.getAllArticles();
+  const articles = await api.getAllGists();
   return {
     props: { articles },
   };

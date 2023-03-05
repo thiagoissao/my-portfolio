@@ -2,13 +2,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { Grid, Hidden, IconButton, Stack, Typography } from '@mui/material';
 import Image from 'next/image';
-import React from 'react';
 import useWidth from '../../hooks/useWidth';
-
-const meSx: React.CSSProperties = {
-  borderRadius: 16,
-  objectFit: 'cover',
-};
 
 const Banner = () => {
   const width = useWidth();
@@ -19,11 +13,11 @@ const Banner = () => {
         <Grid item>
           <Image
             alt="Thiago Yasunaka Profile"
-            width={172}
-            height={172}
+            width={156}
+            height={156}
             src="/me.jpeg"
-            style={meSx}
             priority
+            style={{ borderRadius: '100%' }}
           />
         </Grid>
       </Hidden>
@@ -37,7 +31,6 @@ const Banner = () => {
                 width={172}
                 height={172}
                 src="/me.jpeg"
-                style={meSx}
               />
             </Grid>
           </Grid>

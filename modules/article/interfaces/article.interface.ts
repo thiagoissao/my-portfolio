@@ -1,13 +1,13 @@
 import { AuthorType } from './author-type.interface';
 
-export interface ArticleType {
-  slug: string;
+export interface IArticle {
+  id: string;
   title: string;
   description: string;
-  date: string;
+  updatedAt: string;
+  createdAt: string;
   coverImage: string;
   author: AuthorType;
-  excerpt: string;
   timeReading: {
     text: string;
   };

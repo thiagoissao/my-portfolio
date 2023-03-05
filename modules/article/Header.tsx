@@ -1,5 +1,6 @@
-import { Stack, Typography } from '@mui/material';
-import React from 'react';
+import { Box, Stack, Typography } from '@mui/material';
+import { format, getYear } from 'date-fns';
+import Image from 'next/image';
 
 interface HeaderProps {
   readingTime: {
@@ -7,14 +8,22 @@ interface HeaderProps {
   };
   title: string;
   description: string;
-  date: string;
+  createdAt: string;
+  updatedAt: string;
+  coverImage: string;
 }
 
-const Header = ({ title, description, date, readingTime }: HeaderProps) => (
+const Header = ({
+  title,
+  description,
+  createdAt,
+  readingTime,
+  coverImage,
+}: HeaderProps) => (
   <Stack spacing={1}>
     <Stack>
       <Typography variant="body2" color="textSecondary">
-        Published on {date}
+        Criado em {format(new Date(createdAt), 'dd/MM/yyyy HH:mm')}
       </Typography>
       <Typography variant="body2" color="textSecondary">
         {readingTime.text}
@@ -24,6 +33,16 @@ const Header = ({ title, description, date, readingTime }: HeaderProps) => (
       {title}
     </Typography>
     <Typography color="textSecondary">{description}</Typography>
+    {coverImage && (
+      <Stack alignItems="center">
+        <Box position="relative" width="100%" height={400}>
+          <Image fill src={coverImage} alt={title} />
+        </Box>
+        <Typography variant="body2" component="cite">
+          unsplash {getYear(new Date(createdAt))}
+        </Typography>
+      </Stack>
+    )}
   </Stack>
 );
 

@@ -1,23 +1,30 @@
-import Articles from '../modules/article/Articles';
-import { ArticleType } from '../modules/article/interfaces/article-type.interface';
-import { BlogArticleType } from '../modules/article/interfaces/blog-article-type.interface';
+import { GetStaticProps } from 'next';
+import Articles from '../modules/article/ArticleList';
+import { IArticle } from '../modules/article/interfaces/article.interface';
 import Template from '../modules/global/Template';
 import { api } from '../utils/lib';
 
 type BlogProps = {
-  articles: ArticleType[];
+  articles: IArticle[];
 };
 
 const Blog = ({ articles }: BlogProps) => {
   return (
-    <Template title="Posts">
+    <Template
+      ogProperty={{
+        description: 'Thiago Yasunaka blog posts',
+        title: 'Blog posts',
+      }}
+      title="Posts"
+    >
       <Articles articles={articles} />
     </Template>
   );
 };
 
-export const getStaticProps = async () => {
-  const articles: Array<BlogArticleType> = api.getAllArticles();
+export const getStaticProps: GetStaticProps = async () => {
+  const articles = await api.getAllGists();
+
   return {
     props: { articles },
   };

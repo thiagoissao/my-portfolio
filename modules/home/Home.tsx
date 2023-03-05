@@ -1,13 +1,13 @@
 import { Box, Divider, Stack } from '@mui/material';
-import Articles from '../article/Articles';
-import { ArticleType } from '../article/interfaces/article-type.interface';
+import Articles from '../article/ArticleList';
+import { IArticle } from '../article/interfaces/article.interface';
 import MediumArticles from '../medium-articles/MediumArticles';
 import Aboutme from './Aboutme';
 import Banner from './Banner';
 import Experiences from './Experiences';
 
 type HomeProps = {
-  articles: ArticleType[];
+  articles: IArticle[];
 };
 
 const Home = ({ articles }: HomeProps) => {
