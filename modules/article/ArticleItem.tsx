@@ -16,6 +16,7 @@ const ArticleItem = ({ article }: ArticleProps) => {
         height={164}
         src={article.coverImage}
         alt={article.description}
+        style={{ aspectRatio: '1' }}
       />
       <Stack height="100%" alignItems="space-between">
         <Stack marginBottom={1} direction="row" spacing={1} alignItems="center">

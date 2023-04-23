@@ -1,5 +1,5 @@
 import { Box, Stack, Typography } from '@mui/material';
-import { format, getYear } from 'date-fns';
+import { format } from 'date-fns';
 import Image from 'next/image';
 
 interface HeaderProps {
@@ -38,9 +38,6 @@ const Header = ({
         <Box position="relative" width="100%" height={400}>
           <Image fill src={coverImage} alt={title} />
         </Box>
-        <Typography variant="body2" component="cite">
-          unsplash {getYear(new Date(createdAt))}
-        </Typography>
       </Stack>
     )}
   </Stack>
