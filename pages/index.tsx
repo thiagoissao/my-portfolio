@@ -22,9 +22,12 @@ const Index = ({ articles }: IndexProps) => {
 };
 
 export const getStaticProps = async () => {
-  const articles = await api.getAllGists();
-  return {
-    props: { articles },
-  };
+  try {
+    const articles = await api.getAllGists();
+    return { props: { articles } };
+  } catch (err) {
+    console.warn('Failed to load gists for index:', (err as Error).message);
+    return { props: { articles: [] } };
+  }
 };
 export default Index;

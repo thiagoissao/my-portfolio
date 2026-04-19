@@ -1,0 +1,45 @@
+:root {
+  --paper: #f7f5f1;
+  --paper-2: #efece6;
+  --paper-3: #e5e1d8;
+  --ink: #141414;
+  --ink-2: #2a2a28;
+  --muted: #6e6d68;
+  --rule: #d9d5cc;
+  --rule-strong: #3a3a38;
+  --concrete: #8a8a87;
+  --concrete-dark: #4a4a47;
+  --accent: #8a5a3b;
+  --accent-2: #b8611f;
+  --title-font: 'Archivo Narrow', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+body {
+  font-family: 'Archivo', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
