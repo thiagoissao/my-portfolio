@@ -299,9 +299,15 @@ const About = () => {
 
         @media (max-width: 960px) {
           .hero {
-            grid-template-columns: 1fr 0.5fr;
-            gap: 30px;
+            grid-template-columns: 1fr;
+            gap: 24px;
             padding: 48px 24px 32px;
+            align-items: start;
+          }
+          .hero .portrait {
+            order: -1;
+            width: 100%;
+            max-width: 320px;
           }
           .body {
             grid-template-columns: 1fr;

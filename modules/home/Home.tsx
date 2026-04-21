@@ -17,12 +17,6 @@ const formatDate = (iso: string) => {
   }
 };
 
-const estimateReadMinutes = (description: string) => {
-  const words = (description || '').split(/\s+/).filter(Boolean).length;
-  const minutes = Math.max(3, Math.round(words / 180) + 3);
-  return `${minutes} min`;
-};
-
 const pad = (n: number) => String(n).padStart(3, '0');
 
 const Home = ({ articles }: HomeProps) => {
@@ -43,15 +37,21 @@ const Home = ({ articles }: HomeProps) => {
                 <NextLink key={a.id} className="tr" href={`/blog/${a.id}`}>
                   <div className="td no">{n}</div>
                   <div className="td title">
-                    <span className="t">{a.title}</span>
-                    <span className="e">{a.description}</span>
+                    <div className="title-wrap">
+                      <Image
+                        src={a.coverImage}
+                        alt={a.title}
+                        className="thumb"
+                        width={64}
+                        height={64}
+                      />
+                      <div className="text">
+                        <span className="t">{a.title}</span>
+                        <span className="e">{a.description}</span>
+                      </div>
+                    </div>
                   </div>
                   <div className="td date">{formatDate(a.createdAt)}</div>
-                  <div className="td read">
-                    {a.timeReading?.text
-                      ? a.timeReading.text.replace(' read', '')
-                      : estimateReadMinutes(a.description)}
-                  </div>
                 </NextLink>
               );
             })}
@@ -135,7 +135,7 @@ const Home = ({ articles }: HomeProps) => {
         }
         .table {
           display: grid;
-          grid-template-columns: 56px 1.2fr 140px 90px;
+          grid-template-columns: 56px 1.2fr 140px;
           font-size: 12px;
         }
         .table :global(.tr) {
@@ -156,6 +156,20 @@ const Home = ({ articles }: HomeProps) => {
         .table :global(.td.no) {
           color: var(--muted);
           font-size: 11px;
+        }
+        .table :global(.td.title .title-wrap) {
+          display: grid;
+          grid-template-columns: 64px 1fr;
+          gap: 14px;
+          align-items: center;
+        }
+        .table :global(.td.title .thumb) {
+          width: 64px;
+          height: 64px;
+          border-radius: 4px;
+          object-fit: cover;
+          border: 1px solid var(--rule);
+          background: rgba(0, 0, 0, 0.06);
         }
         .table :global(.td.title .t) {
           font-family: var(--title-font), sans-serif;
@@ -179,13 +193,6 @@ const Home = ({ articles }: HomeProps) => {
           letter-spacing: 0.08em;
           text-transform: uppercase;
           font-size: 10px;
-        }
-        .table :global(.td.read) {
-          color: var(--muted);
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-          font-size: 10px;
-          text-align: right;
         }
 
         .right :global(.avatar) {
@@ -231,8 +238,13 @@ const Home = ({ articles }: HomeProps) => {
           .table {
             grid-template-columns: 40px 1fr 90px;
           }
-          .table :global(.td.read) {
-            display: none;
+          .table :global(.td.title .title-wrap) {
+            grid-template-columns: 52px 1fr;
+            gap: 10px;
+          }
+          .table :global(.td.title .thumb) {
+            width: 52px;
+            height: 52px;
           }
         }
       `}</style>
