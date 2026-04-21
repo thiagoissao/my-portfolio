@@ -105,7 +105,7 @@ const ArticlePage = ({
         #article-page .article {
           max-width: 920px;
           margin: 0 auto;
-          padding: 48px 40px 80px;
+          padding: 20px 40px 80px;
         }
         #article-page .body {
           font-family: 'Instrument Serif', serif;
@@ -160,7 +160,7 @@ const ArticlePage = ({
         }
         #article-page .body code {
           font-family: 'IBM Plex Mono', monospace;
-          font-size: 0.92em;
+          font-size: 18px;
           background: rgba(0, 0, 0, 0.05);
           padding: 2px 6px;
         }

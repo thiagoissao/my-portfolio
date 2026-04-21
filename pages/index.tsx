@@ -2,6 +2,7 @@ import { IArticle } from '../modules/article/interfaces/article.interface';
 import Template from '../modules/global/Template';
 import Home from '../modules/home/Home';
 import { api } from '../utils/lib';
+import { FIRST_NAME, LAST_NAME } from '../utils/constants';
 
 type IndexProps = {
   articles: IArticle[];
@@ -10,10 +11,10 @@ type IndexProps = {
 const Index = ({ articles }: IndexProps) => {
   return (
     <Template
-      title="Thiago Yasunaka"
+      title={`${FIRST_NAME} ${LAST_NAME}`}
       ogProperty={{
         description: 'homepage',
-        title: 'Thiago Yasunaka',
+        title: `${FIRST_NAME} ${LAST_NAME}`,
       }}
     >
       <Home articles={articles} />
@@ -30,4 +31,5 @@ export const getStaticProps = async () => {
     return { props: { articles: [] } };
   }
 };
+
 export default Index;

@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import NextLink from 'next/link';
+import AppBar from '../global/AppBar';
 
 interface HeaderProps {
   readingTime: { text: string };
@@ -32,13 +32,14 @@ const Header = ({
 
   return (
     <>
-      <div className="top">
-        <div className="top-w">
-          <NextLink href="/" className="back">
-            Back to home
-          </NextLink>
-          <div className="crumb">WRITING{number ? ` / № ${number}` : ''}</div>
-        </div>
+      <div className="header-appbar">
+        <AppBar
+          primaryAction={{
+            href: '/',
+            label: '← Back to home',
+          }}
+          secondaryContent={`WRITING${number ? ` / № ${number}` : ''}`}
+        />
       </div>
 
       <header className="fm">
@@ -58,40 +59,18 @@ const Header = ({
       </div>
 
       <style jsx>{`
-        .top {
+        .header-appbar {
           border-bottom: 1px solid var(--rule);
+        }
+        .header-appbar :global(.app-bar) {
+          border-bottom: 0;
           padding: 16px 0;
-          font-family: 'IBM Plex Mono', monospace;
-          font-size: 11px;
-          letter-spacing: 0.14em;
-          text-transform: uppercase;
-        }
-        .top-w {
-          max-width: 1280px;
-          margin: 0 auto;
-          padding: 0 40px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-        .top :global(.back) {
-          display: inline-flex;
-          gap: 10px;
-          align-items: center;
-          color: var(--ink);
-        }
-        .top :global(.back::before) {
-          content: '←';
-          font-family: 'Archivo';
-        }
-        .crumb {
-          color: var(--muted);
         }
 
         .fm {
           max-width: 920px;
           margin: 0 auto 36px;
-          padding: 40px 40px 0;
+          padding: 40px 40px 20px;
         }
         .row-meta {
           font-family: 'IBM Plex Mono', monospace;
@@ -165,9 +144,6 @@ const Header = ({
         }
 
         @media (max-width: 780px) {
-          .top-w {
-            padding: 0 24px;
-          }
           .fm h1 {
             font-size: 36px;
           }

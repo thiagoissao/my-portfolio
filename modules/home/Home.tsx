@@ -1,6 +1,9 @@
 import { format } from 'date-fns';
+import Image from 'next/image';
 import NextLink from 'next/link';
+import { FIRST_NAME, LAST_NAME } from '../../utils/constants';
 import { IArticle } from '../article/interfaces/article.interface';
+import AppBar from '../global/AppBar';
 
 type HomeProps = {
   articles: IArticle[];
@@ -26,15 +29,14 @@ const Home = ({ articles }: HomeProps) => {
   const total = articles.length;
   return (
     <div id="tech-index">
+      <AppBar
+        primaryAction={{ href: '/', label: 'Homepage' }}
+        secondaryContent="Reading"
+      />
+
       <div className="grid">
         <main>
           <div className="table">
-            <div className="th">#</div>
-            <div className="th">Title</div>
-            <div className="th">Date</div>
-            <div className="th readH" style={{ textAlign: 'right' }}>
-              Read
-            </div>
             {articles.map((a, i) => {
               const n = pad(total - i);
               return (
@@ -57,7 +59,16 @@ const Home = ({ articles }: HomeProps) => {
         </main>
 
         <aside className="right">
-          <div className="name">THIAGO · YASUNAKA</div>
+          <Image
+            src="/me2.webp"
+            alt={`${FIRST_NAME} ${LAST_NAME}`}
+            width={120}
+            height={120}
+            className="avatar"
+          />
+          <div className="name">
+            {FIRST_NAME} · {LAST_NAME}
+          </div>
           <NextLink href="/about" className="more-info">
             <span>More Info</span>
           </NextLink>
@@ -127,16 +138,6 @@ const Home = ({ articles }: HomeProps) => {
           grid-template-columns: 56px 1.2fr 140px 90px;
           font-size: 12px;
         }
-        .table .th {
-          padding: 12px 16px;
-          border-bottom: 1px solid var(--rule-strong);
-          letter-spacing: 0.18em;
-          text-transform: uppercase;
-          color: var(--muted);
-          background: #f7f5f1;
-          position: sticky;
-          top: 0;
-        }
         .table :global(.tr) {
           display: contents;
           cursor: pointer;
@@ -187,6 +188,12 @@ const Home = ({ articles }: HomeProps) => {
           text-align: right;
         }
 
+        .right :global(.avatar) {
+          width: 120px;
+          height: 120px;
+          object-fit: cover;
+          border-radius: 4px;
+        }
         .right {
           border-left: 1px solid var(--rule);
           padding: 28px 20px;
@@ -213,18 +220,17 @@ const Home = ({ articles }: HomeProps) => {
           gap: 12px;
         }
 
-        @media (max-width: 1080px) {
+        @media (max-width: 900px) {
           .grid {
             grid-template-columns: 1fr;
           }
           .right {
+            order: -1;
             border: 0;
-            border-bottom: 1px solid var(--rule-strong);
           }
           .table {
             grid-template-columns: 40px 1fr 90px;
           }
-          .table .th.readH,
           .table :global(.td.read) {
             display: none;
           }

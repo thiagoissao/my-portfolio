@@ -1,23 +1,23 @@
 import NextLink from 'next/link';
+import { FIRST_NAME, LAST_NAME } from '../../utils/constants';
+import AppBar from '../global/AppBar';
 
 const About = () => {
   return (
     <div id="about-page">
-      <div className="top">
-        <div className="top-w">
-          <NextLink href="/">← Back to Reading</NextLink>
-          <div style={{ color: 'var(--muted)' }}>ABOUT</div>
-        </div>
-      </div>
+      <AppBar
+        primaryAction={{ href: '/', label: '← Back to Reading' }}
+        secondaryContent="ABOUT"
+      />
 
       <section className="hero">
         <div>
           <h1>
-            Thiago
+            {FIRST_NAME}
             <br />
             Issao
             <br />
-            Yasunaka.
+            {LAST_NAME}
           </h1>
         </div>
         <div className="portrait">
@@ -127,25 +127,6 @@ const About = () => {
           background: var(--paper);
           min-height: 100vh;
         }
-        .top {
-          border-bottom: 1px solid var(--rule-strong);
-          padding: 18px 0;
-          font-family: 'IBM Plex Mono', monospace;
-          font-size: 11px;
-          letter-spacing: 0.14em;
-          text-transform: uppercase;
-        }
-        .top-w {
-          max-width: 1360px;
-          margin: 0 auto;
-          padding: 0 40px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-        .top :global(a) {
-          color: var(--ink);
-        }
 
         .hero {
           max-width: 1360px;
@@ -169,7 +150,7 @@ const About = () => {
         }
         .hero .portrait {
           aspect-ratio: 1;
-          background-image: url('/me.png');
+          background-image: url('/me.webp');
           background-size: cover;
           background-position: center;
           border: 1px solid var(--rule-strong);
@@ -332,9 +313,6 @@ const About = () => {
           }
           .foot-w {
             grid-template-columns: 1fr;
-            padding: 0 24px;
-          }
-          .top-w {
             padding: 0 24px;
           }
         }

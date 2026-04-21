@@ -1,13 +1,14 @@
 import About from '../modules/about/About';
 import Template from '../modules/global/Template';
+import { FIRST_NAME, LAST_NAME } from '../utils/constants';
 
 const AboutPage = () => {
   return (
     <Template
-      title="Thiago Yasunaka"
+      title={`${FIRST_NAME} ${LAST_NAME}`}
       ogProperty={{
-        title: 'Thiago Yasunaka',
-        description: 'About Thiago Yasunaka — software engineer',
+        title: `${FIRST_NAME} ${LAST_NAME}`,
+        description: `About ${FIRST_NAME} ${LAST_NAME} — software engineer`,
       }}
     >
       <About />
