@@ -73,8 +73,8 @@ const Header = ({
           padding: 40px 40px 20px;
         }
         .row-meta {
-          font-family: 'IBM Plex Mono', monospace;
-          font-size: 11px;
+          font-family: 'Raleway', sans-serif;
+          font-size: 12px;
           letter-spacing: 0.16em;
           text-transform: uppercase;
           color: var(--muted);
@@ -114,7 +114,7 @@ const Header = ({
           color: var(--ink);
         }
         .fm .standfirst {
-          font-family: 'Instrument Serif', serif;
+          font-family: 'Raleway', sans-serif;
           font-weight: 400;
           font-size: 22px;
           line-height: 1.4;
@@ -131,7 +131,7 @@ const Header = ({
           align-items: center;
           gap: 14px;
           margin: 24px 0 28px;
-          font-family: 'IBM Plex Mono', monospace;
+          font-family: 'Raleway', sans-serif;
           font-size: 10px;
           letter-spacing: 0.2em;
           text-transform: uppercase;

@@ -108,7 +108,7 @@ const ArticlePage = ({
           padding: 20px 40px 80px;
         }
         #article-page .body {
-          font-family: 'Instrument Serif', serif;
+          font-family: 'Raleway', sans-serif;
         }
         #article-page .body p {
           font-size: 22px;
@@ -139,7 +139,7 @@ const ArticlePage = ({
           border-left: 2px solid var(--accent);
           margin: 28px 0;
           padding: 6px 0 6px 22px;
-          font-family: 'Instrument Serif', serif;
+          font-family: 'Raleway', sans-serif;
           font-size: 22px;
           line-height: 1.4;
           color: var(--ink);
@@ -150,7 +150,7 @@ const ArticlePage = ({
           background: #141414;
           color: #e9e5dc;
           padding: 18px 22px;
-          font-family: 'IBM Plex Mono', monospace;
+          font-family: 'Raleway', sans-serif;
           font-size: 13px;
           line-height: 1.6;
           margin: 22px 0;
@@ -159,7 +159,7 @@ const ArticlePage = ({
           border-radius: 0;
         }
         #article-page .body code {
-          font-family: 'IBM Plex Mono', monospace;
+          font-family: 'Raleway', sans-serif;
           font-size: 18px;
           background: rgba(0, 0, 0, 0.05);
           padding: 2px 6px;
@@ -201,7 +201,7 @@ const ArticlePage = ({
           border-bottom: 1px solid var(--rule);
         }
         #article-page .body th {
-          font-family: 'IBM Plex Mono', monospace;
+          font-family: 'Raleway', sans-serif;
           font-size: 10px;
           letter-spacing: 0.16em;
           text-transform: uppercase;
@@ -217,8 +217,8 @@ const ArticlePage = ({
           align-items: center;
           flex-wrap: wrap;
           gap: 16px;
-          font-family: 'IBM Plex Mono', monospace;
-          font-size: 11px;
+          font-family: 'Raleway', sans-serif;
+          font-size: 12px;
           letter-spacing: 0.14em;
           text-transform: uppercase;
           color: var(--muted);
@@ -272,7 +272,7 @@ const ArticlePage = ({
           transition: color 0.2s;
         }
         #article-page .related-grid .card .m {
-          font-family: 'IBM Plex Mono', monospace;
+          font-family: 'Raleway', sans-serif;
           font-size: 10px;
           letter-spacing: 0.16em;
           text-transform: uppercase;

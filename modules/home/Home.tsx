@@ -88,7 +88,7 @@ const Home = ({ articles }: HomeProps) => {
 
       <style jsx>{`
         #tech-index {
-          font-family: 'IBM Plex Mono', monospace;
+          font-family: 'Raleway', sans-serif;
           color: var(--ink);
           background: var(--paper);
           font-size: 13px;
@@ -124,7 +124,7 @@ const Home = ({ articles }: HomeProps) => {
           text-transform: uppercase;
           transition: color 0.2s;
           width: fit-content;
-          margin-top: -12px;
+          margin-top: -14px;
         }
         .right :global(.more-info:hover) {
           color: var(--ink);
@@ -136,7 +136,7 @@ const Home = ({ articles }: HomeProps) => {
         .table {
           display: grid;
           grid-template-columns: 56px 1.2fr 140px;
-          font-size: 12px;
+          font-size: 14px;
         }
         .table :global(.tr) {
           display: contents;
@@ -155,7 +155,7 @@ const Home = ({ articles }: HomeProps) => {
         }
         .table :global(.td.no) {
           color: var(--muted);
-          font-size: 11px;
+          font-size: 14px;
         }
         .table :global(.td.title .title-wrap) {
           display: grid;
@@ -184,7 +184,7 @@ const Home = ({ articles }: HomeProps) => {
         }
         .table :global(.td.title .e) {
           color: var(--muted);
-          font-size: 11px;
+          font-size: 14px;
           letter-spacing: 0;
           text-transform: none;
         }
@@ -207,13 +207,13 @@ const Home = ({ articles }: HomeProps) => {
           display: flex;
           flex-direction: column;
           gap: 28px;
-          font-size: 11px;
+          font-size: 14px;
         }
         .right :global(h5) {
           margin: 0 0 10px;
           font-family: 'Archivo Narrow', sans-serif;
           font-weight: 700;
-          font-size: 11px;
+          font-size: 14px;
           letter-spacing: 0.18em;
           text-transform: uppercase;
           padding-bottom: 8px;
@@ -224,7 +224,7 @@ const Home = ({ articles }: HomeProps) => {
           border-bottom: 1px dashed var(--rule);
           display: flex;
           justify-content: space-between;
-          gap: 12px;
+          gap: 14px;
         }
 
         @media (max-width: 900px) {
