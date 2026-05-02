@@ -31,3 +31,5 @@ yarn-error.log*
 
 # typescript incremental build cache
 tsconfig.tsbuildinfo
+
+docs
