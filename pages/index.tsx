@@ -1,3 +1,4 @@
+import { useIntl } from 'react-intl';
 import { IArticle } from '../modules/article/interfaces/article.interface';
 import Template from '../modules/global/Template';
 import Home from '../modules/home/Home';
@@ -9,12 +10,14 @@ type IndexProps = {
 };
 
 const Index = ({ articles }: IndexProps) => {
+  const intl = useIntl();
+  const fullName = `${FIRST_NAME} ${LAST_NAME}`;
   return (
     <Template
-      title={`${FIRST_NAME} ${LAST_NAME}`}
+      title={fullName}
       ogProperty={{
-        description: 'homepage',
-        title: `${FIRST_NAME} ${LAST_NAME}`,
+        description: intl.formatMessage({ id: 'meta.home.description' }),
+        title: fullName,
       }}
     >
       <Home articles={articles} />

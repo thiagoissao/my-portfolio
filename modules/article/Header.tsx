@@ -1,4 +1,6 @@
 import { format } from 'date-fns';
+import { FormattedMessage } from 'react-intl';
+import { useDateFnsLocale } from '../../lib/i18n';
 import AppBar from '../global/AppBar';
 
 interface HeaderProps {
@@ -11,6 +13,12 @@ interface HeaderProps {
   number?: string;
 }
 
+const parseMinutes = (text: string | undefined): number => {
+  if (!text) return 0;
+  const match = text.match(/(\d+)/);
+  return match ? Number(match[1]) : 0;
+};
+
 const Header = ({
   title,
   description,
@@ -18,17 +26,17 @@ const Header = ({
   readingTime,
   number,
 }: HeaderProps) => {
+  const dfLocale = useDateFnsLocale();
+
   const dateLabel = (() => {
     try {
-      return format(new Date(createdAt), 'MMM dd, yyyy');
+      return format(new Date(createdAt), 'PP', { locale: dfLocale });
     } catch {
       return '';
     }
   })();
 
-  const readLabel = readingTime?.text
-    ? readingTime.text.replace(' read', '')
-    : '';
+  const minutes = parseMinutes(readingTime?.text);
 
   return (
     <>
@@ -36,9 +44,18 @@ const Header = ({
         <AppBar
           primaryAction={{
             href: '/',
-            label: '← Back to home',
+            label: <FormattedMessage id="appBar.articleBackToHome" />,
           }}
-          secondaryContent={`WRITING${number ? ` / № ${number}` : ''}`}
+          secondaryContent={
+            number ? (
+              <FormattedMessage
+                id="appBar.section.writingWithNumber"
+                values={{ number }}
+              />
+            ) : (
+              <FormattedMessage id="appBar.section.writing" />
+            )
+          }
         />
       </div>
 
@@ -46,16 +63,26 @@ const Header = ({
         <div className="row-meta">
           <span>{dateLabel}</span>
           <span className="sep" />
-          <span>{readLabel} read</span>
+          <span>
+            <FormattedMessage
+              id="article.readSuffix"
+              values={{ minutes }}
+            />
+          </span>
         </div>
         <h1>{title}</h1>
         {description && <p className="standfirst">{description}</p>}
       </header>
 
       <div className="divider">
-        <span>Begin</span>
+        <span><FormattedMessage id="article.beginLabel" /></span>
         <span className="line" />
-        <span>{readLabel}</span>
+        <span>
+          <FormattedMessage
+            id="article.readSuffix"
+            values={{ minutes }}
+          />
+        </span>
       </div>
 
       <style jsx>{`
@@ -116,8 +143,8 @@ const Header = ({
         .fm .standfirst {
           font-family: 'Raleway', sans-serif;
           font-weight: 400;
-          font-size: 22px;
-          line-height: 1.4;
+          font-size: 20px;
+          line-height: 1.6;
           color: var(--ink-2);
           margin: 0;
           max-width: 62ch;
@@ -132,7 +159,7 @@ const Header = ({
           gap: 14px;
           margin: 24px 0 28px;
           font-family: 'Raleway', sans-serif;
-          font-size: 10px;
+          font-size: 12px;
           letter-spacing: 0.2em;
           text-transform: uppercase;
           color: var(--muted);

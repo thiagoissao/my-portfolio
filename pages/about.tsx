@@ -1,14 +1,20 @@
+import { useIntl } from 'react-intl';
 import About from '../modules/about/About';
 import Template from '../modules/global/Template';
 import { FIRST_NAME, LAST_NAME } from '../utils/constants';
 
 const AboutPage = () => {
+  const intl = useIntl();
+  const fullName = `${FIRST_NAME} ${LAST_NAME}`;
   return (
     <Template
-      title={`${FIRST_NAME} ${LAST_NAME}`}
+      title={fullName}
       ogProperty={{
-        title: `${FIRST_NAME} ${LAST_NAME}`,
-        description: `About ${FIRST_NAME} ${LAST_NAME} — software engineer`,
+        title: fullName,
+        description: intl.formatMessage(
+          { id: 'meta.about.description' },
+          { first: FIRST_NAME, last: LAST_NAME },
+        ),
       }}
     >
       <About />

@@ -1,4 +1,5 @@
 import NextLink from 'next/link';
+import { FormattedMessage } from 'react-intl';
 import { FIRST_NAME, LAST_NAME } from '../../utils/constants';
 import AppBar from '../global/AppBar';
 
@@ -6,8 +7,11 @@ const About = () => {
   return (
     <div id="about-page">
       <AppBar
-        primaryAction={{ href: '/', label: '← Back to Reading' }}
-        secondaryContent="ABOUT"
+        primaryAction={{
+          href: '/',
+          label: <FormattedMessage id="appBar.aboutBackToReading" />,
+        }}
+        secondaryContent={<FormattedMessage id="appBar.section.about" />}
       />
 
       <section className="hero">
@@ -21,72 +25,107 @@ const About = () => {
           </h1>
         </div>
         <div className="portrait">
-          <div className="cap">Brazil · 2026</div>
+          <div className="cap">
+            <FormattedMessage id="about.hero.caption" />
+          </div>
         </div>
       </section>
 
       <section className="body">
         <aside className="side">
           <div className="b">
-            <span className="k">Based</span>
-            <span className="v">Paraná, BR</span>
+            <span className="k">
+              <FormattedMessage id="about.side.based.label" />
+            </span>
+            <span className="v">
+              <FormattedMessage id="about.side.based.value" />
+            </span>
           </div>
           <div className="b">
-            <span className="k">Role</span>
-            <span className="v">Software Engineer</span>
+            <span className="k">
+              <FormattedMessage id="about.side.role.label" />
+            </span>
+            <span className="v">
+              <FormattedMessage id="about.side.role.value" />
+            </span>
           </div>
           <div className="b">
-            <span className="k">Company</span>
-            <span className="v">teceo</span>
+            <span className="k">
+              <FormattedMessage id="about.side.company.label" />
+            </span>
+            <span className="v">
+              <FormattedMessage id="about.side.company.value" />
+            </span>
           </div>
           <div className="b">
-            <span className="k">Education</span>
-            <span className="v">B.Sc. UEM</span>
+            <span className="k">
+              <FormattedMessage id="about.side.education.label" />
+            </span>
+            <span className="v">
+              <FormattedMessage id="about.side.education.value" />
+            </span>
           </div>
           <div className="b">
-            <span className="k">Languages</span>
-            <span className="v">PT · EN</span>
+            <span className="k">
+              <FormattedMessage id="about.side.languages.label" />
+            </span>
+            <span className="v">
+              <FormattedMessage id="about.side.languages.value" />
+            </span>
           </div>
           <div className="b">
-            <span className="k">Nationality</span>
-            <span className="v">Brazilian</span>
+            <span className="k">
+              <FormattedMessage id="about.side.nationality.label" />
+            </span>
+            <span className="v">
+              <FormattedMessage id="about.side.nationality.value" />
+            </span>
           </div>
         </aside>
 
         <div className="prose">
           <p className="lead">
-            I’m a software engineer from Brazil — building product software by
-            day and writing about software and sports.
+            <FormattedMessage id="about.prose.lead" />
           </p>
           <p>
-            Computer Scientist from Universidade Estadual de Maringá. I&rsquo;ve
-            spent the last years shipping web products — mostly with NodeJS,
-            PostgreSQL, React, Redis, RabbitMQ, and now MCP Protocol.
+            <FormattedMessage id="about.prose.bio1" />
           </p>
           <p>
-            When I&rsquo;m not working I&rsquo;m usually running, playing
-            soccer, or reading something about architecture, biographies, or AI.
-            This site collects the writing that comes out of all of that.
+            <FormattedMessage id="about.prose.bio2" />
           </p>
 
-          <h3>What I work on</h3>
+          <h3>
+            <FormattedMessage id="about.prose.workTitle" />
+          </h3>
           <p>
-            Currently at{' '}
-            <a href="https://www.teceo.co/" target="_blank" rel="noreferrer">
-              teceo
-            </a>
-            , leading technical initiatives as a tech lead — driving high-impact
-            product deliveries and shaping software and database architectures
-            that continuously evolve the product, its scalability, and
-            reliability.
+            <FormattedMessage
+              id="about.prose.work"
+              values={{
+                a: chunks => (
+                  <a
+                    href="https://www.teceo.co/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {chunks}
+                  </a>
+                ),
+              }}
+            />
           </p>
 
-          <h3>How to reach me</h3>
-          <p>Linkedin is best for anything substantial.</p>
+          <h3>
+            <FormattedMessage id="about.prose.reachTitle" />
+          </h3>
+          <p>
+            <FormattedMessage id="about.prose.reach" />
+          </p>
         </div>
 
         <aside className="right">
-          <h4>Elsewhere</h4>
+          <h4>
+            <FormattedMessage id="about.right.elsewhere" />
+          </h4>
           <a
             href="https://www.linkedin.com/in/thiago-yasunaka-389a69155/"
             target="_blank"
@@ -112,9 +151,13 @@ const About = () => {
 
       <footer className="foot">
         <div className="foot-w">
-          <h3>Go read something</h3>
+          <h3>
+            <FormattedMessage id="about.foot.title" />
+          </h3>
           <NextLink href="/" className="cta">
-            <span>Back to home</span>
+            <span>
+              <FormattedMessage id="about.foot.cta" />
+            </span>
             <span>→</span>
           </NextLink>
         </div>
@@ -163,7 +206,7 @@ const About = () => {
           left: 12px;
           color: var(--paper);
           font-family: 'Raleway', sans-serif;
-          font-size: 10px;
+          font-size: 12px;
           letter-spacing: 0.18em;
           text-transform: uppercase;
           background: rgba(20, 20, 20, 0.6);
@@ -273,7 +316,7 @@ const About = () => {
           font-family: var(--title-font), sans-serif;
           font-weight: 600;
           font-size: clamp(44px, 6vw, 80px);
-          line-height: 1;
+          line-height: 1.2;
           letter-spacing: -0.01em;
           margin: 0;
           text-transform: uppercase;

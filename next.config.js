@@ -1,4 +1,10 @@
 module.exports = {
+  i18n: {
+    // Values must match Locale enum in lib/i18n/locales.ts
+    locales: ['pt-BR', 'en-US'],
+    defaultLocale: 'pt-BR',
+    localeDetection: true,
+  },
   images: {
     remotePatterns: [
       {

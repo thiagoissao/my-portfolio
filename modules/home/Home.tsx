@@ -1,6 +1,7 @@
 import { format } from 'date-fns';
 import Image from 'next/image';
 import NextLink from 'next/link';
+import { FormattedMessage } from 'react-intl';
 import { FIRST_NAME, LAST_NAME } from '../../utils/constants';
 import { IArticle } from '../article/interfaces/article.interface';
 import AppBar from '../global/AppBar';
@@ -24,8 +25,11 @@ const Home = ({ articles }: HomeProps) => {
   return (
     <div id="tech-index">
       <AppBar
-        primaryAction={{ href: '/', label: 'Homepage' }}
-        secondaryContent="Reading"
+        primaryAction={{
+          href: '/',
+          label: <FormattedMessage id="appBar.home.label" />,
+        }}
+        secondaryContent={<FormattedMessage id="appBar.section.reading" />}
       />
 
       <div className="grid">
@@ -70,17 +74,17 @@ const Home = ({ articles }: HomeProps) => {
             {FIRST_NAME} · {LAST_NAME}
           </div>
           <NextLink href="/about" className="more-info">
-            <span>More Info</span>
+            <span><FormattedMessage id="home.aside.moreInfo" /></span>
           </NextLink>
           <div>
-            <h5>Status</h5>
+            <h5><FormattedMessage id="home.aside.statusTitle" /></h5>
             <div className="item">
-              <span className="k">Location</span>
-              <span className="v">Paraná, BR</span>
+              <span className="k"><FormattedMessage id="home.aside.location.label" /></span>
+              <span className="v"><FormattedMessage id="home.aside.location.value" /></span>
             </div>
             <div className="item">
-              <span className="k">Now</span>
-              <span className="v">Software Engineer</span>
+              <span className="k"><FormattedMessage id="home.aside.now.label" /></span>
+              <span className="v"><FormattedMessage id="home.aside.now.value" /></span>
             </div>
           </div>
         </aside>
@@ -119,7 +123,7 @@ const Home = ({ articles }: HomeProps) => {
         .right :global(.more-info) {
           color: var(--muted);
           text-decoration: none;
-          font-size: 10px;
+          font-size: 12px;
           letter-spacing: 0.1em;
           text-transform: uppercase;
           transition: color 0.2s;
@@ -161,7 +165,7 @@ const Home = ({ articles }: HomeProps) => {
           display: grid;
           grid-template-columns: 64px 1fr;
           gap: 14px;
-          align-items: center;
+          align-items: start;
         }
         .table :global(.td.title .thumb) {
           width: 64px;
@@ -192,7 +196,7 @@ const Home = ({ articles }: HomeProps) => {
           color: var(--ink);
           letter-spacing: 0.08em;
           text-transform: uppercase;
-          font-size: 10px;
+          font-size: 12px;
         }
 
         .right :global(.avatar) {
@@ -210,7 +214,7 @@ const Home = ({ articles }: HomeProps) => {
           font-size: 14px;
         }
         .right :global(h5) {
-          margin: 0 0 10px;
+          margin: 0 0 12px;
           font-family: 'Archivo Narrow', sans-serif;
           font-weight: 700;
           font-size: 14px;
@@ -240,7 +244,7 @@ const Home = ({ articles }: HomeProps) => {
           }
           .table :global(.td.title .title-wrap) {
             grid-template-columns: 52px 1fr;
-            gap: 10px;
+            gap: 12px;
           }
           .table :global(.td.title .thumb) {
             width: 52px;

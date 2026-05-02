@@ -2,6 +2,9 @@ import { format } from 'date-fns';
 import hljs from 'highlight.js';
 import md from 'markdown-it';
 import NextLink from 'next/link';
+import { FormattedMessage } from 'react-intl';
+import { Locale } from '../../lib/i18n/locales';
+import { useActiveLocale, useDateFnsLocale } from '../../lib/i18n';
 import Header from './Header';
 
 const markdown = md({
@@ -42,6 +45,11 @@ interface ArticlePageProps {
   related?: Related[];
 }
 
+const RELATED_DATE_FORMAT: Record<Locale, string> = {
+  [Locale.PT_BR]: "d 'de' MMM",
+  [Locale.EN_US]: 'MMM d',
+};
+
 const ArticlePage = ({
   readingTime,
   title,
@@ -53,6 +61,10 @@ const ArticlePage = ({
   number,
   related = [],
 }: ArticlePageProps) => {
+  const activeLocale = useActiveLocale();
+  const dfLocale = useDateFnsLocale();
+  const relatedFormat = RELATED_DATE_FORMAT[activeLocale];
+
   return (
     <div id="article-page">
       <Header
@@ -72,21 +84,26 @@ const ArticlePage = ({
         />
 
         <div className="end">
-          <span>End · Thanks for reading</span>
+          <span><FormattedMessage id="article.endThanks" /></span>
           <div className="links">
-            <NextLink href="/">Back to home</NextLink>
+            <NextLink href="/">
+              <FormattedMessage id="article.backHome" />
+            </NextLink>
           </div>
         </div>
       </article>
 
       {related.length > 0 && (
         <section className="related">
-          <h4>Keep reading</h4>
+          <h4><FormattedMessage id="article.keepReading" /></h4>
           <div className="related-grid">
             {related.map(r => (
               <NextLink key={r.id} href={`/blog/${r.id}`} className="card">
                 <div className="m">
-                  № {r.number} · {format(new Date(r.createdAt), 'MMM dd')}
+                  № {r.number} ·{' '}
+                  {format(new Date(r.createdAt), relatedFormat, {
+                    locale: dfLocale,
+                  })}
                 </div>
                 <div className="t">{r.title}</div>
               </NextLink>
@@ -111,7 +128,7 @@ const ArticlePage = ({
           font-family: 'Raleway', sans-serif;
         }
         #article-page .body p {
-          font-size: 22px;
+          font-size: 20px;
           line-height: 1.6;
           margin: 0 0 22px;
           color: var(--ink);
@@ -132,7 +149,7 @@ const ArticlePage = ({
           margin: 48px 0 18px;
         }
         #article-page .body h3 {
-          font-size: 22px;
+          font-size: 20px;
           margin: 36px 0 14px;
         }
         #article-page .body blockquote {
@@ -140,8 +157,8 @@ const ArticlePage = ({
           margin: 28px 0;
           padding: 6px 0 6px 22px;
           font-family: 'Raleway', sans-serif;
-          font-size: 22px;
-          line-height: 1.4;
+          font-size: 20px;
+          line-height: 1.6;
           color: var(--ink);
           max-width: 60ch;
         }
@@ -202,7 +219,7 @@ const ArticlePage = ({
         }
         #article-page .body th {
           font-family: 'Raleway', sans-serif;
-          font-size: 10px;
+          font-size: 12px;
           letter-spacing: 0.16em;
           text-transform: uppercase;
           color: var(--muted);
@@ -273,7 +290,7 @@ const ArticlePage = ({
         }
         #article-page .related-grid .card .m {
           font-family: 'Raleway', sans-serif;
-          font-size: 10px;
+          font-size: 12px;
           letter-spacing: 0.16em;
           text-transform: uppercase;
           color: var(--muted);
@@ -281,7 +298,7 @@ const ArticlePage = ({
 
         @media (max-width: 780px) {
           #article-page .article {
-            padding: 28px 24px 60px;
+            padding: 28px 40px 60px;
           }
           #article-page .related-grid {
             grid-template-columns: 1fr;
