@@ -1,6 +1,7 @@
 import { IntlProvider } from 'react-intl';
 import { useRouter } from 'next/router';
 import { Archivo, Archivo_Narrow, Raleway } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 import 'highlight.js/styles/nord.css';
 import '../styles/globals.css';
 import { Locale, DEFAULT_LOCALE } from '../lib/i18n/locales';
@@ -42,6 +43,7 @@ function MyApp({ Component, pageProps }) {
         }
       `}</style>
       <Component {...pageProps} />
+      <Analytics />
     </IntlProvider>
   );
 }
