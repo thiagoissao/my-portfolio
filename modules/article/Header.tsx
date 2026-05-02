@@ -1,4 +1,5 @@
 import { format } from 'date-fns';
+import Image from 'next/image';
 import { FormattedMessage } from 'react-intl';
 import { useDateFnsLocale } from '../../lib/i18n';
 import AppBar from '../global/AppBar';
@@ -24,6 +25,7 @@ const Header = ({
   description,
   createdAt,
   readingTime,
+  coverImage,
   number,
 }: HeaderProps) => {
   const dfLocale = useDateFnsLocale();
@@ -72,6 +74,19 @@ const Header = ({
         </div>
         <h1>{title}</h1>
         {description && <p className="standfirst">{description}</p>}
+        {coverImage && (
+          <div className="cover-wrap">
+            <Image
+              src={coverImage}
+              alt={title}
+              width={1200}
+              height={1200}
+              sizes="(max-width: 920px) 100vw, 840px"
+              className="cover"
+              priority
+            />
+          </div>
+        )}
       </header>
 
       <div className="divider">
@@ -148,6 +163,20 @@ const Header = ({
           color: var(--ink-2);
           margin: 0;
           max-width: 62ch;
+        }
+        .fm .cover-wrap {
+          margin-top: 28px;
+          border: 1px solid var(--rule);
+          border-radius: 4px;
+          overflow: hidden;
+          background: rgba(0, 0, 0, 0.04);
+        }
+        .fm :global(.cover) {
+          display: block;
+          width: 100%;
+          height: auto;
+          aspect-ratio: 1 / 1;
+          object-fit: cover;
         }
 
         .divider {

@@ -46,8 +46,9 @@ const Home = ({ articles }: HomeProps) => {
                         src={a.coverImage}
                         alt={a.title}
                         className="thumb"
-                        width={64}
-                        height={64}
+                        width={1000}
+                        height={1000}
+                        sizes="(max-width: 600px) 100vw, 64px"
                       />
                       <div className="text">
                         <span className="t">{a.title}</span>
@@ -249,6 +250,58 @@ const Home = ({ articles }: HomeProps) => {
           .table :global(.td.title .thumb) {
             width: 52px;
             height: 52px;
+          }
+        }
+
+        @media (max-width: 600px) {
+          .table {
+            display: block;
+          }
+          .table :global(.tr) {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            grid-template-areas:
+              'no . date'
+              'title title title'
+              'thumb thumb thumb'
+              'desc desc desc';
+            column-gap: 12px;
+            row-gap: 10px;
+            padding: 14px 12px;
+            border-bottom: 1px solid var(--rule);
+          }
+          .table :global(.td) {
+            padding: 0;
+            border-bottom: 0;
+          }
+          .table :global(.td.no) {
+            grid-area: no;
+          }
+          .table :global(.td.date) {
+            grid-area: date;
+            text-align: right;
+          }
+          .table :global(.td.title),
+          .table :global(.td.title .title-wrap),
+          .table :global(.td.title .text) {
+            display: contents;
+          }
+          .table :global(.td.title .thumb) {
+            grid-area: thumb;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1 / 1;
+          }
+          .table :global(.td.title .t) {
+            grid-area: title;
+            font-size: 18px;
+          }
+          .table :global(.td.title .e) {
+            grid-area: desc;
+            font-size: 13px;
+          }
+          .table :global(.tr:hover) {
+            background: rgba(0, 0, 0, 0.035);
           }
         }
       `}</style>

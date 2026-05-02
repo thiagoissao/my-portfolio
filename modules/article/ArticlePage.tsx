@@ -188,6 +188,7 @@ const ArticlePage = ({
           margin: 0 0 22px;
           color: var(--ink);
           max-width: 68ch;
+          text-align: justify;
         }
         #article-page .body h1,
         #article-page .body h2,
