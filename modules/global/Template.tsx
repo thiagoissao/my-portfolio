@@ -24,9 +24,13 @@ const Template = ({ children, title, ogProperty }: Props) => {
         <title>{title}</title>
         {ogProperty && (
           <>
+            <meta name="description" content={ogProperty.description} />
             <meta property="og:title" content={ogProperty.title} />
             <meta property="og:type" content="website" />
-            <meta property="description" content={ogProperty.description} />
+            <meta
+              property="og:description"
+              content={ogProperty.description}
+            />
           </>
         )}
         <meta property="og:locale" content={ogLocale} />
