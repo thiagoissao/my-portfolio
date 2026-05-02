@@ -19,6 +19,11 @@ module.exports = {
         hostname: 'avatars.githubusercontent.com',
         port: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'free-images.com',
+        port: '',
+      },
     ],
   },
   async headers() {
