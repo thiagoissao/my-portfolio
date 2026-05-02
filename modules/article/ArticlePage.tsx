@@ -169,7 +169,7 @@ const ArticlePage = ({
 
       <style jsx global>{`
         #article-page {
-          font-family: 'Archivo', sans-serif;
+          font-family: var(--prose-font), sans-serif;
           color: var(--ink);
           background: var(--paper);
           min-height: 100vh;
@@ -180,7 +180,7 @@ const ArticlePage = ({
           padding: 20px 40px 80px;
         }
         #article-page .body {
-          font-family: 'Raleway', sans-serif;
+          font-family: var(--body-font), sans-serif;
         }
         #article-page .body p {
           font-size: 20px;
@@ -212,7 +212,7 @@ const ArticlePage = ({
           border-left: 2px solid var(--accent);
           margin: 28px 0;
           padding: 6px 0 6px 22px;
-          font-family: 'Raleway', sans-serif;
+          font-family: var(--body-font), sans-serif;
           font-size: 20px;
           line-height: 1.6;
           color: var(--ink);
@@ -326,7 +326,7 @@ const ArticlePage = ({
           border-bottom: 1px solid var(--rule);
         }
         #article-page .body th {
-          font-family: 'Raleway', sans-serif;
+          font-family: var(--body-font), sans-serif;
           font-size: 12px;
           letter-spacing: 0.16em;
           text-transform: uppercase;
@@ -342,7 +342,7 @@ const ArticlePage = ({
           align-items: center;
           flex-wrap: wrap;
           gap: 16px;
-          font-family: 'Raleway', sans-serif;
+          font-family: var(--body-font), sans-serif;
           font-size: 12px;
           letter-spacing: 0.14em;
           text-transform: uppercase;
@@ -397,7 +397,7 @@ const ArticlePage = ({
           transition: color 0.2s;
         }
         #article-page .related-grid .card .m {
-          font-family: 'Raleway', sans-serif;
+          font-family: var(--body-font), sans-serif;
           font-size: 12px;
           letter-spacing: 0.16em;
           text-transform: uppercase;

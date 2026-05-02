@@ -115,7 +115,7 @@ const Header = ({
           padding: 40px 40px 20px;
         }
         .row-meta {
-          font-family: 'Raleway', sans-serif;
+          font-family: var(--body-font), sans-serif;
           font-size: 12px;
           letter-spacing: 0.16em;
           text-transform: uppercase;
@@ -156,7 +156,7 @@ const Header = ({
           color: var(--ink);
         }
         .fm .standfirst {
-          font-family: 'Raleway', sans-serif;
+          font-family: var(--body-font), sans-serif;
           font-weight: 400;
           font-size: 20px;
           line-height: 1.6;
@@ -187,7 +187,7 @@ const Header = ({
           align-items: center;
           gap: 14px;
           margin: 24px 0 28px;
-          font-family: 'Raleway', sans-serif;
+          font-family: var(--body-font), sans-serif;
           font-size: 12px;
           letter-spacing: 0.2em;
           text-transform: uppercase;

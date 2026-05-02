@@ -6,7 +6,9 @@
   --rule: #d1d5db;
   --rule-strong: #2c3036;
   --accent: #0284c7;
-  --title-font: 'Archivo Narrow', sans-serif;
+  --title-font: var(--font-archivo-narrow);
+  --body-font: var(--font-raleway);
+  --prose-font: var(--font-archivo);
 }
 
 * {
@@ -22,7 +24,7 @@ body {
 }
 
 body {
-  font-family: 'Archivo', system-ui, sans-serif;
+  font-family: var(--prose-font), system-ui, sans-serif;
   font-size: 15px;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;

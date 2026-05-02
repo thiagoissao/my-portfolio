@@ -1,6 +1,5 @@
 import axios from 'axios';
 import matter from 'gray-matter';
-import { NextSeo } from 'next-seo';
 import readingTime from 'reading-time';
 import ArticlePage from '../../modules/article/ArticlePage';
 import Template from '../../modules/global/Template';
@@ -39,10 +38,6 @@ const Index = ({ readingTime, frontMatter, slug, number, related }: Props) => {
         title: frontMatter.title,
       }}
     >
-      <NextSeo
-        title={frontMatter.title}
-        description={frontMatter.description}
-      />
       <ArticlePage
         readingTime={readingTime}
         title={frontMatter.title}

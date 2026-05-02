@@ -1,20 +1,25 @@
-import Document, { Head, Html, Main, NextScript } from 'next/document';
+import Document, {
+  DocumentContext,
+  Head,
+  Html,
+  Main,
+  NextScript,
+} from 'next/document';
 
-export default class MyDocument extends Document {
+interface MyDocumentProps {
+  locale: string;
+}
+
+export default class MyDocument extends Document<MyDocumentProps> {
+  static async getInitialProps(ctx: DocumentContext) {
+    const initialProps = await Document.getInitialProps(ctx);
+    return { ...initialProps, locale: ctx.locale ?? 'pt-BR' };
+  }
+
   render() {
     return (
-      <Html lang="en">
+      <Html lang={this.props.locale}>
         <Head>
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossOrigin="anonymous"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;600;700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Archivo:wght@400;500;600;700;800;900&display=swap"
-            rel="stylesheet"
-          />
           <link rel="shortcut icon" href="/logo.svg" />
         </Head>
         <body>

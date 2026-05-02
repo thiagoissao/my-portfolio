@@ -25,7 +25,7 @@ const AppBar = ({ primaryAction, secondaryContent }: AppBarProps) => {
         .app-bar {
           border-bottom: 1px solid var(--rule-strong);
           padding: 18px 0;
-          font-family: 'Raleway', sans-serif;
+          font-family: var(--body-font), sans-serif;
           font-size: 12px;
           letter-spacing: 0.14em;
           text-transform: uppercase;

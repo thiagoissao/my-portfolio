@@ -165,7 +165,7 @@ const About = () => {
 
       <style jsx>{`
         #about-page {
-          font-family: 'Raleway', sans-serif;
+          font-family: var(--body-font), sans-serif;
           color: var(--ink);
           background: var(--paper);
           min-height: 100vh;
@@ -205,7 +205,7 @@ const About = () => {
           bottom: 12px;
           left: 12px;
           color: var(--paper);
-          font-family: 'Raleway', sans-serif;
+          font-family: var(--body-font), sans-serif;
           font-size: 12px;
           letter-spacing: 0.18em;
           text-transform: uppercase;
@@ -224,7 +224,7 @@ const About = () => {
           align-items: start;
         }
         .body .side {
-          font-family: 'Raleway', sans-serif;
+          font-family: var(--body-font), sans-serif;
           font-size: 12px;
           position: sticky;
           top: 24px;
@@ -255,7 +255,7 @@ const About = () => {
           margin: 0 0 20px;
         }
         .body .prose :global(p.lead) {
-          font-family: 'Raleway', sans-serif;
+          font-family: var(--body-font), sans-serif;
           font-size: 26px;
           line-height: 1.4;
           color: var(--ink);
@@ -291,7 +291,7 @@ const About = () => {
           justify-content: space-between;
           padding: 10px 0;
           border-bottom: 1px dashed var(--rule);
-          font-family: 'Raleway', sans-serif;
+          font-family: var(--body-font), sans-serif;
           font-size: 12px;
           letter-spacing: 0.1em;
           text-transform: uppercase;
@@ -322,7 +322,7 @@ const About = () => {
           text-transform: uppercase;
         }
         .foot :global(.cta) {
-          font-family: 'Raleway', sans-serif;
+          font-family: var(--body-font), sans-serif;
           font-size: 13px;
           letter-spacing: 0.16em;
           text-transform: uppercase;

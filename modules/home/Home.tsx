@@ -38,7 +38,12 @@ const Home = ({ articles }: HomeProps) => {
             {articles.map((a, i) => {
               const n = pad(total - i);
               return (
-                <NextLink key={a.id} className="tr" href={`/blog/${a.id}`}>
+                <NextLink
+                  key={a.id}
+                  className="tr"
+                  href={`/blog/${a.id}`}
+                  aria-label={a.title}
+                >
                   <div className="td no">{n}</div>
                   <div className="td title">
                     <div className="title-wrap">
@@ -70,11 +75,17 @@ const Home = ({ articles }: HomeProps) => {
             width={120}
             height={120}
             className="avatar"
+            priority
+            sizes="120px"
           />
           <div className="name">
             {FIRST_NAME} · {LAST_NAME}
           </div>
-          <NextLink href="/about" className="more-info">
+          <NextLink
+            href="/about"
+            className="more-info"
+            aria-label={`About ${FIRST_NAME} ${LAST_NAME}`}
+          >
             <span><FormattedMessage id="home.aside.moreInfo" /></span>
           </NextLink>
           <div>
@@ -93,7 +104,7 @@ const Home = ({ articles }: HomeProps) => {
 
       <style jsx>{`
         #tech-index {
-          font-family: 'Raleway', sans-serif;
+          font-family: var(--body-font), sans-serif;
           color: var(--ink);
           background: var(--paper);
           font-size: 13px;
@@ -115,7 +126,7 @@ const Home = ({ articles }: HomeProps) => {
           border-right: 1px solid var(--rule);
         }
         .name {
-          font-family: 'Archivo Narrow', sans-serif;
+          font-family: var(--title-font), sans-serif;
           font-weight: 700;
           letter-spacing: 0.15em;
           text-transform: uppercase;
@@ -216,7 +227,7 @@ const Home = ({ articles }: HomeProps) => {
         }
         .right :global(h5) {
           margin: 0 0 12px;
-          font-family: 'Archivo Narrow', sans-serif;
+          font-family: var(--title-font), sans-serif;
           font-weight: 700;
           font-size: 14px;
           letter-spacing: 0.18em;
