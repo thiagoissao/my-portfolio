@@ -36,6 +36,8 @@ const Index = ({ readingTime, frontMatter, slug, number, related }: Props) => {
       ogProperty={{
         description: frontMatter.description,
         title: frontMatter.title,
+        image: frontMatter.coverImage,
+        type: 'article',
       }}
     >
       <ArticlePage
