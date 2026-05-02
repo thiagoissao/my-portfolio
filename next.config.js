@@ -1,5 +1,12 @@
 module.exports = {
+  i18n: {
+    // Values must match Locale enum in lib/i18n/locales.ts
+    locales: ['pt-BR', 'en-US'],
+    defaultLocale: 'pt-BR',
+  },
   images: {
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 31536000,
     remotePatterns: [
       {
         protocol: 'https',
@@ -14,9 +21,21 @@ module.exports = {
       },
     ],
   },
-  experimental: {
-    fontLoaders: [
-      { loader: 'next/font/google', options: { subsets: ['latin'] } },
-    ],
+  async headers() {
+    const oneYearImmutable = 'public, max-age=31536000, immutable';
+    return [
+      {
+        source: '/_next/static/:path*',
+        headers: [{ key: 'Cache-Control', value: oneYearImmutable }],
+      },
+      {
+        source: '/_next/image',
+        headers: [{ key: 'Cache-Control', value: oneYearImmutable }],
+      },
+      {
+        source: '/:path*.(svg|webp|avif|jpg|jpeg|png|gif|ico|woff|woff2)',
+        headers: [{ key: 'Cache-Control', value: oneYearImmutable }],
+      },
+    ];
   },
 };

@@ -1,0 +1,42 @@
+:root {
+  --paper: #f4f5f7;
+  --ink: #0d0f12;
+  --ink-2: #1c1f24;
+  --muted: #6b7280;
+  --rule: #d1d5db;
+  --rule-strong: #2c3036;
+  --accent: #0284c7;
+  --title-font: var(--font-archivo-narrow);
+  --body-font: var(--font-raleway);
+  --prose-font: var(--font-archivo);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+body {
+  font-family: var(--prose-font), system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}

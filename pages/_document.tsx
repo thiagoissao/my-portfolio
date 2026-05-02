@@ -1,23 +1,26 @@
-import { ServerStyleSheets } from '@mui/styles';
-import Document, { Head, Html, Main, NextScript } from 'next/document';
-import React from 'react';
+import Document, {
+  DocumentContext,
+  Head,
+  Html,
+  Main,
+  NextScript,
+} from 'next/document';
 
-export default class MyDocument extends Document {
+interface MyDocumentProps {
+  locale: string;
+}
+
+export default class MyDocument extends Document<MyDocumentProps> {
+  static async getInitialProps(ctx: DocumentContext) {
+    const initialProps = await Document.getInitialProps(ctx);
+    return { ...initialProps, locale: ctx.locale ?? 'pt-BR' };
+  }
+
   render() {
     return (
-      <Html lang="pt-br">
+      <Html lang={this.props.locale}>
         <Head>
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossOrigin="true"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
-            rel="stylesheet"
-          />
-          <link rel="shortcut icon" href="/me.jpeg" />
+          <link rel="shortcut icon" href="/logo.svg" />
         </Head>
         <body>
           <Main />
@@ -27,24 +30,3 @@ export default class MyDocument extends Document {
     );
   }
 }
-
-MyDocument.getInitialProps = async ctx => {
-  const sheets = new ServerStyleSheets();
-  const originalRenderPage = ctx.renderPage;
-
-  ctx.renderPage = () =>
-    originalRenderPage({
-      enhanceApp: App => props => sheets.collect(<App {...props} />),
-    });
-
-  const initialProps = await Document.getInitialProps(ctx);
-
-  return {
-    ...initialProps,
-    // Styles fragment is rendered after the app and page rendering finish.
-    styles: [
-      ...React.Children.toArray(initialProps.styles),
-      sheets.getStyleElement(),
-    ],
-  };
-};
