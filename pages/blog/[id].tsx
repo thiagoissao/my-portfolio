@@ -99,10 +99,17 @@ export async function getStaticProps({ params }: Params) {
   return { props };
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths({ locales }: { locales?: string[] }) {
   const gists = await api.getAllGists();
+  const localesToBuild = locales ?? [];
+  const paths = gists.flatMap(gist =>
+    localesToBuild.map(locale => ({
+      params: { id: gist.id },
+      locale,
+    })),
+  );
   return {
-    paths: gists.map(gist => ({ params: { id: gist.id } })),
+    paths,
     fallback: false,
   };
 }

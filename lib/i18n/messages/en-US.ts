@@ -61,6 +61,8 @@ const enUS: Messages = {
   'article.backHome': 'Back to home',
   'article.keepReading': 'Keep reading',
   'article.readSuffix': '{minutes} min read',
+  'article.copyCode': 'Copy',
+  'article.codeCopied': 'Copied',
 
   // SEO / meta descriptions
   'meta.home.description': 'homepage',

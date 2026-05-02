@@ -2,28 +2,20 @@ import { format } from 'date-fns';
 import hljs from 'highlight.js';
 import md from 'markdown-it';
 import NextLink from 'next/link';
-import { FormattedMessage } from 'react-intl';
-import { Locale } from '../../lib/i18n/locales';
+import { useEffect, useMemo, useRef } from 'react';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { useActiveLocale, useDateFnsLocale } from '../../lib/i18n';
+import { Locale } from '../../lib/i18n/locales';
 import Header from './Header';
 
-const markdown = md({
-  linkify: true,
-  html: true,
-  highlight: function (str, lang) {
-    const slang = lang.split('--')[0];
-    if (slang && hljs.getLanguage(slang)) {
-      try {
-        return (
-          '<pre class="highlight-tab-tab"><code>' +
-          hljs.highlight(str, { language: lang }).value +
-          '</code></pre>'
-        );
-      } catch (__) {}
-    }
-    return '';
-  },
-}).use(require('markdown-it-lazy-headers'));
+const escapeAttr = (s: string) =>
+  s.replace(
+    /[&<>"']/g,
+    c =>
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[
+        c
+      ] as string
+  );
 
 interface Related {
   id: string;
@@ -61,9 +53,67 @@ const ArticlePage = ({
   number,
   related = [],
 }: ArticlePageProps) => {
+  const intl = useIntl();
   const activeLocale = useActiveLocale();
   const dfLocale = useDateFnsLocale();
   const relatedFormat = RELATED_DATE_FORMAT[activeLocale];
+
+  const copyLabel = intl.formatMessage({ id: 'article.copyCode' });
+  const copiedLabel = intl.formatMessage({ id: 'article.codeCopied' });
+
+  const markdown = useMemo(() => {
+    const instance = md({
+      linkify: true,
+      html: true,
+      highlight: (str: string, lang: string) => {
+        const slang = lang.split('--')[0];
+        if (slang && hljs.getLanguage(slang)) {
+          try {
+            return (
+              '<div class="code-block">' +
+              `<button class="copy-btn" type="button" aria-label="${escapeAttr(copyLabel)}" data-copy-label="${escapeAttr(copyLabel)}" data-copied-label="${escapeAttr(copiedLabel)}">${escapeAttr(copyLabel)}</button>` +
+              '<pre class="highlight-tab-tab"><code>' +
+              hljs.highlight(str, { language: lang }).value +
+              '</code></pre>' +
+              '</div>'
+            );
+          } catch (__) {}
+        }
+        return '';
+      },
+    });
+    instance.use(require('markdown-it-lazy-headers'));
+    return instance;
+  }, [copyLabel, copiedLabel]);
+
+  const bodyRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const node = bodyRef.current;
+    if (!node) return;
+    const onClick = async (e: Event) => {
+      const target = e.target as Element | null;
+      const btn = target?.closest?.('.copy-btn') as HTMLButtonElement | null;
+      if (!btn || !node.contains(btn)) return;
+      const pre = btn.parentElement?.querySelector('pre');
+      const text = pre?.textContent ?? '';
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch {
+        return;
+      }
+      const original = btn.dataset.copyLabel ?? '';
+      const copied = btn.dataset.copiedLabel ?? '';
+      btn.textContent = copied;
+      btn.classList.add('copied');
+      window.setTimeout(() => {
+        btn.textContent = original;
+        btn.classList.remove('copied');
+      }, 1500);
+    };
+    node.addEventListener('click', onClick);
+    return () => node.removeEventListener('click', onClick);
+  }, []);
 
   return (
     <div id="article-page">
@@ -79,12 +129,15 @@ const ArticlePage = ({
 
       <article className="article">
         <div
+          ref={bodyRef}
           className="body"
           dangerouslySetInnerHTML={{ __html: markdown.render(content) }}
         />
 
         <div className="end">
-          <span><FormattedMessage id="article.endThanks" /></span>
+          <span>
+            <FormattedMessage id="article.endThanks" />
+          </span>
           <div className="links">
             <NextLink href="/">
               <FormattedMessage id="article.backHome" />
@@ -95,7 +148,9 @@ const ArticlePage = ({
 
       {related.length > 0 && (
         <section className="related">
-          <h4><FormattedMessage id="article.keepReading" /></h4>
+          <h4>
+            <FormattedMessage id="article.keepReading" />
+          </h4>
           <div className="related-grid">
             {related.map(r => (
               <NextLink key={r.id} href={`/blog/${r.id}`} className="card">
@@ -162,28 +217,80 @@ const ArticlePage = ({
           color: var(--ink);
           max-width: 60ch;
         }
+        #article-page .body .code-block {
+          position: relative;
+        }
         #article-page .body pre,
         #article-page .body pre.highlight-tab-tab {
-          background: #141414;
-          color: #e9e5dc;
-          padding: 18px 22px;
-          font-family: 'Raleway', sans-serif;
-          font-size: 13px;
+          background: #2e343f;
+          color: #d8dee9;
+          padding: 16px;
+          font-family:
+            Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+          font-size: 14px;
           line-height: 1.6;
           margin: 22px 0;
           overflow: auto;
-          border-left: 3px solid var(--accent);
-          border-radius: 0;
+          border-radius: 8px;
+        }
+        #article-page .body .code-block pre,
+        #article-page .body .code-block pre.highlight-tab-tab {
+          margin: 0;
+        }
+        #article-page .body .copy-btn {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          opacity: 0;
+          transition:
+            opacity 0.15s ease,
+            background 0.15s ease;
+          font-family:
+            Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+          font-size: 11px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          padding: 5px 10px;
+          background: rgba(76, 86, 106, 0.6);
+          color: #d8dee9;
+          border: 1px solid rgba(216, 222, 233, 0.2);
+          border-radius: 4px;
+          cursor: pointer;
+        }
+        #article-page .body .code-block:hover .copy-btn,
+        #article-page .body .copy-btn:focus-visible {
+          opacity: 1;
+        }
+        #article-page .body .copy-btn:hover {
+          background: rgba(94, 129, 172, 0.7);
+          border-color: rgba(216, 222, 233, 0.4);
+        }
+        #article-page .body .copy-btn.copied {
+          opacity: 1;
+          background: rgba(163, 190, 140, 0.45);
+          border-color: rgba(163, 190, 140, 0.7);
+        }
+
+        @media (hover: none) {
+          #article-page .body .copy-btn {
+            opacity: 1;
+          }
+          #article-page .body .copy-btn:active {
+            background: rgba(94, 129, 172, 0.7);
+            border-color: rgba(216, 222, 233, 0.4);
+          }
         }
         #article-page .body code {
-          font-family: 'Raleway', sans-serif;
-          font-size: 18px;
+          font-family:
+            Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+          font-size: 16px;
           background: rgba(0, 0, 0, 0.05);
           padding: 2px 6px;
         }
         #article-page .body pre code {
           background: transparent;
           padding: 0;
+          font-size: 14px;
         }
         #article-page .body a {
           color: var(--ink);

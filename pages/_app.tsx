@@ -1,6 +1,6 @@
 import { IntlProvider } from 'react-intl';
 import { useRouter } from 'next/router';
-import 'highlight.js/styles/base16/edge-dark.css';
+import 'highlight.js/styles/nord.css';
 import '../styles/globals.css';
 import { Locale, DEFAULT_LOCALE } from '../lib/i18n/locales';
 import { getMessages } from '../lib/i18n';

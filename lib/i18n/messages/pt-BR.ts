@@ -60,6 +60,8 @@ const ptBR = {
   'article.backHome': 'Voltar para home',
   'article.keepReading': 'Continue lendo',
   'article.readSuffix': '{minutes} min de leitura',
+  'article.copyCode': 'Copiar',
+  'article.codeCopied': 'Copiado',
 
   // SEO / meta descriptions
   'meta.home.description': 'página inicial',
