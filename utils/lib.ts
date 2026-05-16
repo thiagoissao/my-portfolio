@@ -7,6 +7,7 @@ import {
   GithubGistHeader,
 } from '../modules/article/dtos/github-gist.dto';
 import { IArticle } from '../modules/article/interfaces/article.interface';
+import { normalizeImageSrc } from './images';
 
 const formatGistToArticle = (gist: GithubGist): IArticle => {
   const content = gist.files[0].raw_url;
@@ -39,7 +40,7 @@ const formatWithMatter = async (article: IArticle): Promise<IArticle> => {
     ...article,
     title: header.title,
     description: header.description,
-    coverImage: header.bannerUrl,
+    coverImage: normalizeImageSrc(header.bannerUrl),
   };
 };
 

@@ -3,6 +3,7 @@ import matter from 'gray-matter';
 import readingTime from 'reading-time';
 import ArticlePage from '../../modules/article/ArticlePage';
 import Template from '../../modules/global/Template';
+import { normalizeImageSrc } from '../../utils/images';
 import { api } from '../../utils/lib';
 
 interface Related {
@@ -87,7 +88,7 @@ export async function getStaticProps({ params }: Params) {
       createdAt: gist.createdAt,
       description: data.description || '',
       title: data.title,
-      coverImage: data.bannerUrl || null,
+      coverImage: normalizeImageSrc(data.bannerUrl) || null,
     },
     number,
     related,

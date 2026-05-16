@@ -86,17 +86,29 @@ const Home = ({ articles }: HomeProps) => {
             className="more-info"
             aria-label={`About ${FIRST_NAME} ${LAST_NAME}`}
           >
-            <span><FormattedMessage id="home.aside.moreInfo" /></span>
+            <span>
+              <FormattedMessage id="home.aside.moreInfo" />
+            </span>
           </NextLink>
           <div>
-            <h5><FormattedMessage id="home.aside.statusTitle" /></h5>
+            <h5>
+              <FormattedMessage id="home.aside.statusTitle" />
+            </h5>
             <div className="item">
-              <span className="k"><FormattedMessage id="home.aside.location.label" /></span>
-              <span className="v"><FormattedMessage id="home.aside.location.value" /></span>
+              <span className="k">
+                <FormattedMessage id="home.aside.location.label" />
+              </span>
+              <span className="v">
+                <FormattedMessage id="home.aside.location.value" />
+              </span>
             </div>
             <div className="item">
-              <span className="k"><FormattedMessage id="home.aside.now.label" /></span>
-              <span className="v"><FormattedMessage id="home.aside.now.value" /></span>
+              <span className="k">
+                <FormattedMessage id="home.aside.now.label" />
+              </span>
+              <span className="v">
+                <FormattedMessage id="home.aside.now.value" />
+              </span>
             </div>
           </div>
         </aside>
@@ -175,13 +187,13 @@ const Home = ({ articles }: HomeProps) => {
         }
         .table :global(.td.title .title-wrap) {
           display: grid;
-          grid-template-columns: 64px 1fr;
+          grid-template-columns: 96px 1fr;
           gap: 14px;
           align-items: start;
         }
         .table :global(.td.title .thumb) {
-          width: 64px;
-          height: 64px;
+          width: 96px;
+          height: 96px;
           border-radius: 4px;
           object-fit: cover;
           border: 1px solid var(--rule);
@@ -255,12 +267,12 @@ const Home = ({ articles }: HomeProps) => {
             grid-template-columns: 40px 1fr 90px;
           }
           .table :global(.td.title .title-wrap) {
-            grid-template-columns: 52px 1fr;
+            grid-template-columns: 72px 1fr;
             gap: 12px;
           }
           .table :global(.td.title .thumb) {
-            width: 52px;
-            height: 52px;
+            width: 72px;
+            height: 72px;
           }
         }
 
@@ -299,9 +311,9 @@ const Home = ({ articles }: HomeProps) => {
           }
           .table :global(.td.title .thumb) {
             grid-area: thumb;
-            width: 100%;
-            height: auto;
-            aspect-ratio: 1 / 1;
+            width: 200px;
+            height: 200px;
+            justify-self: start;
           }
           .table :global(.td.title .t) {
             grid-area: title;

@@ -66,10 +66,7 @@ const Header = ({
           <span>{dateLabel}</span>
           <span className="sep" />
           <span>
-            <FormattedMessage
-              id="article.readSuffix"
-              values={{ minutes }}
-            />
+            <FormattedMessage id="article.readSuffix" values={{ minutes }} />
           </span>
         </div>
         <h1>{title}</h1>
@@ -81,7 +78,7 @@ const Header = ({
               alt={title}
               width={1200}
               height={1200}
-              sizes="(max-width: 920px) 100vw, 840px"
+              sizes="(max-width: 920px) 50vw, 420px"
               className="cover"
               priority
             />
@@ -90,13 +87,12 @@ const Header = ({
       </header>
 
       <div className="divider">
-        <span><FormattedMessage id="article.beginLabel" /></span>
+        <span>
+          <FormattedMessage id="article.beginLabel" />
+        </span>
         <span className="line" />
         <span>
-          <FormattedMessage
-            id="article.readSuffix"
-            values={{ minutes }}
-          />
+          <FormattedMessage id="article.readSuffix" values={{ minutes }} />
         </span>
       </div>
 
@@ -170,6 +166,8 @@ const Header = ({
           border-radius: 4px;
           overflow: hidden;
           background: rgba(0, 0, 0, 0.04);
+          width: 40%;
+          aspect-ratio: 1 / 1;
         }
         .fm :global(.cover) {
           display: block;
@@ -205,6 +203,9 @@ const Header = ({
           }
           .fm .standfirst {
             font-size: 19px;
+          }
+          .fm .cover-wrap {
+            width: 80%;
           }
         }
       `}</style>

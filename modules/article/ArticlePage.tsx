@@ -6,6 +6,7 @@ import { useEffect, useMemo, useRef } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useActiveLocale, useDateFnsLocale } from '../../lib/i18n';
 import { Locale } from '../../lib/i18n/locales';
+import { normalizeImageSrc } from '../../utils/images';
 import Header from './Header';
 
 const escapeAttr = (s: string) =>
@@ -83,6 +84,17 @@ const ArticlePage = ({
       },
     });
     instance.use(require('markdown-it-lazy-headers'));
+
+    const defaultImage = instance.renderer.rules.image!;
+    instance.renderer.rules.image = (tokens, idx, opts, env, self) => {
+      const token = tokens[idx];
+      const srcIndex = token.attrIndex('src');
+      if (srcIndex >= 0 && token.attrs) {
+        token.attrs[srcIndex][1] = normalizeImageSrc(token.attrs[srcIndex][1]);
+      }
+      return defaultImage(tokens, idx, opts, env, self);
+    };
+
     return instance;
   }, [copyLabel, copiedLabel]);
 

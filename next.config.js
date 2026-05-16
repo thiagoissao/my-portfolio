@@ -24,6 +24,11 @@ module.exports = {
         hostname: 'free-images.com',
         port: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+        port: '',
+      },
     ],
   },
   async headers() {
