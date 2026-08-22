@@ -1,12 +1,9 @@
-import { format } from 'date-fns';
 import hljs from 'highlight.js';
 import md from 'markdown-it';
-import NextLink from 'next/link';
 import { useEffect, useMemo, useRef } from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
-import { useActiveLocale, useDateFnsLocale } from '../../lib/i18n';
-import { Locale } from '../../lib/i18n/locales';
+import { useIntl } from 'react-intl';
 import { normalizeImageSrc } from '../../utils/images';
+import Layout from '../global/Layout';
 import Header from './Header';
 
 const escapeAttr = (s: string) =>
@@ -18,46 +15,22 @@ const escapeAttr = (s: string) =>
       ] as string
   );
 
-interface Related {
-  id: string;
-  title: string;
-  createdAt: string;
-  number: string;
-}
-
 interface ArticlePageProps {
   readingTime: { text: string };
   title: string;
-  description: string;
-  updatedAt: string;
   createdAt: string;
   content: string;
-  slug: string;
   coverImage: string;
-  number?: string;
-  related?: Related[];
 }
-
-const RELATED_DATE_FORMAT: Record<Locale, string> = {
-  [Locale.PT_BR]: "d 'de' MMM",
-  [Locale.EN_US]: 'MMM d',
-};
 
 const ArticlePage = ({
   readingTime,
   title,
-  description,
-  updatedAt,
   createdAt,
   content,
   coverImage,
-  number,
-  related = [],
 }: ArticlePageProps) => {
   const intl = useIntl();
-  const activeLocale = useActiveLocale();
-  const dfLocale = useDateFnsLocale();
-  const relatedFormat = RELATED_DATE_FORMAT[activeLocale];
 
   const copyLabel = intl.formatMessage({ id: 'article.copyCode' });
   const copiedLabel = intl.formatMessage({ id: 'article.codeCopied' });
@@ -128,129 +101,54 @@ const ArticlePage = ({
   }, []);
 
   return (
-    <div id="article-page">
-      <Header
-        readingTime={readingTime}
-        title={title}
-        description={description}
-        createdAt={createdAt}
-        updatedAt={updatedAt}
-        coverImage={coverImage}
-        number={number}
-      />
-
+    <Layout>
       <article className="article">
-        <div
-          ref={bodyRef}
-          className="body"
-          dangerouslySetInnerHTML={{ __html: markdown.render(content) }}
+        <Header
+          readingTime={readingTime}
+          title={title}
+          createdAt={createdAt}
+          coverImage={coverImage}
         />
 
-        <div className="end">
-          <span>
-            <FormattedMessage id="article.endThanks" />
-          </span>
-          <div className="links">
-            <NextLink href="/">
-              <FormattedMessage id="article.backHome" />
-            </NextLink>
-          </div>
-        </div>
+        <div
+          ref={bodyRef}
+          className="prose rise"
+          dangerouslySetInnerHTML={{ __html: markdown.render(content) }}
+        />
       </article>
 
-      {related.length > 0 && (
-        <section className="related">
-          <h4>
-            <FormattedMessage id="article.keepReading" />
-          </h4>
-          <div className="related-grid">
-            {related.map(r => (
-              <NextLink key={r.id} href={`/blog/${r.id}`} className="card">
-                <div className="m">
-                  № {r.number} ·{' '}
-                  {format(new Date(r.createdAt), relatedFormat, {
-                    locale: dfLocale,
-                  })}
-                </div>
-                <div className="t">{r.title}</div>
-              </NextLink>
-            ))}
-          </div>
-        </section>
-      )}
-
+      {/* markdown-only rules — the shared prose typography lives in globals.css */}
       <style jsx global>{`
-        #article-page {
-          font-family: var(--prose-font), sans-serif;
-          color: var(--ink);
-          background: var(--paper);
-          min-height: 100vh;
+        .prose img {
+          display: block;
+          width: 100%;
+          height: auto;
+          margin: 36px 0;
         }
-        #article-page .article {
-          max-width: 920px;
-          margin: 0 auto;
-          padding: 20px 40px 80px;
-        }
-        #article-page .body {
-          font-family: var(--body-font), sans-serif;
-        }
-        #article-page .body p {
-          font-size: 20px;
-          line-height: 1.6;
-          margin: 0 0 22px;
-          color: var(--ink);
-          max-width: 68ch;
-          text-align: justify;
-        }
-        #article-page .body h1,
-        #article-page .body h2,
-        #article-page .body h3,
-        #article-page .body h4 {
-          font-family: var(--title-font), sans-serif;
-          font-weight: 600;
-          letter-spacing: -0.005em;
-          text-transform: uppercase;
-          color: var(--ink);
-        }
-        #article-page .body h2 {
-          font-size: 30px;
-          margin: 48px 0 18px;
-        }
-        #article-page .body h3 {
-          font-size: 20px;
-          margin: 36px 0 14px;
-        }
-        #article-page .body blockquote {
-          border-left: 2px solid var(--accent);
-          margin: 28px 0;
-          padding: 6px 0 6px 22px;
-          font-family: var(--body-font), sans-serif;
-          font-size: 20px;
-          line-height: 1.6;
-          color: var(--ink);
-          max-width: 60ch;
-        }
-        #article-page .body .code-block {
+        .prose .code-block {
           position: relative;
         }
-        #article-page .body pre,
-        #article-page .body pre.highlight-tab-tab {
-          background: #2e343f;
+        .prose pre,
+        .prose pre.highlight-tab-tab {
+          background: #2e3440;
           color: #d8dee9;
           padding: 16px;
-          font-family:
-            Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-          font-size: 14px;
+          font-family: var(--mono-font), ui-monospace, monospace;
+          font-size: 13px;
           line-height: 1.6;
-          margin: 22px 0;
+          margin: 32px 0;
           overflow: auto;
-          border-radius: 8px;
+          border-radius: 6px;
         }
-        #article-page .body .code-block pre,
-        #article-page .body .code-block pre.highlight-tab-tab {
+        .prose .code-block pre,
+        .prose .code-block pre.highlight-tab-tab {
           margin: 0;
         }
-        #article-page .body .copy-btn {
+        .prose pre code {
+          color: inherit;
+          font-size: 13px;
+        }
+        .prose .copy-btn {
           position: absolute;
           top: 10px;
           right: 10px;
@@ -258,177 +156,63 @@ const ArticlePage = ({
           transition:
             opacity 0.15s ease,
             background 0.15s ease;
-          font-family:
-            Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-          font-size: 11px;
-          letter-spacing: 0.08em;
+          font-family: var(--mono-font), ui-monospace, monospace;
+          font-size: 10px;
+          letter-spacing: 0.1em;
           text-transform: uppercase;
           padding: 5px 10px;
           background: rgba(76, 86, 106, 0.6);
           color: #d8dee9;
           border: 1px solid rgba(216, 222, 233, 0.2);
-          border-radius: 4px;
+          border-radius: 999px;
           cursor: pointer;
         }
-        #article-page .body .code-block:hover .copy-btn,
-        #article-page .body .copy-btn:focus-visible {
+        .prose .code-block:hover .copy-btn,
+        .prose .copy-btn:focus-visible {
           opacity: 1;
         }
-        #article-page .body .copy-btn:hover {
+        .prose .copy-btn:hover {
           background: rgba(94, 129, 172, 0.7);
           border-color: rgba(216, 222, 233, 0.4);
         }
-        #article-page .body .copy-btn.copied {
+        .prose .copy-btn.copied {
           opacity: 1;
           background: rgba(163, 190, 140, 0.45);
           border-color: rgba(163, 190, 140, 0.7);
         }
 
         @media (hover: none) {
-          #article-page .body .copy-btn {
+          .prose .copy-btn {
             opacity: 1;
           }
-          #article-page .body .copy-btn:active {
+          .prose .copy-btn:active {
             background: rgba(94, 129, 172, 0.7);
             border-color: rgba(216, 222, 233, 0.4);
           }
         }
-        #article-page .body code {
-          font-family:
-            Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-          font-size: 16px;
-          background: rgba(0, 0, 0, 0.05);
-          padding: 2px 6px;
-        }
-        #article-page .body pre code {
-          background: transparent;
-          padding: 0;
-          font-size: 14px;
-        }
-        #article-page .body a {
-          color: var(--ink);
-          border-bottom: 1px solid var(--accent);
-        }
-        #article-page .body img {
-          max-width: 100%;
-          margin: 28px 0;
-          border: 1px solid var(--rule);
-        }
-        #article-page .body ul,
-        #article-page .body ol {
-          padding-left: 20px;
-          margin: 0 0 22px;
-          max-width: 68ch;
-        }
-        #article-page .body li {
-          font-size: 18px;
-          line-height: 1.65;
-          margin: 0 0 8px;
-        }
-        #article-page .body table {
+        .prose table {
           border-collapse: collapse;
           width: 100%;
-          margin: 24px 0;
-          font-size: 14px;
+          margin: 32px 0;
+          font-size: 14.5px;
         }
-        #article-page .body th,
-        #article-page .body td {
-          padding: 10px 14px;
+        .prose th,
+        .prose td {
+          padding: 10px 12px;
           text-align: left;
-          border-bottom: 1px solid var(--rule);
+          border-bottom: 1px solid var(--hair);
         }
-        #article-page .body th {
-          font-family: var(--body-font), sans-serif;
-          font-size: 12px;
-          letter-spacing: 0.16em;
+        .prose th {
+          font-family: var(--mono-font), ui-monospace, monospace;
+          font-size: 10.5px;
+          letter-spacing: 0.1em;
           text-transform: uppercase;
           color: var(--muted);
-          border-bottom-color: var(--rule-strong);
-        }
-        #article-page .end {
-          margin-top: 48px;
-          padding-top: 24px;
-          border-top: 1px solid var(--rule);
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          flex-wrap: wrap;
-          gap: 16px;
-          font-family: var(--body-font), sans-serif;
-          font-size: 12px;
-          letter-spacing: 0.14em;
-          text-transform: uppercase;
-          color: var(--muted);
-        }
-        #article-page .end .links {
-          display: flex;
-          gap: 18px;
-        }
-        #article-page .end .links a {
-          color: var(--ink);
-          border-bottom: 1px solid var(--ink);
-          padding-bottom: 1px;
-        }
-
-        #article-page .related {
-          border-top: 1px solid var(--rule-strong);
-          padding: 48px 40px;
-          max-width: 1280px;
-          margin: 0 auto;
-        }
-        #article-page .related h4 {
-          font-family: var(--title-font), sans-serif;
-          font-weight: 600;
-          font-size: 28px;
-          margin: 0 0 22px;
-          text-transform: uppercase;
-          letter-spacing: -0.005em;
-        }
-        #article-page .related-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
-          gap: 24px;
-        }
-        #article-page .related-grid .card {
-          border-top: 2px solid var(--ink);
-          padding-top: 14px;
-          transition: background 0.2s;
-        }
-        #article-page .related-grid .card:hover {
-          background: rgba(0, 0, 0, 0.03);
-        }
-        #article-page .related-grid .card:hover .t {
-          color: var(--accent);
-        }
-        #article-page .related-grid .card .t {
-          font-family: var(--title-font), sans-serif;
-          font-weight: 500;
-          font-size: 20px;
-          line-height: 1.1;
-          margin: 6px 0;
-          transition: color 0.2s;
-        }
-        #article-page .related-grid .card .m {
-          font-family: var(--body-font), sans-serif;
-          font-size: 12px;
-          letter-spacing: 0.16em;
-          text-transform: uppercase;
-          color: var(--muted);
-        }
-
-        @media (max-width: 780px) {
-          #article-page .article {
-            padding: 28px 40px 60px;
-          }
-          #article-page .related-grid {
-            grid-template-columns: 1fr;
-          }
-          #article-page .related {
-            padding: 36px 24px;
-          }
+          font-weight: 400;
+          border-bottom-color: var(--faint);
         }
       `}</style>
-    </div>
+    </Layout>
   );
 };
 

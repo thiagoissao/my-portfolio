@@ -1,27 +1,21 @@
 import { IntlProvider } from 'react-intl';
 import { useRouter } from 'next/router';
-import { Archivo, Archivo_Narrow, Raleway } from 'next/font/google';
+import { Hanken_Grotesk, IBM_Plex_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import 'highlight.js/styles/nord.css';
 import '../styles/globals.css';
 import { Locale, DEFAULT_LOCALE } from '../lib/i18n/locales';
 import { getMessages } from '../lib/i18n';
 
-const raleway = Raleway({
+const hankenGrotesk = Hanken_Grotesk({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['300', '400', '500', '600'],
   display: 'swap',
 });
 
-const archivoNarrow = Archivo_Narrow({
+const ibmPlexMono = IBM_Plex_Mono({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  display: 'swap',
-});
-
-const archivo = Archivo({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800', '900'],
+  weight: ['400'],
   display: 'swap',
 });
 
@@ -37,9 +31,8 @@ function MyApp({ Component, pageProps }) {
     >
       <style jsx global>{`
         :root {
-          --font-raleway: ${raleway.style.fontFamily};
-          --font-archivo-narrow: ${archivoNarrow.style.fontFamily};
-          --font-archivo: ${archivo.style.fontFamily};
+          --font-hanken-grotesk: ${hankenGrotesk.style.fontFamily};
+          --font-ibm-plex-mono: ${ibmPlexMono.style.fontFamily};
         }
       `}</style>
       <Component {...pageProps} />

@@ -6,13 +6,6 @@ import Template from '../../modules/global/Template';
 import { normalizeImageSrc } from '../../utils/images';
 import { api } from '../../utils/lib';
 
-interface Related {
-  id: string;
-  title: string;
-  createdAt: string;
-  number: string;
-}
-
 interface Props {
   readingTime: { text: string };
   frontMatter: {
@@ -24,13 +17,9 @@ interface Props {
     coverImage?: string;
   };
   slug: string;
-  number: string;
-  related: Related[];
 }
 
-const pad = (n: number) => String(n).padStart(3, '0');
-
-const Index = ({ readingTime, frontMatter, slug, number, related }: Props) => {
+const Index = ({ readingTime, frontMatter }: Props) => {
   return (
     <Template
       title={frontMatter.title}
@@ -44,14 +33,9 @@ const Index = ({ readingTime, frontMatter, slug, number, related }: Props) => {
       <ArticlePage
         readingTime={readingTime}
         title={frontMatter.title}
-        description={frontMatter.description}
-        updatedAt={frontMatter.updatedAt}
         createdAt={frontMatter.createdAt}
         content={frontMatter.content}
-        slug={slug}
         coverImage={frontMatter.coverImage}
-        number={number}
-        related={related}
       />
     </Template>
   );
@@ -60,21 +44,6 @@ const Index = ({ readingTime, frontMatter, slug, number, related }: Props) => {
 type Params = { params: { id: string } };
 
 export async function getStaticProps({ params }: Params) {
-  const articles = await api.getAllGists();
-  const total = articles.length;
-  const index = articles.findIndex(a => a.id === params.id);
-  const number = pad(total - index);
-
-  const related: Related[] = articles
-    .filter(a => a.id !== params.id)
-    .slice(0, 3)
-    .map(a => ({
-      id: a.id,
-      title: a.title,
-      createdAt: a.createdAt,
-      number: pad(total - articles.findIndex(x => x.id === a.id)),
-    }));
-
   const gist = await api.getGistById(params.id);
   const response = await axios.get<string>(gist.content);
   const { content, data } = matter(response.data);
@@ -90,8 +59,6 @@ export async function getStaticProps({ params }: Params) {
       title: data.title,
       coverImage: normalizeImageSrc(data.bannerUrl) || null,
     },
-    number,
-    related,
   };
 
   return { props };
