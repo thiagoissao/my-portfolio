@@ -24,7 +24,8 @@ export default class MyDocument extends Document<MyDocumentProps> {
     return (
       <Html lang={this.props.locale}>
         <Head>
-          <link rel="shortcut icon" href="/logo.svg" />
+          <link rel="icon" type="image/png" href="/icon.png" />
+          <link rel="apple-touch-icon" href="/icon.png" />
           <script
             dangerouslySetInnerHTML={{
               __html: THEME_SCRIPT,

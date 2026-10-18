@@ -7,29 +7,9 @@ module.exports = {
   images: {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 31536000,
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'user-images.githubusercontent.com',
-        port: '',
-        pathname: '/42099621/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'avatars.githubusercontent.com',
-        port: '',
-      },
-      {
-        protocol: 'https',
-        hostname: 'free-images.com',
-        port: '',
-      },
-      {
-        protocol: 'https',
-        hostname: 'lh3.googleusercontent.com',
-        port: '',
-      },
-    ],
+  },
+  async redirects() {
+    return [{ source: '/about', destination: '/', permanent: true }];
   },
   async headers() {
     const oneYearImmutable = 'public, max-age=31536000, immutable';

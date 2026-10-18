@@ -2,7 +2,6 @@ import { IntlProvider } from 'react-intl';
 import { useRouter } from 'next/router';
 import { Hanken_Grotesk, IBM_Plex_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
-import 'highlight.js/styles/nord.css';
 import '../styles/globals.css';
 import { Locale, DEFAULT_LOCALE } from '../lib/i18n/locales';
 import { getMessages } from '../lib/i18n';
