@@ -15,7 +15,7 @@ const About = () => {
         <header className="rise">
           <div className="avatar">
             <Image
-              src="/me2.webp"
+              src="/avatar.jpg"
               alt={`${FIRST_NAME} ${LAST_NAME}`}
               width={112}
               height={112}
