@@ -4,7 +4,6 @@ const enUS: Messages = {
   // Masthead
   'masthead.location': 'Brazil',
   'masthead.themeToggle': 'Toggle light and dark theme',
-  'nav.writings': 'Writings',
   'nav.about': 'About',
 
   // About
@@ -18,13 +17,7 @@ const enUS: Messages = {
   'about.prose.here':
     'I write about technology and computing problems in general. Every now and then I like to mix sports into it.',
 
-  // Article
-  'article.readSuffix': '{minutes} min',
-  'article.copyCode': 'Copy',
-  'article.codeCopied': 'Copied',
-
   // SEO / meta descriptions
-  'meta.home.description': 'homepage',
   'meta.about.description': 'About {first} {last} — software engineer',
 };
 

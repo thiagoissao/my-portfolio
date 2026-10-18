@@ -2,7 +2,6 @@ const ptBR = {
   // Masthead
   'masthead.location': 'Brasil',
   'masthead.themeToggle': 'Alternar tema claro e escuro',
-  'nav.writings': 'Escritos',
   'nav.about': 'Sobre',
 
   // About
@@ -17,13 +16,7 @@ const ptBR = {
   'about.prose.here':
     'Escrevo sobre problemas de tecnologia e computação no geral. De vez em quando gosto de associar esportes no meio.',
 
-  // Article
-  'article.readSuffix': '{minutes} min',
-  'article.copyCode': 'Copiar',
-  'article.codeCopied': 'Copiado',
-
   // SEO / meta descriptions
-  'meta.home.description': 'página inicial',
   'meta.about.description': 'Sobre {first} {last} — engenheiro de software',
 } as const;
 

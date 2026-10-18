@@ -21,7 +21,6 @@ const Masthead = () => {
   const { pathname } = useRouter();
   const intl = useIntl();
   const isHome = pathname === '/';
-  const isAbout = pathname === '/about';
 
   return (
     <header className="mast">
@@ -33,9 +32,6 @@ const Masthead = () => {
       </NextLink>
       <nav className="nav">
         <NextLink href="/" aria-current={isHome ? 'page' : undefined}>
-          <FormattedMessage id="nav.writings" />
-        </NextLink>
-        <NextLink href="/about" aria-current={isAbout ? 'page' : undefined}>
           <FormattedMessage id="nav.about" />
         </NextLink>
         <button
