@@ -27,7 +27,7 @@ const Masthead = () => {
       <NextLink className="name" href="/">
         {FIRST_NAME} {LAST_NAME}
         <span>
-          <FormattedMessage id="masthead.location" />
+          <FormattedMessage id="masthead.location" /> 🇧🇷
         </span>
       </NextLink>
       <nav className="nav">
