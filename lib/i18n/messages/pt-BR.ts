@@ -13,7 +13,7 @@ const ptBR = {
     'Atualmente sou sócio na <a>teceo</a>, meu papel é liderar um time de engenharia que cria soluções centrais para o produto, tomando decisões que impactarão a empresa a longo prazo.',
   'about.prose.hereTitle': 'O que você encontra aqui',
   'about.prose.here':
-    'Escrevo sobre problemas de tecnologia e computação no geral. Todos os meus artigos ficam no <a>deepjourney</a>.',
+    'Escrevo sobre problemas de tecnologia e computação no geral. Todos os meus artigos ficam no <a>Deep Journey</a>, um produto AI first construído para quem gosta de escrever e ler na internet.',
 
   // SEO / meta descriptions
   'meta.about.description': 'Sobre {first} {last} — engenheiro de software',
