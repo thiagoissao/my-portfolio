@@ -15,10 +15,10 @@ const About = () => {
         <header className="rise">
           <div className="avatar">
             <Image
-              src="/avatar.jpg"
+              src="/avatar.webp"
               alt={`${FIRST_NAME} ${LAST_NAME}`}
-              width={112}
-              height={112}
+              width={144}
+              height={144}
               priority
             />
           </div>
