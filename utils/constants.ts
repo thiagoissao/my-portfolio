@@ -8,3 +8,4 @@ export const GITHUB_URL = 'https://github.com/thiagoissao';
 export const LINKEDIN_URL =
   'https://www.linkedin.com/in/thiago-yasunaka-389a69155/';
 export const COMPANY_URL = 'https://www.teceo.co/pt/';
+export const ARTICLES_URL = 'https://deepjourney.co/thiago.yasunaka';

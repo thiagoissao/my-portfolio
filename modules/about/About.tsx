@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { FormattedMessage } from 'react-intl';
 import {
+  ARTICLES_URL,
   COMPANY_URL,
   FIRST_NAME,
   LAST_NAME,
@@ -50,7 +51,16 @@ const About = () => {
             <FormattedMessage id="about.prose.hereTitle" />
           </h2>
           <p>
-            <FormattedMessage id="about.prose.here" />
+            <FormattedMessage
+              id="about.prose.here"
+              values={{
+                a: chunks => (
+                  <a href={ARTICLES_URL} target="_blank" rel="noreferrer">
+                    {chunks}
+                  </a>
+                ),
+              }}
+            />
           </p>
         </div>
       </article>

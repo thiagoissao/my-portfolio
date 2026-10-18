@@ -15,7 +15,7 @@ const enUS: Messages = {
     "I'm currently a partner at <a>teceo</a>, where I lead an engineering team that builds the core solutions of the product, making decisions that will shape the company over the long term.",
   'about.prose.hereTitle': 'What you find here',
   'about.prose.here':
-    'I write about technology and computing problems in general. Every now and then I like to mix sports into it.',
+    'I write about technology and computing problems in general. All my articles live on <a>deepjourney</a>.',
 
   // SEO / meta descriptions
   'meta.about.description': 'About {first} {last} — software engineer',
