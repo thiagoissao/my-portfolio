@@ -8,9 +8,9 @@ const enUS: Messages = {
 
   // About
   'about.hero.title': "Hi, I'm Thiago.",
-  'about.prose.lead': "I'm passionate about building software and playing sports.",
+  'about.prose.lead': 'My calling is building software.',
   'about.prose.bio1': `I have a degree in Computer Science from Universidade Estadual de Maringá.
-    I've spent the last years building products — mostly web — solving problems around scalability, performance, concurrency, and UI/UX.`,
+    I've spent the last years building web products, mainly using node.js and relational databases.`,
   'about.prose.work':
     "I'm currently a partner at <a>teceo</a>, where I lead an engineering team that builds the core solutions of the product, making decisions that will shape the company over the long term.",
   'about.prose.hereTitle': 'What you find here',
