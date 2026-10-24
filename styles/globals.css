@@ -134,6 +134,11 @@ a:hover {
   text-wrap: pretty;
 }
 
+/* the flex layout stops this margin from collapsing into the footer's */
+.prose p:last-child {
+  margin-bottom: 0;
+}
+
 .prose h2 {
   font-size: 15px;
   font-weight: 500;
