@@ -61,6 +61,11 @@ a:hover {
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 0 26px;
+  /* keeps the footer at the bottom of the viewport on short pages */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .mono {
@@ -127,6 +132,11 @@ a:hover {
 .prose p {
   margin: 0 0 24px;
   text-wrap: pretty;
+}
+
+/* the flex layout stops this margin from collapsing into the footer's */
+.prose p:last-child {
+  margin-bottom: 0;
 }
 
 .prose h2 {

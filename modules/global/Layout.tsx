@@ -13,8 +13,14 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="wrap">
       <Masthead />
-      {children}
+      <div className="content">{children}</div>
       <Footer />
+
+      <style jsx>{`
+        .content {
+          flex: 1;
+        }
+      `}</style>
     </div>
   );
 };
